@@ -1,0 +1,30 @@
+using UnityEngine;
+
+public class PlayerAudio : MonoBehaviour
+{
+    #region COMPONENTS
+    private AudioSource _audioSource;
+    private Player _player;
+    #endregion
+    
+    #region HEALTH CLIPS
+    [SerializeField] private AudioClip _hurtClip;
+    [SerializeField] private AudioClip _deathClip;
+    #endregion
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+        _player = GetComponent<Player>();
+    } 
+
+    #region PLAY AUDIO
+    public void PlayAttackAudio() => _audioSource.PlayOneShot(_player.CurrentPlayerAttackData.AudioClip);
+    
+    public void PlaySpecialAbilityAudio() => _audioSource.PlayOneShot(_player.CurrentPlayerAbilityData.AudioClip);
+
+    public void PlayHurtAudio() => _audioSource.PlayOneShot(_hurtClip);
+
+    public void PlayDeathAudio() => _audioSource.PlayOneShot(_deathClip);
+    #endregion
+}
