@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 /// <summary>
@@ -6,21 +7,28 @@ using UnityEngine;
 public class Health : MonoBehaviour, IDamageable
 {
     #region COMPONENTS
+    [SerializeField] private HealthBar _HealthBar;
     private Player _Player;
     private PlayerAnimation _playerAnimation;
     #endregion
     
     #region HEALTH STATS
-    [SerializeField] private int _maxHealth;
-    [SerializeField] private int _currentHealth;
-    public int MaxHealth => _maxHealth;
-    public int CurrentHealth => _currentHealth;
+    [SerializeField] private int _MaxHealth;
+    [SerializeField] private int _CurrentHealth;
+    public int MaxHealth => _MaxHealth;
+    public int CurrentHealth => _CurrentHealth;
     #endregion
     
     private void Awake()
     {
         _Player = GetComponent<Player>();
         _playerAnimation = GetComponent<PlayerAnimation>();
+    }
+
+    private void Start()
+    {
+        _CurrentHealth = _MaxHealth;
+        _HealthBar.SetMaxHealth(_MaxHealth);
     }
 
     #region DAMAGE
@@ -31,13 +39,33 @@ public class Health : MonoBehaviour, IDamageable
     /// <param name="damageAmount">The amount of damage to apply.</param>
     public void TakeDamage(int damageAmount)
     {
-        _currentHealth = Mathf.Max(_currentHealth - damageAmount, 0);
-        if (_currentHealth <= 0)
+        _CurrentHealth = Mathf.Max(_CurrentHealth - damageAmount, 0);
+        _HealthBar.SetHealth(_CurrentHealth);
+        if (_CurrentHealth <= 0)
+        {
             Die();
+        }
+    }
+    #endregion
+    
+    #region HEALING
+    /// <summary>
+    /// Heals the entity by the specified amount, without exceeding maximum health.
+    /// </summary>
+    /// <param name="amount">The amount of health to restore.</param>
+    public void Heal(int amount)
+    {
+        _CurrentHealth = Mathf.Min(_CurrentHealth + amount, _MaxHealth);
+        _HealthBar.SetHealth(_CurrentHealth);
     }
     #endregion
     
     #region DEATH
+    /// <summary>
+    /// Handles the death behavior of the entity. If the entity is a player, disables player control,
+    /// plays the death animation, triggers the game over state, and freezes any attached Rigidbody.
+    /// Otherwise (e.g. for enemies), destroys the GameObject.
+    /// </summary>
     private void Die()
     {
         if (_Player)
@@ -51,17 +79,10 @@ public class Health : MonoBehaviour, IDamageable
                 rb.isKinematic = true;
             }
         }
-        
         else
+        {
             Destroy(gameObject);
+        }
     }
-    #endregion
-
-    #region HEALING
-    /// <summary>
-    /// Heals the entity by the specified amount, without exceeding maximum health.
-    /// </summary>
-    /// <param name="amount">The amount of health to restore.</param>
-    public void Heal(int amount) => _currentHealth = Mathf.Min(_currentHealth + amount, _maxHealth);
     #endregion
 }

@@ -5304,8 +5304,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c37cf88a3002fc418be67f55b261fcf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxHealth: 100
-  _currentHealth: 1
+  _HealthBar: {fileID: 0}
+  _MaxHealth: 100
+  _CurrentHealth: 0
 --- !u!114 &5756868882601299431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5320,7 +5321,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UltimateAttack
   _ultimateMeter: 300
   _currentUltimatePoints: 0
-  UltimateIsReady: 1
+  UltimateIsReady: 0
   _timeScaleMultiplier: 0.25
   _animSpeedRestoration: 4
   _dimmingIntensity: 0.5
