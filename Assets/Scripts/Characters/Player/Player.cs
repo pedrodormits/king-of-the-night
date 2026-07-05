@@ -38,6 +38,8 @@ public class Player : MonoBehaviour
     #endregion
     
     #region DATA
+    [Header("PLAYER DATA")] [SerializeField] protected PlayerSO _PlayerSO;
+    
     [Header("GROUND DATA")]
     [SerializeField] protected List <PlayerAttackData> _groundAttacks;
     protected Dictionary<string, PlayerAttackData> _groundAttacksDict = new();
@@ -90,7 +92,11 @@ public class Player : MonoBehaviour
         if (!_isAttacking) 
         {
             Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
-            _rb.linearVelocity = new Vector3(input.x * _speed, _rb.linearVelocity.y, input.z * _speed);
+            _rb.linearVelocity = new Vector3(
+                input.x * _PlayerSO.MoveSpeed,
+                _rb.linearVelocity.y,
+                input.z * _PlayerSO.MoveSpeed);
+            
             if (input.magnitude > 0) 
             {
                 Quaternion targetRotation = Quaternion.LookRotation(input);

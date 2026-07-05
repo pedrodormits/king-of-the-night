@@ -5258,6 +5258,7 @@ MonoBehaviour:
   - {fileID: 4891463783214530157}
   - {fileID: 6940401111328111478}
   - {fileID: 3846347508514074359}
+  _PlayerSO: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
   _groundAttacks:
   - {fileID: 11400000, guid: 7e4681300cd65c047b6587c8a99028aa, type: 2}
   - {fileID: 11400000, guid: c7368af2e500f3b4faedba4a7938b2f3, type: 2}

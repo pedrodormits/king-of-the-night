@@ -1709,6 +1709,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 141318756188154884, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: _PlayerSO
+      value: 
+      objectReference: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
     - target: {fileID: 4532879441649916586, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
       propertyPath: m_Name
       value: Vampire
