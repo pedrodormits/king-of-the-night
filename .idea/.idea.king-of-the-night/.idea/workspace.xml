@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c8460266-3682-44f1-8f1d-ac81c89ae978" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Components/Health.cs" afterDir="false" />
-    </list>
+    <list default="true" id="c8460266-3682-44f1-8f1d-ac81c89ae978" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -97,7 +95,7 @@
       <option name="presentableId" value="Default" />
       <updated>1783025140881</updated>
       <workItem from="1783025141681" duration="6069000" />
-      <workItem from="1783280534329" duration="83000" />
+      <workItem from="1783280534329" duration="542000" />
     </task>
     <servers />
   </component>
