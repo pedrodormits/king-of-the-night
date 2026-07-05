@@ -733,6 +733,28 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5902104799560023601, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
   m_PrefabInstance: {fileID: 1484476935}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &852657938 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2760214325030483452, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+  m_PrefabInstance: {fileID: 1484476935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ffc50e9fef89544197eaeaf40871fef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
+--- !u!114 &852657943 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 141318756188154884, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+  m_PrefabInstance: {fileID: 1484476935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce3bf41dc0967ee408c8d24787626741, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &858448180
 GameObject:
   m_ObjectHideFlags: 0
@@ -1598,7 +1620,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1609,7 +1631,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0, g: 1, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -1631,7 +1653,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2127021437}
         m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: BackToMainMenu
+        m_MethodName: ResumeGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2099,7 +2121,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1886976568
 Transform:
   m_ObjectHideFlags: 0
@@ -2306,7 +2328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2317,7 +2339,7 @@ MonoBehaviour:
     m_NormalColor: {r: 0, g: 0, b: 0, a: 1}
     m_HighlightedColor: {r: 0, g: 1, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_SelectedColor: {r: 0, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
@@ -2870,9 +2892,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3beb498174d708144bff8a6c4cfbd441, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  _gameOverScreen: {fileID: 1072813782}
-  _pauseScreen: {fileID: 1886976567}
-  _levelToLoad: MainMenuScene
+  _GameOverScreen: {fileID: 1072813782}
+  _PauseScreen: {fileID: 1886976567}
+  _LevelToLoad: MainMenuScene
+  _PlayerInput: {fileID: 852657938}
+  _Player: {fileID: 852657943}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
