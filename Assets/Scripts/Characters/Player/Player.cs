@@ -11,13 +11,8 @@ public class Player : MonoBehaviour
     protected Rigidbody _rb;
     protected UltimateAttack _ultimateAttack;
     #endregion
-
-    #region MOVEMENT
-    [Header("MOVEMENT")]
-    [SerializeField] protected float _speed;
-    [SerializeField] protected float _jumpForce;
-    [HideInInspector] public bool IsGrounded;
-    #endregion
+    
+    [Header("MOVEMENT")] [HideInInspector] public bool IsGrounded;
 
     #region COMBO CONFIGURATION
     [Header("COMBO GROUND")]
@@ -117,7 +112,7 @@ public class Player : MonoBehaviour
     
     protected virtual void Jump() 
     {
-        _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+        _rb.AddForce(Vector3.up * _PlayerSO.JumpForce, ForceMode.Impulse);
         IsGrounded = false;
     }
     #endregion

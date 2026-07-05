@@ -118,7 +118,7 @@ public class Vampire : Player
         IsAscending = false;
     }
 
-    public void PerformAscension() => _rb.AddForce(Vector3.up * _jumpForce, ForceMode.Impulse);
+    public void PerformAscension() => _rb.AddForce(Vector3.up * _PlayerSO.JumpForce, ForceMode.Impulse);
 
     public void PerformUppercut (Rigidbody enemy) => enemy.AddForce(Vector3.up * UppercutForce, ForceMode.Impulse);
     #endregion
