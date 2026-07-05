@@ -31,6 +31,14 @@ public class Health : MonoBehaviour, IDamageable
         _HealthBar.SetMaxHealth(_MaxHealth);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            TakeDamage(20);
+        }
+    }
+
     #region DAMAGE
     /// <summary>
     /// Reduces the health by the specified damage amount, without underflowing health.
