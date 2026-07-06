@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [Header("COMPONENTS")]
+    #region Components
     protected PlayerAnimation _playerAnim;
     protected PlayerInput _playerInput;
     protected PlayerParticle _playerParticle;
     protected Rigidbody _rb;
     protected UltimateAttack _ultimateAttack;
+    #endregion
     
-    [Header("MOVEMENT")] [HideInInspector] public bool IsGrounded;
+    #region State
+    [HideInInspector] public bool IsGrounded;
+    protected bool _isAttacking;
+    #endregion
     
+    #region Combo
     [Header("COMBO GROUND")]
     [SerializeField] protected GroundComboAttack[] _groundLightAttacks;
     protected int _currentGroundComboIndex = -1;
@@ -20,31 +25,26 @@ public class Player : MonoBehaviour
     [Header("COMBO AIR")]
     [SerializeField] protected AirComboAttack[] _airLightAttacks;
     protected int _currentAirComboIndex = -1;
+    #endregion
     
-    [Header("ANIMATION")] protected bool _isAttacking;
-
+    #region Limbs
     [Header("LIMBS")]
     [SerializeField] protected List<GameObject> _limbs;
     protected Dictionary<string, GameObject> _limbsDict = new();
+    #endregion
     
+    #region Data
     [Header("PLAYER DATA")] [SerializeField] protected PlayerSO _PlayerSO;
     
-    [Header("GROUND DATA")]
-    [SerializeField] protected List <PlayerAttackData> _groundAttacks;
-    protected Dictionary<string, PlayerAttackData> _groundAttacksDict = new();
-    
-    [Header("AIR DATA")]
-    [SerializeField] protected List <PlayerAttackData> _airAttacks;
     [HideInInspector] public PlayerAttackData CurrentPlayerAttackData;
+    protected Dictionary<string, PlayerAttackData> _groundAttacksDict = new();
     protected Dictionary<string, PlayerAttackData> _airAttacksDict = new();
     
-    [Header("ABILITY DATA")]
-    [SerializeField] protected List <PlayerAbilityData> _abilities;
     [HideInInspector] public PlayerAbilityData CurrentPlayerAbilityData;
     protected Dictionary<string, PlayerAbilityData> _abilitiesDict = new();
+    #endregion
     
-    [Header("ULTIMATE DATA")] [SerializeField] protected UltimateData _ultimate;
-    
+    #region Unity Messages
     protected virtual void Awake() 
     {
         _playerAnim = GetComponent<PlayerAnimation>();
@@ -73,6 +73,7 @@ public class Player : MonoBehaviour
     }
 
     protected virtual void FixedUpdate() => Move();
+    #endregion
     
     protected virtual void Move() 
     {
@@ -91,13 +92,18 @@ public class Player : MonoBehaviour
             }
         }
         else
+        {
             _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
+        }
     }
 
+    #region Jump
     protected virtual void ExecuteJump() 
     {
         if (!_isAttacking && _playerInput.Jump && IsGrounded)
+        {
             Jump();
+        }
     }
     
     protected virtual void Jump() 
@@ -105,7 +111,9 @@ public class Player : MonoBehaviour
         _rb.AddForce(Vector3.up * _PlayerSO.JumpForce, ForceMode.Impulse);
         IsGrounded = false;
     }
+    #endregion
 
+    #region Limbs
     protected virtual void DefineLimbs() 
     {
         _limbsDict.Add("RightHand", _limbs[0]);
@@ -124,19 +132,23 @@ public class Player : MonoBehaviour
     public void EnableFeet() => _limbsDict["Feet"].SetActive(true);
 
     public void DisableFeet() => _limbsDict["Feet"].SetActive(false);
+    #endregion
 
+    #region Attacks
     protected virtual void DefineGroundLightAttacks() 
     {
-        _groundAttacksDict.Add("GroundLight1", _PlayerSO.GroundAttacks[0]);
-        _groundAttacksDict.Add("GroundLight2", _PlayerSO.GroundAttacks[1]);
-        _groundAttacksDict.Add("GroundLight3", _PlayerSO.GroundAttacks[2]);
+        for (int i = 0; i < 3; i++)
+        {
+            _groundAttacksDict.Add($"GroundLight{i + 1}", _PlayerSO.GroundAttacks[i]);
+        }
     }
     
     protected virtual void DefineAirLightAttacks() 
     {
-        _airAttacksDict.Add("AirLight1", _PlayerSO.AirAttacks[0]);
-        _airAttacksDict.Add("AirLight2", _PlayerSO.AirAttacks[1]);
-        _airAttacksDict.Add("AirLight3", _PlayerSO.AirAttacks[2]);
+        for (int i = 0; i < 3; i++)
+        {
+            _airAttacksDict.Add($"AirLight{i + 1}", _PlayerSO.GroundAttacks[i]);
+        }
     }
     
     protected virtual void DefineHeavyAttacks() 
@@ -154,7 +166,9 @@ public class Player : MonoBehaviour
     protected virtual void ExecuteGroundLightAttack() 
     {
         if (IsGrounded && _playerInput.LightAttack && !_isAttacking)
+        {
             StartCoroutine(PerformGroundComboAttack());
+        }
     }
 
     protected virtual IEnumerator PerformGroundComboAttack() 
@@ -170,7 +184,9 @@ public class Player : MonoBehaviour
                 string key = "GroundLight" + (_currentGroundComboIndex + 1);
                 var limbScript = limb.GetComponent<Limb>();
                 if (limbScript != null)
+                {
                     limbScript.SetAttackData(_groundAttacksDict[key]);
+                }
             }
             
             CurrentPlayerAttackData = _groundAttacksDict["GroundLight1"];
@@ -193,9 +209,13 @@ public class Player : MonoBehaviour
             }
 
             if (queued)
+            {
                 _currentGroundComboIndex++;
+            }
             else
+            {
                 break;
+            }
         }
 
         _isAttacking = false;
@@ -212,7 +232,9 @@ public class Player : MonoBehaviour
     protected virtual void ExecuteAirLightAttack() 
     {
         if (!IsGrounded && _playerInput.LightAttack && !_isAttacking)
+        {
             StartCoroutine(PerformAirComboAttack());
+        }
     }
 
     protected virtual IEnumerator PerformAirComboAttack() 
@@ -229,7 +251,10 @@ public class Player : MonoBehaviour
             {
                 string key = "AirLight" + (_currentAirComboIndex + 1);
                 var limbScript = limb.GetComponent<Limb>();
-                if (limbScript != null) limbScript.SetAttackData(_airAttacksDict[key]);
+                if (limbScript != null)
+                {
+                    limbScript.SetAttackData(_airAttacksDict[key]);
+                }
             }
             
             float animLength = _playerAnim.GetAnimationLength(attack.AnimName);
@@ -251,9 +276,13 @@ public class Player : MonoBehaviour
             }
 
             if (queued)
+            {
                 _currentAirComboIndex++;
+            }
             else
+            {
                 break;
+            }
         }
         
         _rb.isKinematic = false;
@@ -265,7 +294,9 @@ public class Player : MonoBehaviour
     protected virtual void ExecuteGroundHeavyAttack()
     {
         if (IsGrounded && _playerInput.HeavyAttack)
+        {
             StartCoroutine(GroundHeavyAttack());
+        }
     }
 
     protected virtual IEnumerator GroundHeavyAttack() 
@@ -281,7 +312,9 @@ public class Player : MonoBehaviour
     protected virtual void ExecuteAirHeavyAttack() 
     {
         if (!IsGrounded && _playerInput.HeavyAttack)
+        {
             StartCoroutine(AirHeavyAttack());
+        }
     }
 
     protected virtual IEnumerator AirHeavyAttack() 
@@ -293,13 +326,15 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(animLength);
         _isAttacking = false;
     }
+    #endregion
 
+    #region Abilities
     protected virtual void DefineAbilities() 
     {
-        for (int i = 0; i < _abilities.Count; i++) 
+        for (int i = 0; i < _PlayerSO.Abilities.Count; i++) 
         {
             string key = "Ability" + (i + 1);
-            _abilitiesDict.Add(key, _abilities[i]);
+            _abilitiesDict.Add(key, _PlayerSO.Abilities[i]);
         }
     }
     
@@ -368,11 +403,15 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(animLength);
         _isAttacking = false; 
     }
+    #endregion
     
+    #region Ultimate
     protected virtual void ExecuteUltimateAttack()
     {
         if (_ultimateAttack != null && IsGrounded && _playerInput.UltimateAttack && _ultimateAttack.UltimateIsReady)
+        {
             StartCoroutine(Ultimate());
+        }
     }
     
     protected virtual IEnumerator Ultimate()
@@ -386,16 +425,23 @@ public class Player : MonoBehaviour
         _ultimateAttack.StopDimming();
         _isAttacking = false;
     }
+    #endregion
 
+    #region Collision
     protected virtual void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
             IsGrounded = true;
+        }
     }
     
     protected virtual void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
+        {
             IsGrounded = false;
+        }
     }
+    #endregion
 }

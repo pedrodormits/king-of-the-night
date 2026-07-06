@@ -206,7 +206,7 @@ public class Vampire : Player
     protected override IEnumerator Ultimate() 
     {
         CurrentRecoveryData = _recoveryDict["UltimateRecovery"];
-        _limbsDict["RightHand"].GetComponent<Limb>().SetUltimateData(_ultimate);
+        _limbsDict["RightHand"].GetComponent<Limb>().SetUltimateData(_PlayerSO.Ultimate);
         yield return base.Ultimate();
     }
     #endregion
