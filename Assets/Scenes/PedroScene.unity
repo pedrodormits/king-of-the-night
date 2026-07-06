@@ -2602,8 +2602,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   _HealthBar: {fileID: 0}
-  _MaxHealth: 0
-  _CurrentHealth: 0
+  _MaxHealth: 10
+  _CurrentHealth: 10
 --- !u!114 &2074878784
 MonoBehaviour:
   m_ObjectHideFlags: 0

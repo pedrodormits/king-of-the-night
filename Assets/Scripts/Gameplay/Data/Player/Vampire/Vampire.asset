@@ -15,3 +15,18 @@ MonoBehaviour:
   HP: 100
   MoveSpeed: 7.5
   JumpForce: 7.5
+  GroundAttacks:
+  - {fileID: 11400000, guid: 7e4681300cd65c047b6587c8a99028aa, type: 2}
+  - {fileID: 11400000, guid: c7368af2e500f3b4faedba4a7938b2f3, type: 2}
+  - {fileID: 11400000, guid: 094219ceb682458468c100868c95696c, type: 2}
+  - {fileID: 11400000, guid: 9a1e341b5a087664481d64c0573af4a2, type: 2}
+  AirAttacks:
+  - {fileID: 11400000, guid: c9eca883ff7739d4f8ba6e239be5dcbc, type: 2}
+  - {fileID: 11400000, guid: 5e3d6867e0c03b04f9d0ba170abbe19d, type: 2}
+  - {fileID: 11400000, guid: 4d3e1facf248a9648844da65fa829078, type: 2}
+  - {fileID: 11400000, guid: daac9076fc2dd2242a1c98b2a7886305, type: 2}
+  Abilities:
+  - {fileID: 11400000, guid: 118b41dbb5a61284a91b3248d63dda65, type: 2}
+  - {fileID: 11400000, guid: ec30b23d94197a14faf9d6473cc199ae, type: 2}
+  - {fileID: 11400000, guid: 62e9e6606d7764143bd0fceca15261a1, type: 2}
+  Ultimate: {fileID: 11400000, guid: a3dc643dc6b9d09408d80460d835b38a, type: 2}

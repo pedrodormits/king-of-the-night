@@ -4,17 +4,15 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    #region COMPONENTS
+    [Header("COMPONENTS")]
     protected PlayerAnimation _playerAnim;
     protected PlayerInput _playerInput;
     protected PlayerParticle _playerParticle;
     protected Rigidbody _rb;
     protected UltimateAttack _ultimateAttack;
-    #endregion
     
     [Header("MOVEMENT")] [HideInInspector] public bool IsGrounded;
-
-    #region COMBO CONFIGURATION
+    
     [Header("COMBO GROUND")]
     [SerializeField] protected GroundComboAttack[] _groundLightAttacks;
     protected int _currentGroundComboIndex = -1;
@@ -22,17 +20,13 @@ public class Player : MonoBehaviour
     [Header("COMBO AIR")]
     [SerializeField] protected AirComboAttack[] _airLightAttacks;
     protected int _currentAirComboIndex = -1;
-    #endregion
     
     [Header("ANIMATION")] protected bool _isAttacking;
 
-    #region LIMBS
     [Header("LIMBS")]
     [SerializeField] protected List<GameObject> _limbs;
     protected Dictionary<string, GameObject> _limbsDict = new();
-    #endregion
     
-    #region DATA
     [Header("PLAYER DATA")] [SerializeField] protected PlayerSO _PlayerSO;
     
     [Header("GROUND DATA")]
@@ -50,7 +44,6 @@ public class Player : MonoBehaviour
     protected Dictionary<string, PlayerAbilityData> _abilitiesDict = new();
     
     [Header("ULTIMATE DATA")] [SerializeField] protected UltimateData _ultimate;
-    #endregion
     
     protected virtual void Awake() 
     {
@@ -79,7 +72,6 @@ public class Player : MonoBehaviour
         ExecuteUltimateAttack();
     }
 
-    #region MOVEMENT
     protected virtual void FixedUpdate() => Move();
     
     protected virtual void Move() 
@@ -101,9 +93,7 @@ public class Player : MonoBehaviour
         else
             _rb.linearVelocity = new Vector3(0, _rb.linearVelocity.y, 0);
     }
-    #endregion
 
-    #region JUMP
     protected virtual void ExecuteJump() 
     {
         if (!_isAttacking && _playerInput.Jump && IsGrounded)
@@ -115,18 +105,14 @@ public class Player : MonoBehaviour
         _rb.AddForce(Vector3.up * _PlayerSO.JumpForce, ForceMode.Impulse);
         IsGrounded = false;
     }
-    #endregion
 
-    #region DEFINE LIMBS
     protected virtual void DefineLimbs() 
     {
         _limbsDict.Add("RightHand", _limbs[0]);
         _limbsDict.Add("LeftHand", _limbs[1]);
         _limbsDict.Add("Feet", _limbs[2]);
     }
-    #endregion
     
-    #region LIMBS ACTIVATION AND DEACTIVATION
     public void EnableRightHand() => _limbsDict["RightHand"].SetActive(true);
 
     public void DisableRightHand() => _limbsDict["RightHand"].SetActive(false);
@@ -138,31 +124,27 @@ public class Player : MonoBehaviour
     public void EnableFeet() => _limbsDict["Feet"].SetActive(true);
 
     public void DisableFeet() => _limbsDict["Feet"].SetActive(false);
-    #endregion
 
-    #region DEFINE ATTACKTS
     protected virtual void DefineGroundLightAttacks() 
     {
-        _groundAttacksDict.Add("GroundLight1", _groundAttacks[0]);
-        _groundAttacksDict.Add("GroundLight2", _groundAttacks[1]);
-        _groundAttacksDict.Add("GroundLight3", _groundAttacks[2]);
+        _groundAttacksDict.Add("GroundLight1", _PlayerSO.GroundAttacks[0]);
+        _groundAttacksDict.Add("GroundLight2", _PlayerSO.GroundAttacks[1]);
+        _groundAttacksDict.Add("GroundLight3", _PlayerSO.GroundAttacks[2]);
     }
     
     protected virtual void DefineAirLightAttacks() 
     {
-        _airAttacksDict.Add("AirLight1", _airAttacks[0]);
-        _airAttacksDict.Add("AirLight2", _airAttacks[1]);
-        _airAttacksDict.Add("AirLight3", _airAttacks[2]);
+        _airAttacksDict.Add("AirLight1", _PlayerSO.AirAttacks[0]);
+        _airAttacksDict.Add("AirLight2", _PlayerSO.AirAttacks[1]);
+        _airAttacksDict.Add("AirLight3", _PlayerSO.AirAttacks[2]);
     }
     
     protected virtual void DefineHeavyAttacks() 
     {
-        _groundAttacksDict.Add("GroundHeavy", _groundAttacks[3]);
-        _airAttacksDict.Add("AirHeavy", _airAttacks[3]);
+        _groundAttacksDict.Add("GroundHeavy", _PlayerSO.GroundAttacks[3]);
+        _airAttacksDict.Add("AirHeavy", _PlayerSO.AirAttacks[3]);
     }
-    #endregion
     
-    #region GROUND LIGHT COMBO
     [System.Serializable]
     public class GroundComboAttack
     {
@@ -220,9 +202,7 @@ public class Player : MonoBehaviour
         _currentGroundComboIndex = -1;
         _playerAnim.SetGroundComboIndex(_currentGroundComboIndex);
     }
-    #endregion
     
-    #region AIR LIGHT COMBO
     [System.Serializable]
     public class AirComboAttack
     {
@@ -281,9 +261,7 @@ public class Player : MonoBehaviour
         _currentAirComboIndex = -1;
         _playerAnim.SetAirComboIndex(_currentAirComboIndex);
     }
-    #endregion
 
-    #region GROUND HEAVY ATTACK
     protected virtual void ExecuteGroundHeavyAttack()
     {
         if (IsGrounded && _playerInput.HeavyAttack)
@@ -299,9 +277,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(animLength);
         _isAttacking = false;
     }
-    #endregion
     
-    #region AIR HEAVY ATTACK
     protected virtual void ExecuteAirHeavyAttack() 
     {
         if (!IsGrounded && _playerInput.HeavyAttack)
@@ -317,9 +293,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(animLength);
         _isAttacking = false;
     }
-    #endregion
 
-    #region DEFINE ABILITIES
     protected virtual void DefineAbilities() 
     {
         for (int i = 0; i < _abilities.Count; i++) 
@@ -328,9 +302,7 @@ public class Player : MonoBehaviour
             _abilitiesDict.Add(key, _abilities[i]);
         }
     }
-    #endregion
     
-    #region SPECIAL ABILITY 1
     protected virtual void ExecuteSpecialAbility1()
     {
         float lastSpecialTime = -Mathf.Infinity;
@@ -352,9 +324,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(animLength);
         _isAttacking = false;
     }
-    #endregion
     
-    #region SPECIAL ABILITY 2
     protected virtual void ExecuteSpecialAbility2()
     {
         float lastSpecialTime = -Mathf.Infinity;
@@ -376,9 +346,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(animLength);
         _isAttacking = false;
     }
-    #endregion
     
-    #region SPECIAL ABILITY 3
     protected virtual void ExecuteSpecialAbility3()
     {
         float lastSpecialTime = -Mathf.Infinity;
@@ -400,9 +368,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(animLength);
         _isAttacking = false; 
     }
-    #endregion
     
-    #region ULTIMATE ATTACK
     protected virtual void ExecuteUltimateAttack()
     {
         if (_ultimateAttack != null && IsGrounded && _playerInput.UltimateAttack && _ultimateAttack.UltimateIsReady)
@@ -420,9 +386,7 @@ public class Player : MonoBehaviour
         _ultimateAttack.StopDimming();
         _isAttacking = false;
     }
-    #endregion
 
-    #region COLLISION
     protected virtual void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
@@ -434,5 +398,4 @@ public class Player : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
             IsGrounded = false;
     }
-    #endregion
 }
