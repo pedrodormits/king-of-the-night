@@ -18,12 +18,7 @@ public class Player : MonoBehaviour
     #endregion
     
     #region Combo
-    [Header("COMBO GROUND")]
-    [SerializeField] protected GroundComboAttack[] _groundLightAttacks;
     protected int _currentGroundComboIndex = -1;
-    
-    [Header("COMBO AIR")]
-    [SerializeField] protected AirComboAttack[] _airLightAttacks;
     protected int _currentAirComboIndex = -1;
     #endregion
     
@@ -88,7 +83,10 @@ public class Player : MonoBehaviour
             if (input.magnitude > 0) 
             {
                 Quaternion targetRotation = Quaternion.LookRotation(input);
-                transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * 10f);
+                transform.rotation = Quaternion.Slerp(
+                    transform.rotation,
+                    targetRotation,
+                    Time.deltaTime * _PlayerSO.RotationSpeed);
             }
         }
         else
@@ -156,12 +154,6 @@ public class Player : MonoBehaviour
         _groundAttacksDict.Add("GroundHeavy", _PlayerSO.GroundAttacks[3]);
         _airAttacksDict.Add("AirHeavy", _PlayerSO.AirAttacks[3]);
     }
-    
-    [System.Serializable]
-    public class GroundComboAttack
-    {
-        public string AnimName;
-    }
 
     protected virtual void ExecuteGroundLightAttack() 
     {
@@ -175,9 +167,9 @@ public class Player : MonoBehaviour
     {
         _isAttacking = true;
         _currentGroundComboIndex = 0;
-        while (_currentGroundComboIndex < _groundLightAttacks.Length) 
+        while (_currentGroundComboIndex < _PlayerSO.GroundLightAttacks.Length) 
         {
-            GroundComboAttack attack = _groundLightAttacks[_currentGroundComboIndex];
+            PlayerSO.ComboAttack attack = _PlayerSO.GroundLightAttacks[_currentGroundComboIndex];
             _playerAnim.SetGroundComboIndex(_currentGroundComboIndex);
             foreach (var limb in _limbs) 
             {
@@ -191,7 +183,7 @@ public class Player : MonoBehaviour
             
             CurrentPlayerAttackData = _groundAttacksDict["GroundLight1"];
             float animLength = _playerAnim.GetAnimationLength(attack.AnimName);
-            float bufferWindow = 0.5f;
+            float bufferWindow = _PlayerSO.ComboBufferWindow;
             float preBuffer = Mathf.Max(0, animLength - bufferWindow);
             yield return new WaitForSeconds(preBuffer);
             bool queued = false;
@@ -222,12 +214,6 @@ public class Player : MonoBehaviour
         _currentGroundComboIndex = -1;
         _playerAnim.SetGroundComboIndex(_currentGroundComboIndex);
     }
-    
-    [System.Serializable]
-    public class AirComboAttack
-    {
-        public string AnimName;
-    }
 
     protected virtual void ExecuteAirLightAttack() 
     {
@@ -241,9 +227,9 @@ public class Player : MonoBehaviour
     {
         _isAttacking = true;
         _currentAirComboIndex = 0;
-        while (_currentAirComboIndex < _airLightAttacks.Length) 
+        while (_currentAirComboIndex < _PlayerSO.AirLightAttacks.Length) 
         {
-            AirComboAttack attack = _airLightAttacks[_currentAirComboIndex];
+            PlayerSO.ComboAttack attack = _PlayerSO.AirLightAttacks[_currentAirComboIndex];
             _rb.isKinematic = true;
             _playerAnim.SetAirComboIndex(_currentAirComboIndex);
             CurrentPlayerAttackData = _airAttacksDict["AirLight1"];
