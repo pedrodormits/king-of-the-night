@@ -5028,7 +5028,7 @@ GameObject:
   - component: {fileID: 1900309923695897509}
   - component: {fileID: 8208917127433839487}
   - component: {fileID: 141318756188154884}
-  - component: {fileID: 7694855303184672756}
+  - component: {fileID: 5711977408681951017}
   - component: {fileID: 5756868882601299431}
   - component: {fileID: 9078447768390317332}
   - component: {fileID: 7691017892504722309}
@@ -5243,39 +5243,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce3bf41dc0967ee408c8d24787626741, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 7.5
-  _jumpForce: 7.5
   IsGrounded: 0
-  _groundLightAttacks:
-  - AnimName: Light Attack 1
-  - AnimName: Light Attack 2
-  - AnimName: Light Attack 3
-  _airLightAttacks:
-  - AnimName: Light Attack 1
-  - AnimName: Light Attack 2
-  - AnimName: Light Attack 3
   _limbs:
   - {fileID: 4891463783214530157}
   - {fileID: 6940401111328111478}
   - {fileID: 3846347508514074359}
   _PlayerSO: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
-  _groundAttacks:
-  - {fileID: 11400000, guid: 7e4681300cd65c047b6587c8a99028aa, type: 2}
-  - {fileID: 11400000, guid: c7368af2e500f3b4faedba4a7938b2f3, type: 2}
-  - {fileID: 11400000, guid: 094219ceb682458468c100868c95696c, type: 2}
-  - {fileID: 11400000, guid: 9a1e341b5a087664481d64c0573af4a2, type: 2}
-  _airAttacks:
-  - {fileID: 11400000, guid: c9eca883ff7739d4f8ba6e239be5dcbc, type: 2}
-  - {fileID: 11400000, guid: 5e3d6867e0c03b04f9d0ba170abbe19d, type: 2}
-  - {fileID: 11400000, guid: 4d3e1facf248a9648844da65fa829078, type: 2}
-  - {fileID: 11400000, guid: daac9076fc2dd2242a1c98b2a7886305, type: 2}
   CurrentPlayerAttackData: {fileID: 0}
-  _abilities:
-  - {fileID: 11400000, guid: 118b41dbb5a61284a91b3248d63dda65, type: 2}
-  - {fileID: 11400000, guid: ec30b23d94197a14faf9d6473cc199ae, type: 2}
-  - {fileID: 11400000, guid: 62e9e6606d7764143bd0fceca15261a1, type: 2}
   CurrentPlayerAbilityData: {fileID: 0}
-  _ultimate: {fileID: 11400000, guid: a3dc643dc6b9d09408d80460d835b38a, type: 2}
   _staticTime: 3
   IsAirAttacking: 0
   UppercutForce: 11
@@ -5293,7 +5268,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e241e14d4312e1641a16f7db5957f278, type: 2}
   - {fileID: 11400000, guid: c5b392c2c9e7c844eba45bd4cd20448a, type: 2}
   CurrentRecoveryData: {fileID: 0}
---- !u!114 &7694855303184672756
+--- !u!114 &5711977408681951017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5302,12 +5277,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4532879441649916586}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9c37cf88a3002fc418be67f55b261fcf, type: 3}
+  m_Script: {fileID: 11500000, guid: 776b9bb05007c3d48ba70e4fa61a159b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   _HealthBar: {fileID: 0}
   _MaxHealth: 100
-  _CurrentHealth: 0
 --- !u!114 &5756868882601299431
 MonoBehaviour:
   m_ObjectHideFlags: 0

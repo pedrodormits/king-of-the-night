@@ -1713,6 +1713,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Vampire
       objectReference: {fileID: 0}
+    - target: {fileID: 5711977408681951017, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: _HealthBar
+      value: 
+      objectReference: {fileID: 469311546}
     - target: {fileID: 5902104799560023601, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1753,10 +1757,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7694855303184672756, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
-      propertyPath: _HealthBar
-      value: 
-      objectReference: {fileID: 469311546}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2603,7 +2603,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   _HealthBar: {fileID: 0}
   _MaxHealth: 10
-  _CurrentHealth: 10
 --- !u!114 &2074878784
 MonoBehaviour:
   m_ObjectHideFlags: 0

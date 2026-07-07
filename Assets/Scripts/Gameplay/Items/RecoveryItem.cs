@@ -19,12 +19,14 @@ public class RecoveryItem : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
+        {
             Use(other.gameObject);
+        }
     }
 
     public void Use(GameObject target)
     {
-        var health = target.GetComponent<Health>();
+        var health = target.GetComponent<PlayerHealth>();
 
         switch (ResourceType)
         {

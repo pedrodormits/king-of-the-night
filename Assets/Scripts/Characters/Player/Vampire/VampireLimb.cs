@@ -1,13 +1,13 @@
 public class VampireLimb : Limb
 {
     #region COMPONENTS
-    private Health _health;
+    private PlayerHealth _health;
     private Vampire _vampire;
     #endregion
 
     private void Awake()
     {
-        _health = GetComponentInParent<Health>();
+        _health = GetComponentInParent<PlayerHealth>();
         _vampire = GetComponentInParent<Vampire>();
     }
 
