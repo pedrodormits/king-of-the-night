@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a450d6b9e9d887a4e92a8e3437d92369, type: 3}
-  m_Name: Vampire
+  m_Name: VampireCharacter
   m_EditorClassIdentifier: Assembly-CSharp::CharacterSO
   MaxHealth: 100
   MoveSpeed: 7.5

@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "PlayerCombat")]
+[CreateAssetMenu (menuName = "Player")]
 public class PlayerSO : ScriptableObject
 {
     [Header("Movement")]
