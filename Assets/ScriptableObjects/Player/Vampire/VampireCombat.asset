@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6651d61eb254ec7408b37ee54372ba9b, type: 3}
-  m_Name: Vampire
+  m_Name: VampireCombat
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
   HP: 100
   MoveSpeed: 7.5

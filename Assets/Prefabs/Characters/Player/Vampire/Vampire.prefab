@@ -5281,6 +5281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   _HealthBar: {fileID: 0}
+  _CharacterOS: {fileID: 11400000, guid: 37436262924bd9e448c96802de2b5a80, type: 2}
   _MaxHealth: 100
 --- !u!114 &5756868882601299431
 MonoBehaviour:

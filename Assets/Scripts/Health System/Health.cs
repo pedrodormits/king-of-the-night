@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
@@ -6,10 +5,12 @@ public class Health : MonoBehaviour, IDamageable
     [Header("HEALTH BAR")]
     [SerializeField] protected HealthBar _HealthBar;
     
-    #region HEALTH STATS
+    #region Health Stats
+    [Header("HEALTH STATS")]
+    [SerializeField] protected CharacterSO _CharacterOS;
     [SerializeField] protected int _MaxHealth;
     protected int _currentHealth;
-    public int MaxHealth => _MaxHealth;
+    public int MaxHealth => _CharacterOS.MaxHealth;
     public int CurrentHealth => _currentHealth;
     #endregion
 
@@ -25,8 +26,8 @@ public class Health : MonoBehaviour, IDamageable
 
     protected virtual void InitializeHealth()
     {
-        _currentHealth = _MaxHealth;
-        _HealthBar.SetMaxHealth(_MaxHealth);
+        _currentHealth = _CharacterOS.MaxHealth;
+        _HealthBar.SetMaxHealth(_CharacterOS.MaxHealth);
     }
 
     #region DAMAGE

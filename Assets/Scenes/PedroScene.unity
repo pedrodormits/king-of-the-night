@@ -2602,6 +2602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Health
   _HealthBar: {fileID: 0}
+  _CharacterOS: {fileID: 0}
   _MaxHealth: 10
 --- !u!114 &2074878784
 MonoBehaviour:

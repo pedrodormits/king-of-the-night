@@ -1,12 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "PlayableCharacter")]
+[CreateAssetMenu (menuName = "PlayerCombat")]
 public class PlayerSO : ScriptableObject
 {
-    [Header("Stats")]
-    public int HP;
-    
     [Header("Movement")]
     public float MoveSpeed;
     public float JumpForce;
