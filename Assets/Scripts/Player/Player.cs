@@ -24,7 +24,7 @@ public class Player : MonoBehaviour
     
     #region Limbs
     [Header("LIMBS")]
-    [SerializeField] protected List<GameObject> _limbs;
+    [SerializeField] protected List<GameObject> _Limbs;
     protected Dictionary<string, GameObject> _limbsDict = new();
     #endregion
     
@@ -114,9 +114,9 @@ public class Player : MonoBehaviour
     #region Limbs
     protected virtual void DefineLimbs() 
     {
-        _limbsDict.Add("RightHand", _limbs[0]);
-        _limbsDict.Add("LeftHand", _limbs[1]);
-        _limbsDict.Add("Feet", _limbs[2]);
+        _limbsDict.Add("RightHand", _Limbs[0]);
+        _limbsDict.Add("LeftHand", _Limbs[1]);
+        _limbsDict.Add("Feet", _Limbs[2]);
     }
     
     public void EnableRightHand() => _limbsDict["RightHand"].SetActive(true);
@@ -171,7 +171,7 @@ public class Player : MonoBehaviour
         {
             PlayerSO.ComboAttack attack = _PlayerSO.GroundLightAttacks[_currentGroundComboIndex];
             _playerAnim.SetGroundComboIndex(_currentGroundComboIndex);
-            foreach (var limb in _limbs) 
+            foreach (var limb in _Limbs) 
             {
                 string key = "GroundLight" + (_currentGroundComboIndex + 1);
                 var limbScript = limb.GetComponent<Limb>();
@@ -233,7 +233,7 @@ public class Player : MonoBehaviour
             _rb.isKinematic = true;
             _playerAnim.SetAirComboIndex(_currentAirComboIndex);
             CurrentPlayerAttackData = _airAttacksDict["AirLight1"];
-            foreach (var limb in _limbs) 
+            foreach (var limb in _Limbs) 
             {
                 string key = "AirLight" + (_currentAirComboIndex + 1);
                 var limbScript = limb.GetComponent<Limb>();

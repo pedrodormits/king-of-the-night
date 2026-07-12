@@ -5244,7 +5244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IsGrounded: 0
-  _limbs:
+  _Limbs:
   - {fileID: 4891463783214530157}
   - {fileID: 6940401111328111478}
   - {fileID: 3846347508514074359}

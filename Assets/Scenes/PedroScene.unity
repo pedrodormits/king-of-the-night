@@ -1709,6 +1709,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 141318756188154884, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: _Limbs.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 141318756188154884, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: '_Limbs.Array.data[0]'
+      value: 
+      objectReference: {fileID: 1484476938}
+    - target: {fileID: 141318756188154884, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: '_Limbs.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1484476937}
+    - target: {fileID: 141318756188154884, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: '_Limbs.Array.data[2]'
+      value: 
+      objectReference: {fileID: 1484476936}
     - target: {fileID: 4532879441649916586, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
       propertyPath: m_Name
       value: Vampire
@@ -1762,6 +1778,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+--- !u!1 &1484476936 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3846347508514074359, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+  m_PrefabInstance: {fileID: 1484476935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1484476937 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6940401111328111478, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+  m_PrefabInstance: {fileID: 1484476935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1484476938 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4891463783214530157, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+  m_PrefabInstance: {fileID: 1484476935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1558603511
 GameObject:
   m_ObjectHideFlags: 0
