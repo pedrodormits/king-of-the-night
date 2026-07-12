@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PlayerAbility")]
+[CreateAssetMenu(menuName = "Combat/Ability")]
 public class PlayerAbilityData : ScriptableObject
 {
     [Header("STATS")]

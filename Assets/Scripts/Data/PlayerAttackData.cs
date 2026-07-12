@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "PlayerAttack")]
+[CreateAssetMenu(menuName = "Combat/Attack")]
 public class PlayerAttackData : ScriptableObject
 {
     [Header("STATS")]

@@ -29,7 +29,9 @@ public class Player : MonoBehaviour
     #endregion
     
     #region Data
-    [Header("PLAYER DATA")] [SerializeField] protected PlayerSO _PlayerSO;
+    [Header("PLAYER DATA")]
+    [SerializeField] protected CharacterSO _CharacterSO;
+    [SerializeField] protected PlayerSO _PlayerSO;
     
     [HideInInspector] public PlayerAttackData CurrentPlayerAttackData;
     protected Dictionary<string, PlayerAttackData> _groundAttacksDict = new();
@@ -76,9 +78,9 @@ public class Player : MonoBehaviour
         {
             Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
             _rb.linearVelocity = new Vector3(
-                input.x * _PlayerSO.MoveSpeed,
+                input.x * _CharacterSO.MoveSpeed,
                 _rb.linearVelocity.y,
-                input.z * _PlayerSO.MoveSpeed);
+                input.z * _CharacterSO.MoveSpeed);
             
             if (input.magnitude > 0) 
             {
@@ -86,7 +88,7 @@ public class Player : MonoBehaviour
                 transform.rotation = Quaternion.Slerp(
                     transform.rotation,
                     targetRotation,
-                    Time.deltaTime * _PlayerSO.RotationSpeed);
+                    Time.deltaTime * _CharacterSO.RotationSpeed);
             }
         }
         else
@@ -145,7 +147,7 @@ public class Player : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            _airAttacksDict.Add($"AirLight{i + 1}", _PlayerSO.GroundAttacks[i]);
+            _airAttacksDict.Add($"AirLight{i + 1}", _PlayerSO.AirAttacks[i]);
         }
     }
     

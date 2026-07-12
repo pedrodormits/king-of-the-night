@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Ultimate")]
+[CreateAssetMenu(menuName = "Combat/Ultimate")]
 public class UltimateData : ScriptableObject
 {
     public int Damage;

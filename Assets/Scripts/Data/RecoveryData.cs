@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "Recovery")]
+[CreateAssetMenu(menuName = "Items/Recovery")]
 public class RecoveryData : ScriptableObject
 {
     public int HealAmount;

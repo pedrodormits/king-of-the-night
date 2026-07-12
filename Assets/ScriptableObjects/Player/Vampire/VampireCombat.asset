@@ -12,10 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6651d61eb254ec7408b37ee54372ba9b, type: 3}
   m_Name: VampireCombat
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  HP: 100
-  MoveSpeed: 7.5
   JumpForce: 7.5
-  RotationSpeed: 10
   GroundAttacks:
   - {fileID: 11400000, guid: 7e4681300cd65c047b6587c8a99028aa, type: 2}
   - {fileID: 11400000, guid: c7368af2e500f3b4faedba4a7938b2f3, type: 2}
@@ -27,6 +24,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4d3e1facf248a9648844da65fa829078, type: 2}
   - {fileID: 11400000, guid: daac9076fc2dd2242a1c98b2a7886305, type: 2}
   ComboBufferWindow: 0.5
+  GroundLightAttacks:
+  - AnimName: Light Attack 1
+  - AnimName: Light Attack 2
+  - AnimName: Light Attack 3
+  AirLightAttacks:
+  - AnimName: Light Attack 1
+  - AnimName: Light Attack 2
+  - AnimName: Light Attack 3
   Abilities:
   - {fileID: 11400000, guid: 118b41dbb5a61284a91b3248d63dda65, type: 2}
   - {fileID: 11400000, guid: ec30b23d94197a14faf9d6473cc199ae, type: 2}

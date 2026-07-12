@@ -5248,6 +5248,7 @@ MonoBehaviour:
   - {fileID: 4891463783214530157}
   - {fileID: 6940401111328111478}
   - {fileID: 3846347508514074359}
+  _CharacterSO: {fileID: 11400000, guid: 37436262924bd9e448c96802de2b5a80, type: 2}
   _PlayerSO: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
   CurrentPlayerAttackData: {fileID: 0}
   CurrentPlayerAbilityData: {fileID: 0}

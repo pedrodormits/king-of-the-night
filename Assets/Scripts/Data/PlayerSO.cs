@@ -1,13 +1,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu (menuName = "Player")]
+[CreateAssetMenu(menuName = "Characters/Player")]
 public class PlayerSO : ScriptableObject
 {
-    [Header("Movement")]
-    public float MoveSpeed;
-    public float JumpForce;
-    public float RotationSpeed;
+    [Header("jump")] public float JumpForce;
     
     [Header("Attack Data")]
     public List<PlayerAttackData> GroundAttacks;
