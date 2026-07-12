@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    [Header("HEALTH BAR")]
-    [SerializeField] protected HealthBar _HealthBar;
+    [Header("HEALTH BAR")] [SerializeField] protected HealthBar _HealthBar;
     
     #region Health Stats
     [Header("HEALTH STATS")]
