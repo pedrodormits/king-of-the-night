@@ -7,9 +7,9 @@ public class Bat : MonoBehaviour
     [SerializeField] private float _speed = 10f;
     [SerializeField] private float _lifeTime = 5f;
     private Rigidbody _rb;
-    
+
     [Header("DAMAGE")]
-    [SerializeField] private int _damageAmount = 36;
+    [SerializeField] private PlayerAbilityOS _AbilityOS;
 
     private void Start()
     {
@@ -23,7 +23,7 @@ public class Bat : MonoBehaviour
         if (other.CompareTag("Enemy"))
         {
             IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
-            damageable.TakeDamage(_damageAmount);
+            damageable.TakeDamage(_AbilityOS.Damage);
             Destroy(gameObject);
         }
         else

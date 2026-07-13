@@ -17,7 +17,7 @@ public class PlayerSO : ScriptableObject
     public ComboAttack[] AirLightAttacks;
     
     [Header("Abilities")]
-    public List<PlayerAbilityData> Abilities;
+    public List<PlayerAbilityOS> Abilities;
     
     [Header("Ultimate")]
     public UltimateData Ultimate;

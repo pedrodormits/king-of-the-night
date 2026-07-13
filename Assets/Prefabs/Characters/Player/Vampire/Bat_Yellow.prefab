@@ -645,7 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 10
   _lifeTime: 5
-  _damageAmount: 36
+  _AbilityOS: {fileID: 11400000, guid: ec30b23d94197a14faf9d6473cc199ae, type: 2}
 --- !u!82 &8646817186598168940
 AudioSource:
   m_ObjectHideFlags: 0

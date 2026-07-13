@@ -37,8 +37,8 @@ public class Player : MonoBehaviour
     protected Dictionary<string, PlayerAttackData> _groundAttacksDict = new();
     protected Dictionary<string, PlayerAttackData> _airAttacksDict = new();
     
-    [HideInInspector] public PlayerAbilityData CurrentPlayerAbilityData;
-    protected Dictionary<string, PlayerAbilityData> _abilitiesDict = new();
+    [HideInInspector] public PlayerAbilityOS CurrentPlayerAbilityData;
+    protected Dictionary<string, PlayerAbilityOS> _abilitiesDict = new();
     #endregion
     
     #region Unity Messages
