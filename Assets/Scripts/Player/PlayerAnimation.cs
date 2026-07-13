@@ -59,7 +59,9 @@ public class PlayerAnimation : MonoBehaviour
         foreach (var clip in _anim.runtimeAnimatorController.animationClips)
         {
             if (clip.name == clipName)
+            {
                 return clip.length;
+            }
         }
         
         return 0f;
