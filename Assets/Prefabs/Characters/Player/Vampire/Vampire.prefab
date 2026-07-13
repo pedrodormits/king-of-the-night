@@ -5295,13 +5295,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660268986fdda96448d751deb1d87bca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateAttack
-  _ultimateMeter: 300
-  _currentUltimatePoints: 0
   UltimateIsReady: 0
-  _timeScaleMultiplier: 0.25
-  _animSpeedRestoration: 4
-  _dimmingIntensity: 0.5
-  _dimmingDuration: 1
+  _UltimateMeter: 100
+  _CurrentUltimatePoints: 0
+  _TimeScaleMultiplier: 0.25
+  _AnimSpeedRestoration: 4
+  _DimmingIntensity: 0.5
+  _DimmingDuration: 1
 --- !u!114 &9078447768390317332
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5314,7 +5314,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61b5367187f5334cb0414f015fca207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
-  _PlayerOS: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
+  _CharacterSO: {fileID: 11400000, guid: 37436262924bd9e448c96802de2b5a80, type: 2}
 --- !u!114 &7691017892504722309
 MonoBehaviour:
   m_ObjectHideFlags: 0
