@@ -9,7 +9,7 @@ public enum ResourceType
 public class RecoveryItem : MonoBehaviour
 {
     public ResourceType ResourceType;
-    public RecoveryData RecoveryData;
+    public RecoverySO RecoveryData;
     [SerializeField] private ParticleSystem _healParticle;
     // [SerializeField] ParticleSystem ManaParticle;
     [SerializeField] private AudioClip _healClip;

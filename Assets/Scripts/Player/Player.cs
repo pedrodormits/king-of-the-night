@@ -33,12 +33,12 @@ public class Player : MonoBehaviour
     [SerializeField] protected CharacterSO _CharacterSO;
     [SerializeField] protected PlayerSO _PlayerSO;
     
-    [HideInInspector] public PlayerAttackData CurrentPlayerAttackData;
-    protected Dictionary<string, PlayerAttackData> _groundAttacksDict = new();
-    protected Dictionary<string, PlayerAttackData> _airAttacksDict = new();
+    [HideInInspector] public PlayerAttackSO CurrentPlayerAttackData;
+    protected Dictionary<string, PlayerAttackSO> _groundAttacksDict = new();
+    protected Dictionary<string, PlayerAttackSO> _airAttacksDict = new();
     
-    [HideInInspector] public PlayerAbilityOS CurrentPlayerAbilityData;
-    protected Dictionary<string, PlayerAbilityOS> _abilitiesDict = new();
+    [HideInInspector] public PlayerAbilitySO CurrentPlayerAbilityData;
+    protected Dictionary<string, PlayerAbilitySO> _abilitiesDict = new();
     #endregion
     
     #region Unity Messages

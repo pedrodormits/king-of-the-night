@@ -9,7 +9,7 @@ public class Bat : MonoBehaviour
     private Rigidbody _rb;
 
     [Header("DAMAGE")]
-    [SerializeField] private PlayerAbilityOS _AbilityOS;
+    [SerializeField] private PlayerAbilitySO _AbilityOS;
 
     private void Start()
     {

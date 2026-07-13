@@ -4,45 +4,46 @@ using UnityEngine;
 
 public class Vampire : Player
 {
-    [Header("NIGHTFALL STEP")] private bool _canDoubleJump;
+    private bool _canDoubleJump;
     
     #region AIR COMBO)
     [Header("AIR COMBO")]
-    [SerializeField] public float _staticTime;
     [HideInInspector] public bool IsAirAttacking;
+    [SerializeField] private float _StaticTime;
     #endregion
     
     #region HEAVY ATTACK (MIDNIGHT ASCENSION)
     [Header("MIDNIGHT ASCENSION")]
-    [SerializeField] public float UppercutForce;
+    [SerializeField] private float _UppercutForce;
     [HideInInspector] public bool IsAscending;
     #endregion
 
-    [Header("VELVET PIERCER")] [SerializeField] private float _diveSpeed;
+    [Header("VELVET PIERCER")]
+    [SerializeField] private float _DiveSpeed;
     
     #region SPECIAL ABILITY 1 (SHADOW FLIT)
     [Header("SHADOW FLIT")]
-    [SerializeField] private float _driftSpeed;
+    [SerializeField] private float _DriftSpeed;
     private bool _isDrifting;
     #endregion
     
     #region SPECIAL ABILITY 2 (UMBRAL SEEKER)
     [Header("UMBRAL SEEKER")]
-    [SerializeField] private Transform _batLauncher;
-    [SerializeField] private GameObject _bat;
+    [SerializeField] private Transform _BatLauncher;
+    [SerializeField] private GameObject _Bat;
     #endregion
     
     #region SPECIAL ABILITY 3 (CRIMSON GAZE)
     [Header("CRIMSON GAZE")]
-    [SerializeField] private float _stunRange;
-    [SerializeField] private float _stunDuration;
+    [SerializeField] private float _StunRange;
+    [SerializeField] private float _StunDuration;
     #endregion
     
     #region LIFE STEAL
     [Header("LIFE STEAL")]
-    [SerializeField] private List <RecoveryData> _recoveryDatas;
-    [HideInInspector] public RecoveryData CurrentRecoveryData;
-    private Dictionary<string, RecoveryData> _recoveryDict = new();
+    [HideInInspector] public RecoverySO CurrentRecoveryData;
+    [SerializeField] private List <RecoverySO> _RecoveryDatas;
+    private Dictionary<string, RecoverySO> _recoveryDict = new();
     #endregion
 
     protected override void Awake()
@@ -77,11 +78,11 @@ public class Vampire : Player
     #endregion
 
     private void DefineRecovery() {
-        _recoveryDict.Add("GroundLightRecovery", _recoveryDatas[0]);
-        _recoveryDict.Add("AirLightRecovery", _recoveryDatas[1]);
-        _recoveryDict.Add("GroundHeavyRecovery", _recoveryDatas[2]);
-        _recoveryDict.Add("AirHeavyRecovery", _recoveryDatas[3]);
-        _recoveryDict.Add("UltimateRecovery", _recoveryDatas[4]);
+        _recoveryDict.Add("GroundLightRecovery", _RecoveryDatas[0]);
+        _recoveryDict.Add("AirLightRecovery", _RecoveryDatas[1]);
+        _recoveryDict.Add("GroundHeavyRecovery", _RecoveryDatas[2]);
+        _recoveryDict.Add("AirHeavyRecovery", _RecoveryDatas[3]);
+        _recoveryDict.Add("UltimateRecovery", _RecoveryDatas[4]);
     }
 
     #region COMBOS
@@ -101,7 +102,7 @@ public class Vampire : Player
     public IEnumerator EnableStatic(Rigidbody enemy)
     {
         enemy.isKinematic = true;
-        yield return new WaitForSeconds(_staticTime);
+        yield return new WaitForSeconds(_StaticTime);
         enemy.isKinematic = false;
     }
     #endregion
@@ -118,7 +119,7 @@ public class Vampire : Player
 
     public void PerformAscension() => _rb.AddForce(Vector3.up * _PlayerSO.JumpForce, ForceMode.Impulse);
 
-    public void PerformUppercut (Rigidbody enemy) => enemy.AddForce(Vector3.up * UppercutForce, ForceMode.Impulse);
+    public void PerformUppercut (Rigidbody enemy) => enemy.AddForce(Vector3.up * _UppercutForce, ForceMode.Impulse);
     #endregion
     
     #region AIR HEAVY ATTACK (VELVET PIERCER)
@@ -137,7 +138,7 @@ public class Vampire : Player
         while (!IsGrounded) 
         {
             Vector3 diveDirection = (transform.forward + Vector3.down).normalized;
-            _rb.MovePosition(_rb.position + diveDirection * _diveSpeed * Time.fixedDeltaTime);
+            _rb.MovePosition(_rb.position + diveDirection * _DiveSpeed * Time.fixedDeltaTime);
             yield return new WaitForFixedUpdate();
         }
         
@@ -159,23 +160,23 @@ public class Vampire : Player
         _playerParticle.PlayParticle();
         Vector3 driftDirection = transform.forward;
         _rb.linearVelocity = new Vector3(
-            driftDirection.x * _driftSpeed,
+            driftDirection.x * _DriftSpeed,
             _rb.linearVelocity.y,
-            driftDirection.z * _driftSpeed);
+            driftDirection.z * _DriftSpeed);
     }
     #endregion
 
     #region SPECIAL ABILITY 2 (UMBRAL SEEKER)
     public void StartSummon() 
     {
-        _playerParticle.CurrentParticle.transform.SetPositionAndRotation(_batLauncher.position,_batLauncher.rotation);
+        _playerParticle.CurrentParticle.transform.SetPositionAndRotation(_BatLauncher.position,_BatLauncher.rotation);
         _playerParticle.PlayParticle();
     } 
 
     public void SendBat()
     {
         _playerParticle.StopParticle();
-        Instantiate(_bat, _batLauncher.position, _batLauncher.rotation);   
+        Instantiate(_Bat, _BatLauncher.position, _BatLauncher.rotation);   
     }
     #endregion
     
@@ -184,13 +185,13 @@ public class Vampire : Player
     {
         _playerParticle.CurrentParticle.transform.SetPositionAndRotation(transform.position, transform.rotation);
         _playerParticle.PlayParticle();
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _stunRange);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _StunRange);
         foreach (var hit in hitColliders) 
         {
             Enemy enemy = hit.GetComponent<Enemy>();
             if (enemy != null)
             {
-                enemy.Stun(_stunDuration);
+                enemy.Stun(_StunDuration);
             }
         }
     }
@@ -198,7 +199,7 @@ public class Vampire : Player
     private void OnDrawGizmosSelected() 
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, _stunRange);
+        Gizmos.DrawWireSphere(transform.position, _StunRange);
     }
     #endregion
     

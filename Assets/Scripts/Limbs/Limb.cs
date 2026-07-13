@@ -4,8 +4,8 @@ public class Limb : MonoBehaviour
 {
     #region VARIABLES
     [Header("CHARACTER")]
-    protected PlayerAttackData _playerAttackData;
-    protected UltimateData _ultimateData;
+    protected PlayerAttackSO _playerAttackData;
+    protected UltimateSO _ultimateData;
     protected Rigidbody _enemyRB;
     #endregion
     
@@ -13,9 +13,9 @@ public class Limb : MonoBehaviour
     
     [Header("PARTICLES")] [SerializeField] protected ParticleSystem _lightAttackParticle;
     
-    public void SetAttackData(PlayerAttackData attackData) => _playerAttackData = attackData;
+    public void SetAttackData(PlayerAttackSO attackData) => _playerAttackData = attackData;
     
-    public void SetUltimateData(UltimateData ultimateData) => _ultimateData = ultimateData;
+    public void SetUltimateData(UltimateSO ultimateData) => _ultimateData = ultimateData;
     
     protected virtual void OnTriggerEnter(Collider other)
     {

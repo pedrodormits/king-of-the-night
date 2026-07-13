@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Combat/Ability")]
-public class PlayerAbilityOS : ScriptableObject
+public class PlayerAbilitySO : ScriptableObject
 {
     [Header("STATS")]
     public float Cooldown;

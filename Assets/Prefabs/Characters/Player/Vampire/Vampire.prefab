@@ -5252,23 +5252,23 @@ MonoBehaviour:
   _PlayerSO: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
   CurrentPlayerAttackData: {fileID: 0}
   CurrentPlayerAbilityData: {fileID: 0}
-  _staticTime: 3
   IsAirAttacking: 0
-  UppercutForce: 11
+  _StaticTime: 3
+  _UppercutForce: 11
   IsAscending: 0
-  _diveSpeed: 20
-  _driftSpeed: 20
-  _batLauncher: {fileID: 1695077338002744493}
-  _bat: {fileID: 3517582019707793373, guid: 8586a2cc830d08e408c9f308429d5588, type: 3}
-  _stunRange: 5
-  _stunDuration: 3
-  _recoveryDatas:
+  _DiveSpeed: 20
+  _DriftSpeed: 20
+  _BatLauncher: {fileID: 1695077338002744493}
+  _Bat: {fileID: 3517582019707793373, guid: 8586a2cc830d08e408c9f308429d5588, type: 3}
+  _StunRange: 5
+  _StunDuration: 3
+  CurrentRecoveryData: {fileID: 0}
+  _RecoveryDatas:
   - {fileID: 11400000, guid: 2d8eb568f339a0f48bd7228853bc2e9e, type: 2}
   - {fileID: 11400000, guid: 9f83dd8df4bcecd4e91142eb30c32cea, type: 2}
   - {fileID: 11400000, guid: e9cebed462bcb064299ba366aa44a0fd, type: 2}
   - {fileID: 11400000, guid: e241e14d4312e1641a16f7db5957f278, type: 2}
   - {fileID: 11400000, guid: c5b392c2c9e7c844eba45bd4cd20448a, type: 2}
-  CurrentRecoveryData: {fileID: 0}
 --- !u!114 &5711977408681951017
 MonoBehaviour:
   m_ObjectHideFlags: 0

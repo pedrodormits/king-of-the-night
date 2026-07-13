@@ -8,8 +8,8 @@ public class PlayerSO : ScriptableObject
     public float JumpForce;
     
     [Header("Attack Data")]
-    public List<PlayerAttackData> GroundAttacks;
-    public List<PlayerAttackData> AirAttacks;
+    public List<PlayerAttackSO> GroundAttacks;
+    public List<PlayerAttackSO> AirAttacks;
     
     [Header("Combo")]
     public float ComboBufferWindow;
@@ -17,10 +17,10 @@ public class PlayerSO : ScriptableObject
     public ComboAttack[] AirLightAttacks;
     
     [Header("Abilities")]
-    public List<PlayerAbilityOS> Abilities;
+    public List<PlayerAbilitySO> Abilities;
     
     [Header("Ultimate")]
-    public UltimateData Ultimate;
+    public UltimateSO Ultimate;
     
     [System.Serializable]
     public class ComboAttack
