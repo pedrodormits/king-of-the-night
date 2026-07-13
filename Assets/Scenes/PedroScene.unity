@@ -1362,6 +1362,16 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 2315024206634435394, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
   m_PrefabInstance: {fileID: 1484476935}
   m_PrefabAsset: {fileID: 0}
+--- !u!198 &1175119824 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8774548570781162220, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+  m_PrefabInstance: {fileID: 1484476935}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &1181055893 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 4048819436836407662, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+  m_PrefabInstance: {fileID: 1484476935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1249701361
 GameObject:
   m_ObjectHideFlags: 0
@@ -1759,10 +1769,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9078447768390317332, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
-      propertyPath: _PlayerOS
+    - target: {fileID: 7691017892504722309, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: _Particles.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7691017892504722309, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: '_Particles.Array.data[0]'
       value: 
-      objectReference: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
+      objectReference: {fileID: 1175119824}
+    - target: {fileID: 7691017892504722309, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: '_Particles.Array.data[1]'
+      value: 
+      objectReference: {fileID: 1181055893}
+    - target: {fileID: 7691017892504722309, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: '_Particles.Array.data[2]'
+      value: 
+      objectReference: {fileID: 2140998157}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2902,6 +2924,11 @@ MonoBehaviour:
   _LevelToLoad: MainMenuScene
   _PlayerInput: {fileID: 852657938}
   _Player: {fileID: 852657943}
+--- !u!198 &2140998157 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 5973466853288619074, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+  m_PrefabInstance: {fileID: 1484476935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

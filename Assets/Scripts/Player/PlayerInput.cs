@@ -11,8 +11,14 @@ public class PlayerInput : MonoBehaviour
     [SerializeField] private KeyCode _pauseKey = KeyCode.P;
 
     [Header("NAMES")]
-    [HideInInspector] public bool Jump, LightAttack, HeavyAttack, SpecialAbility1,
-        SpecialAbility2, SpecialAbility3, UltimateAttack, Pause;
+    [HideInInspector] public bool Jump;
+    [HideInInspector] public bool LightAttack;
+    [HideInInspector] public bool HeavyAttack;
+    [HideInInspector] public bool SpecialAbility1;
+    [HideInInspector] public bool SpecialAbility2;
+    [HideInInspector] public bool SpecialAbility3;
+    [HideInInspector] public bool UltimateAttack;
+    [HideInInspector] public bool Pause;
     #endregion
 
     private void Update() => DefineKeyboardInput();

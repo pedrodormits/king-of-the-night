@@ -5,18 +5,18 @@ using UnityEngine;
 public class PlayerParticle : MonoBehaviour
 {
     #region VARIABLES
-    [SerializeField] private List<ParticleSystem> _particles;
-    [HideInInspector] public ParticleSystem CurrentParticle;
     [HideInInspector] public Dictionary<string, ParticleSystem> ParticlesDict = new();
+    [HideInInspector] public ParticleSystem CurrentParticle;
+    [SerializeField] private List<ParticleSystem> _Particles;
     #endregion
 
     private void Awake() => DefineParticles();
     
     private void DefineParticles()
     {
-        ParticlesDict.Add("Particle1", _particles[0]);
-        ParticlesDict.Add("Particle2", _particles[1]);
-        ParticlesDict.Add("Particle3", _particles[2]);
+        ParticlesDict.Add("Particle1", _Particles[0]);
+        ParticlesDict.Add("Particle2", _Particles[1]);
+        ParticlesDict.Add("Particle3", _Particles[2]);
     }
 
     public void PlayParticle()

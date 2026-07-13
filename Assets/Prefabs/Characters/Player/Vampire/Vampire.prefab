@@ -5315,8 +5315,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
   _PlayerOS: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
-  _hurtClip: {fileID: 8300000, guid: a36265672b0fb1e4d922cdb47fc9443f, type: 3}
-  _deathClip: {fileID: 8300000, guid: f65579a8143087b46b17459aca1bbbd2, type: 3}
 --- !u!114 &7691017892504722309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5329,11 +5327,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33eef127ff2fb4f4aad1a362ba3c05ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerPartile
-  _particles:
+  CurrentParticle: {fileID: 0}
+  _Particles:
   - {fileID: 8774548570781162220}
   - {fileID: 4048819436836407662}
   - {fileID: 5973466853288619074}
-  CurrentParticle: {fileID: 0}
 --- !u!114 &2760214325030483452
 MonoBehaviour:
   m_ObjectHideFlags: 0
