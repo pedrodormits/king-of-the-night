@@ -4,8 +4,8 @@ using UnityEngine;
 public class Bat : MonoBehaviour
 {
     [Header("FLIGHT")]
-    [SerializeField] private float _speed = 10f;
-    [SerializeField] private float _lifeTime = 5f;
+    [SerializeField] private float _Speed = 10f;
+    [SerializeField] private float _LifeTime = 5f;
     private Rigidbody _rb;
 
     [Header("DAMAGE")]
@@ -14,8 +14,8 @@ public class Bat : MonoBehaviour
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        _rb.linearVelocity = transform.forward * _speed;
-        Destroy(gameObject, _lifeTime);
+        _rb.linearVelocity = transform.forward * _Speed;
+        Destroy(gameObject, _LifeTime);
     }
     
     private void OnTriggerEnter(Collider other)
