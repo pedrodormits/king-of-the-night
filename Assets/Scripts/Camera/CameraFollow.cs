@@ -1,51 +1,41 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-/// <summary>
-/// Follows multiple players Calculating the center point between them.
-/// </summary>
 public class CameraFollow : MonoBehaviour
 {
     #region VARIABLES
     [Header("POSITION")]
-    [SerializeField] private Vector3 _offset;
-    [SerializeField] private float _smoothTime;
-    private List<Transform> _players;
+    [SerializeField] private Vector3 _Offset;
+    [SerializeField] private float _SmoothTime;
+    [SerializeField] private List<Transform> _Players;
     private Vector3 _velocity;
     #endregion
     
-    private void Awake() => AddPlayerForCamera();
-
     private void FixedUpdate() => FollowPlayer();
-    
-    private void AddPlayerForCamera()
-    {
-        _players = new List<Transform>();
-        
-        foreach (GameObject player in GameObject.FindGameObjectsWithTag("Player"))
-            _players.Add(player.transform);
-    }
     
     private void FollowPlayer()
     {
-        if (_players.Count == 0)
+        if (_Players.Count == 0)
+        {
             return;
+        }
 
         Vector3 centerPoint = GetCenterPoint();
-        Vector3 newPosition = centerPoint + _offset;
-        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref _velocity, _smoothTime);
+        Vector3 newPosition = centerPoint + _Offset;
+        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref _velocity, _SmoothTime);
     }
     
     Vector3 GetCenterPoint()
     {
-        if (_players.Count == 1)
-            return _players[0].position;
-
-        Bounds bounds = new Bounds(_players[0].position, Vector3.zero);
-        
-        for (int i = 1; i < _players.Count; i++)
+        if (_Players.Count == 1)
         {
-            bounds.Encapsulate(_players[i].position);
+            return _Players[0].position;
+        }
+
+        Bounds bounds = new Bounds(_Players[0].position, Vector3.zero);
+        for (int i = 1; i < _Players.Count; i++)
+        {
+            bounds.Encapsulate(_Players[i].position);
         }
 
         return bounds.center;
