@@ -4,7 +4,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Characters/Player")]
 public class PlayerSO : ScriptableObject
 {
-    [Header("jump")] public float JumpForce;
+    [Header("jump")]
+    public float JumpForce;
     
     [Header("Attack Data")]
     public List<PlayerAttackData> GroundAttacks;
@@ -20,6 +21,10 @@ public class PlayerSO : ScriptableObject
     
     [Header("Ultimate")]
     public UltimateData Ultimate;
+    
+    [Header("Audio")]
+    public AudioClip HurtClip;
+    public AudioClip DeathClip;
     
     [System.Serializable]
     public class ComboAttack

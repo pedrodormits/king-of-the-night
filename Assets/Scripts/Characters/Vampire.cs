@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Vampire : Player
 {
-    // DOUBLE JUMP
     [Header("NIGHTFALL STEP")] private bool _canDoubleJump;
     
     #region AIR COMBO)
@@ -19,7 +18,6 @@ public class Vampire : Player
     [HideInInspector] public bool IsAscending;
     #endregion
 
-    // AIR HEAVY ATTACK
     [Header("VELVET PIERCER")] [SerializeField] private float _diveSpeed;
     
     #region SPECIAL ABILITY 1 (SHADOW FLIT)
@@ -160,8 +158,10 @@ public class Vampire : Player
         _playerParticle.CurrentParticle.transform.SetPositionAndRotation(transform.position, transform.rotation);
         _playerParticle.PlayParticle();
         Vector3 driftDirection = transform.forward;
-        _rb.linearVelocity = new Vector3(driftDirection.x * _driftSpeed,
-            _rb.linearVelocity.y, driftDirection.z * _driftSpeed);
+        _rb.linearVelocity = new Vector3(
+            driftDirection.x * _driftSpeed,
+            _rb.linearVelocity.y,
+            driftDirection.z * _driftSpeed);
     }
     #endregion
 

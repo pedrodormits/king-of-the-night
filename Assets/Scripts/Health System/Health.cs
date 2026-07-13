@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class Health : MonoBehaviour, IDamageable
 {
-    [Header("HEALTH BAR")] [SerializeField] protected HealthBar _HealthBar;
+    [Header("HEALTH BAR")]
+    [SerializeField] protected HealthBar _HealthBar;
     
     #region Health Stats
     [Header("HEALTH STATS")]
     [SerializeField] protected CharacterSO _CharacterOS;
-    [SerializeField] protected int _MaxHealth;
     protected int _currentHealth;
     public int MaxHealth => _CharacterOS.MaxHealth;
     public int CurrentHealth => _currentHealth;

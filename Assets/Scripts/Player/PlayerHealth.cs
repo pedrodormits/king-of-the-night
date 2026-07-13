@@ -16,7 +16,7 @@ public class PlayerHealth : Health
     #region HEALING
     public void Heal(int amount)
     {
-        _currentHealth = Mathf.Min(_currentHealth + amount, _MaxHealth);
+        _currentHealth = Mathf.Min(_currentHealth + amount, _CharacterOS.MaxHealth);
         _HealthBar.SetHealth(_currentHealth);
     }
     #endregion

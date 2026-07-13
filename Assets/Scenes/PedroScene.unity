@@ -1759,6 +1759,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9078447768390317332, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: _PlayerOS
+      value: 
+      objectReference: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2605,7 +2609,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Health
   _HealthBar: {fileID: 0}
   _CharacterOS: {fileID: 0}
-  _MaxHealth: 10
 --- !u!114 &2074878784
 MonoBehaviour:
   m_ObjectHideFlags: 0

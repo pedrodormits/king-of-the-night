@@ -3,13 +3,9 @@ using UnityEngine;
 public class PlayerAudio : MonoBehaviour
 {
     #region COMPONENTS
+    [SerializeField] private PlayerSO _PlayerOS;
     private AudioSource _audioSource;
     private Player _player;
-    #endregion
-    
-    #region HEALTH CLIPS
-    [SerializeField] private AudioClip _hurtClip;
-    [SerializeField] private AudioClip _deathClip;
     #endregion
 
     private void Awake()
@@ -23,8 +19,8 @@ public class PlayerAudio : MonoBehaviour
     
     public void PlaySpecialAbilityAudio() => _audioSource.PlayOneShot(_player.CurrentPlayerAbilityData.AudioClip);
 
-    public void PlayHurtAudio() => _audioSource.PlayOneShot(_hurtClip);
+    public void PlayHurtAudio() => _audioSource.PlayOneShot(_PlayerOS.HurtClip);
 
-    public void PlayDeathAudio() => _audioSource.PlayOneShot(_deathClip);
+    public void PlayDeathAudio() => _audioSource.PlayOneShot(_PlayerOS.DeathClip);
     #endregion
 }
