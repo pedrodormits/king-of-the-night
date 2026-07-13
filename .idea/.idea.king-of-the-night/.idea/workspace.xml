@@ -6,11 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="c8460266-3682-44f1-8f1d-ac81c89ae978" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/VFX/Player/Vampire/Die_Vampire.wav" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Audio/VFX/Player/Vampire/Die_Vampire.wav.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/PlayerSO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAudio.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +105,7 @@
       <workItem from="1783372857548" duration="4544000" />
       <workItem from="1783459002233" duration="4431000" />
       <workItem from="1783892233154" duration="922000" />
-      <workItem from="1783974817021" duration="4847000" />
+      <workItem from="1783974817021" duration="5527000" />
     </task>
     <servers />
   </component>
