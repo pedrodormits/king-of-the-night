@@ -15,3 +15,5 @@ MonoBehaviour:
   MaxHealth: 100
   MoveSpeed: 7.5
   RotationSpeed: 7.5
+  HurtClip: {fileID: 8300000, guid: a36265672b0fb1e4d922cdb47fc9443f, type: 3}
+  DeathClip: {fileID: 8300000, guid: f65579a8143087b46b17459aca1bbbd2, type: 3}
