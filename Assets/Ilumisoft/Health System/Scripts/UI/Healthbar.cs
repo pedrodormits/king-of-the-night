@@ -54,7 +54,7 @@ namespace Ilumisoft.HealthSystem.UI
 
         private void AlignWithCamera()
         {
-            transform.forward = Camera.main.transform.forward;
+            transform.forward = UnityEngine.Camera.main.transform.forward;
         }
 
         void UpdateFillbar()

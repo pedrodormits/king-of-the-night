@@ -84,13 +84,13 @@ namespace TravisGameAssets
 		private bool slowMotion;
 		private bool lighting;
 		
-		private Camera fXCamera;
+		private UnityEngine.Camera fXCamera;
 		
 		private IEnumerator spawnAuraCO;
 		
 		void Awake()
 		{
-			fXCamera = Camera.main.transform.GetChild(0).GetComponent<Camera>();
+			fXCamera = UnityEngine.Camera.main.transform.GetChild(0).GetComponent<UnityEngine.Camera>();
 		}
 
 		void Start()
@@ -106,8 +106,8 @@ namespace TravisGameAssets
 			slowMotion = false;
 			lighting = true;
 			
-			initCamPosition = Camera.main.transform.position;
-			initCamRotation = Camera.main.transform.rotation;
+			initCamPosition = UnityEngine.Camera.main.transform.position;
+			initCamRotation = UnityEngine.Camera.main.transform.rotation;
 			
 			
 			RefreshStatusUI();
@@ -182,14 +182,14 @@ namespace TravisGameAssets
 			}
 
 			float scrollInput = Input.mouseScrollDelta.y;
-			if(Camera.main.transform.localPosition.z <= maxZ)
+			if(UnityEngine.Camera.main.transform.localPosition.z <= maxZ)
 			{
 				if(scrollInput < 0)
 				{
 					scrollInput = 0;
 				}
 			}
-			if(Camera.main.transform.localPosition.z >= minZ)
+			if(UnityEngine.Camera.main.transform.localPosition.z >= minZ)
 			{
 				if(scrollInput > 0)
 				{
@@ -202,8 +202,8 @@ namespace TravisGameAssets
 			if(Input.GetMouseButtonDown(1))
 			{
 				
-				Camera.main.transform.position = initCamPosition;
-				Camera.main.transform.rotation = initCamRotation;
+				UnityEngine.Camera.main.transform.position = initCamPosition;
+				UnityEngine.Camera.main.transform.rotation = initCamRotation;
 				
 				if(cameraRotating)
 				{
@@ -222,7 +222,7 @@ namespace TravisGameAssets
 	
 		void MoveCamera(float scroll)
 		{
-			Camera.main.transform.position += cameraPivot.position +(Camera.main.transform.forward * scroll * zoomSpeed);
+			UnityEngine.Camera.main.transform.position += cameraPivot.position +(UnityEngine.Camera.main.transform.forward * scroll * zoomSpeed);
 		}
 	
 		void RefreshStatusUI(int type = -1)

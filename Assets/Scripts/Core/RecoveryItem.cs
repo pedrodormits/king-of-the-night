@@ -35,7 +35,7 @@ public class RecoveryItem : MonoBehaviour
                 {
                     health.Heal(RecoveryData.HealAmount);
                     _healParticle.Play();
-                    AudioSource.PlayClipAtPoint(_healClip, Camera.main.transform.position);
+                    AudioSource.PlayClipAtPoint(_healClip, UnityEngine.Camera.main.transform.position);
                 }
                     
                 break;
