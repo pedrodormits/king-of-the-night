@@ -5,21 +5,21 @@ public class UltimateAttack : MonoBehaviour
 {
     #region ULTIMATE CHECK
     [Header("ULTIMATE CHECK")]
-    [SerializeField] private int _ultimateMeter = 100;
-    [SerializeField] private int _currentUltimatePoints;
-    public bool UltimateIsReady;
+    [HideInInspector] public bool UltimateIsReady;
+    [SerializeField] private int _UltimateMeter = 100;
+    [SerializeField] private int _CurrentUltimatePoints;
     #endregion
     
     #region ANIMATION SPEED
     [Header("ANIMATION SPEED")]
-    [SerializeField] private float _timeScaleMultiplier = 0.25F;
-    [SerializeField] private float _animSpeedRestoration = 4;
+    [SerializeField] private float _TimeScaleMultiplier = 0.25F;
+    [SerializeField] private float _AnimSpeedRestoration = 4;
     #endregion
     
     #region DIMMING EFFECT
     [Header("DIMMING EFFECT")]
-    [SerializeField] private float _dimmingIntensity = 0.5f;
-    [SerializeField] private float _dimmingDuration = 1;
+    [SerializeField] private float _DimmingIntensity = 0.5f;
+    [SerializeField] private float _DimmingDuration = 1;
     private float _normalIntensity;
     private Light _light;
     #endregion
@@ -42,8 +42,8 @@ public class UltimateAttack : MonoBehaviour
     #region PREPARE ULTIMATE
     public void PrepareUltimate(int ultimatePointsAmount)
     {
-        _currentUltimatePoints = Mathf.Min(_currentUltimatePoints + ultimatePointsAmount, _ultimateMeter);
-        if (_currentUltimatePoints >= _ultimateMeter)
+        _CurrentUltimatePoints = Mathf.Min(_CurrentUltimatePoints + ultimatePointsAmount, _UltimateMeter);
+        if (_CurrentUltimatePoints >= _UltimateMeter)
         {
             UltimateIsReady = true;
         }
@@ -53,7 +53,7 @@ public class UltimateAttack : MonoBehaviour
     #region CONSUME ULTIMATE
     public void ConsumeUltimate()
     {
-        _currentUltimatePoints = 0;
+        _CurrentUltimatePoints = 0;
         UltimateIsReady = false;
     }
     #endregion
@@ -63,18 +63,18 @@ public class UltimateAttack : MonoBehaviour
     
     private IEnumerator DimmTheLight()
     {
-        Time.timeScale *= _timeScaleMultiplier;
+        Time.timeScale *= _TimeScaleMultiplier;
         float startIntensity = _light.intensity;
         float elapsedTime = 0f;
-        while (elapsedTime < _dimmingDuration)
+        while (elapsedTime < _DimmingDuration)
         {
             elapsedTime += Time.deltaTime;
-            float t = elapsedTime / _dimmingDuration;
-            _light.intensity = Mathf.Lerp(startIntensity, _dimmingIntensity, t);
+            float t = elapsedTime / _DimmingDuration;
+            _light.intensity = Mathf.Lerp(startIntensity, _DimmingIntensity, t);
             yield return null;
         }
 
-        _light.intensity = _dimmingIntensity;
+        _light.intensity = _DimmingIntensity;
     }
     #endregion
 
@@ -84,7 +84,7 @@ public class UltimateAttack : MonoBehaviour
     private IEnumerator BrightenTheLight()
     {
         _light.intensity = _normalIntensity;
-        Time.timeScale *= _animSpeedRestoration;
+        Time.timeScale *= _AnimSpeedRestoration;
         yield break;
     }
     #endregion
