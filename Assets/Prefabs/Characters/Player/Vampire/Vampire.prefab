@@ -2710,7 +2710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1695077338002744493}
   m_Layer: 0
-  m_Name: Bat Launcher
+  m_Name: Bat Spawn Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5258,7 +5258,7 @@ MonoBehaviour:
   IsAscending: 0
   _DiveSpeed: 20
   _DriftSpeed: 20
-  _BatLauncher: {fileID: 1695077338002744493}
+  _BatSpawnPoint: {fileID: 1695077338002744493}
   _Bat: {fileID: 3517582019707793373, guid: 8586a2cc830d08e408c9f308429d5588, type: 3}
   _StunRange: 5
   _StunDuration: 3

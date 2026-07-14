@@ -14,8 +14,8 @@ public class Vampire : Player
     
     #region HEAVY ATTACK (MIDNIGHT ASCENSION)
     [Header("MIDNIGHT ASCENSION")]
-    [SerializeField] private float _UppercutForce;
     [HideInInspector] public bool IsAscending;
+    [SerializeField] private float _UppercutForce;
     #endregion
 
     [Header("VELVET PIERCER")]
@@ -29,7 +29,7 @@ public class Vampire : Player
     
     #region SPECIAL ABILITY 2 (UMBRAL SEEKER)
     [Header("UMBRAL SEEKER")]
-    [SerializeField] private Transform _BatLauncher;
+    [SerializeField] private Transform _BatSpawnPoint;
     [SerializeField] private GameObject _Bat;
     #endregion
     
@@ -68,7 +68,10 @@ public class Vampire : Player
             return;
         }
 
-        if (IsGrounded) Jump();
+        if (IsGrounded)
+        {
+            Jump();
+        }
         else if (_canDoubleJump) 
         {
             Jump();
@@ -77,7 +80,8 @@ public class Vampire : Player
     }
     #endregion
 
-    private void DefineRecovery() {
+    private void DefineRecovery()
+    {
         _recoveryDict.Add("GroundLightRecovery", _RecoveryDatas[0]);
         _recoveryDict.Add("AirLightRecovery", _RecoveryDatas[1]);
         _recoveryDict.Add("GroundHeavyRecovery", _RecoveryDatas[2]);
@@ -169,14 +173,14 @@ public class Vampire : Player
     #region SPECIAL ABILITY 2 (UMBRAL SEEKER)
     public void StartSummon() 
     {
-        _playerParticle.CurrentParticle.transform.SetPositionAndRotation(_BatLauncher.position,_BatLauncher.rotation);
+        _playerParticle.CurrentParticle.transform.SetPositionAndRotation(_BatSpawnPoint.position,_BatSpawnPoint.rotation);
         _playerParticle.PlayParticle();
     } 
 
     public void SendBat()
     {
         _playerParticle.StopParticle();
-        Instantiate(_Bat, _BatLauncher.position, _BatLauncher.rotation);   
+        Instantiate(_Bat, _BatSpawnPoint.position, _BatSpawnPoint.rotation);   
     }
     #endregion
     
@@ -218,17 +222,7 @@ public class Vampire : Player
         base.OnCollisionStay(collision);
         if (collision.gameObject.CompareTag("Ground")) 
         {
-            IsGrounded = true;
             _canDoubleJump = true;
-        }
-    }
-
-    protected override void OnCollisionExit(Collision collision) 
-    {
-        base.OnCollisionExit(collision);
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            IsGrounded = false;
         }
     }
     #endregion

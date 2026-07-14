@@ -1711,6 +1711,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 141318756188154884, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: _BatSpawnPoint
+      value: 
+      objectReference: {fileID: 1548745713}
+    - target: {fileID: 2347316508675171026, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: m_Name
+      value: Bat Spawn Point
+      objectReference: {fileID: 0}
     - target: {fileID: 4532879441649916586, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
       propertyPath: m_Name
       value: Vampire
@@ -1764,6 +1772,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+--- !u!4 &1548745713 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1695077338002744493, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+  m_PrefabInstance: {fileID: 1484476935}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1558603511
 GameObject:
   m_ObjectHideFlags: 0
