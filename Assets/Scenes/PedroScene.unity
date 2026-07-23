@@ -119,6 +119,52 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &164520753
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 164520754}
+  - component: {fileID: 164520755}
+  m_Layer: 0
+  m_Name: Object Pooling
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &164520754
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164520753}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.15778, y: 0, z: -2.49853}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164520755
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164520753}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d5664b0d02e861499a56803613fe43d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
+  _PoolDatas:
+  - {fileID: 11400000, guid: 9d3c09781c193654d843a078b8e71f62, type: 2}
 --- !u!1 &215077300
 GameObject:
   m_ObjectHideFlags: 0
@@ -1712,13 +1758,9 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 141318756188154884, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
-      propertyPath: _BatSpawnPoint
+      propertyPath: _BatPool
       value: 
-      objectReference: {fileID: 1548745713}
-    - target: {fileID: 2347316508675171026, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
-      propertyPath: m_Name
-      value: Bat Spawn Point
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 9d3c09781c193654d843a078b8e71f62, type: 2}
     - target: {fileID: 4532879441649916586, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
       propertyPath: m_Name
       value: Vampire
@@ -1772,11 +1814,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
---- !u!4 &1548745713 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1695077338002744493, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
-  m_PrefabInstance: {fileID: 1484476935}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1558603511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,6 +2959,7 @@ SceneRoots:
   - {fileID: 2074878782}
   - {fileID: 2047420106}
   - {fileID: 2127021436}
+  - {fileID: 164520754}
   - {fileID: 2092461515}
   - {fileID: 1803559196}
   - {fileID: 930722954}

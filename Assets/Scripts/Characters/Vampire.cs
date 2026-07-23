@@ -4,48 +4,38 @@ using UnityEngine;
 
 public class Vampire : Player
 {
+    #region Variables
     private bool _canDoubleJump;
     
-    #region AIR COMBO)
     [Header("AIR COMBO")]
     [HideInInspector] public bool IsAirAttacking;
     [SerializeField] private float _StaticTime;
-    #endregion
     
-    #region HEAVY ATTACK (MIDNIGHT ASCENSION)
     [Header("MIDNIGHT ASCENSION")]
     [HideInInspector] public bool IsAscending;
     [SerializeField] private float _UppercutForce;
-    #endregion
 
     [Header("VELVET PIERCER")]
     [SerializeField] private float _DiveSpeed;
     
-    #region SPECIAL ABILITY 1 (SHADOW FLIT)
     [Header("SHADOW FLIT")]
     [SerializeField] private float _DriftSpeed;
     private bool _isDrifting;
-    #endregion
     
-    #region SPECIAL ABILITY 2 (UMBRAL SEEKER)
     [Header("UMBRAL SEEKER")]
     [SerializeField] private Transform _BatSpawnPoint;
-    [SerializeField] private GameObject _Bat;
-    #endregion
+    [SerializeField] private PoolSO _BatPool;
     
-    #region SPECIAL ABILITY 3 (CRIMSON GAZE)
     [Header("CRIMSON GAZE")]
     [SerializeField] private float _StunRange;
     [SerializeField] private float _StunDuration;
-    #endregion
     
-    #region LIFE STEAL
     [Header("LIFE STEAL")]
     [HideInInspector] public RecoverySO CurrentRecoveryData;
     [SerializeField] private List <RecoverySO> _RecoveryDatas;
     private Dictionary<string, RecoverySO> _recoveryDict = new();
     #endregion
-
+    
     protected override void Awake()
     {
         base.Awake();
@@ -180,7 +170,8 @@ public class Vampire : Player
     public void SendBat()
     {
         _playerParticle.StopParticle();
-        Instantiate(_Bat, _BatSpawnPoint.position, _BatSpawnPoint.rotation);   
+        GameObject bat = ObjectPool.Instance.GetObject(_BatPool);
+        bat.transform.SetPositionAndRotation(_BatSpawnPoint.position, _BatSpawnPoint.rotation);
     }
     #endregion
     
