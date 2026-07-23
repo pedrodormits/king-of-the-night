@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 164520754}
   - component: {fileID: 164520755}
   m_Layer: 0
-  m_Name: Object Pooling
+  m_Name: Object Pooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,8 +163,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d5664b0d02e861499a56803613fe43d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ObjectPool
-  _PoolDatas:
-  - {fileID: 11400000, guid: 9d3c09781c193654d843a078b8e71f62, type: 2}
+  Pools:
+  - Tag: Bat
+    Prefab: {fileID: 3517582019707793373, guid: 8586a2cc830d08e408c9f308429d5588, type: 3}
+    Size: 10
 --- !u!1 &215077300
 GameObject:
   m_ObjectHideFlags: 0

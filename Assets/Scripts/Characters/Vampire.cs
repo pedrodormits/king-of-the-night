@@ -7,30 +7,29 @@ public class Vampire : Player
     #region Variables
     private bool _canDoubleJump;
     
-    [Header("AIR COMBO")]
+    [Header("Air Combo")]
     [HideInInspector] public bool IsAirAttacking;
     [SerializeField] private float _StaticTime;
     
-    [Header("MIDNIGHT ASCENSION")]
+    [Header("Midnight Ascension")]
     [HideInInspector] public bool IsAscending;
     [SerializeField] private float _UppercutForce;
 
-    [Header("VELVET PIERCER")]
+    [Header("Velvet Piercer")]
     [SerializeField] private float _DiveSpeed;
     
-    [Header("SHADOW FLIT")]
+    [Header("Shadow Flit")]
     [SerializeField] private float _DriftSpeed;
     private bool _isDrifting;
     
-    [Header("UMBRAL SEEKER")]
+    [Header("Umbral Seeker")]
     [SerializeField] private Transform _BatSpawnPoint;
-    [SerializeField] private PoolSO _BatPool;
     
-    [Header("CRIMSON GAZE")]
+    [Header("Crimsom Gaze")]
     [SerializeField] private float _StunRange;
     [SerializeField] private float _StunDuration;
     
-    [Header("LIFE STEAL")]
+    [Header("Life Steal")]
     [HideInInspector] public RecoverySO CurrentRecoveryData;
     [SerializeField] private List <RecoverySO> _RecoveryDatas;
     private Dictionary<string, RecoverySO> _recoveryDict = new();
@@ -169,9 +168,10 @@ public class Vampire : Player
 
     public void SendBat()
     {
+        // Stop the summon particle effect before launching the bat.
         _playerParticle.StopParticle();
-        GameObject bat = ObjectPool.Instance.GetObject(_BatPool);
-        bat.transform.SetPositionAndRotation(_BatSpawnPoint.position, _BatSpawnPoint.rotation);
+        
+        ObjectPooler.Instance.SpawnFromPool("Bat", _BatSpawnPoint.position, _BatSpawnPoint.rotation);
     }
     #endregion
     

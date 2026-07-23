@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [RequireComponent (typeof(Rigidbody))]
-public class Bat : MonoBehaviour
+public class Bat : MonoBehaviour, IPooledObject
 {
     #region Variables
     [Header("FLIGHT")]
@@ -12,11 +12,11 @@ public class Bat : MonoBehaviour
     [SerializeField] private PlayerAbilitySO _AbilityOS;
     
     [Header("POOLING")]
-    [SerializeField] private PoolSO _PoolData;
     [SerializeField] private float _LifeTime = 5f;
     private float _currentLifeTime = 0f;
-    
     #endregion
+    
+    public void OnObjectSpawn() => _currentLifeTime = 0;
 
     private void Start()
     {
@@ -24,15 +24,14 @@ public class Bat : MonoBehaviour
         _rb.linearVelocity = transform.forward * _Speed;
     }
 
-    private void Update() => DefineLifeTime();
+    private void Update() => ReturnToPool();
 
-    private void DefineLifeTime()
+    private void ReturnToPool()
     {
         _currentLifeTime += Time.deltaTime;
-        if (_currentLifeTime >= _LifeTime)
+        if(_currentLifeTime >= _LifeTime)
         {
-            _currentLifeTime = 0;
-            ObjectPool.Instance.ReturnObject(_PoolData, gameObject);
+            ObjectPooler.Instance.ReturnObject(gameObject);
         }
     }
 
@@ -43,12 +42,12 @@ public class Bat : MonoBehaviour
             _currentLifeTime = 0;
             IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
             damageable.TakeDamage(_AbilityOS.Damage);
-            ObjectPool.Instance.ReturnObject(_PoolData, gameObject);
+            ReturnToPool();
         }
         else
         {
             _currentLifeTime = 0;
-            ObjectPool.Instance.ReturnObject(_PoolData, gameObject);
+            ReturnToPool();
         }
     }
 }
