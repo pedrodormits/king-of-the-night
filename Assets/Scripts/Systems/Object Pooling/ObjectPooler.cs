@@ -6,6 +6,7 @@ using UnityEngine;
 /// </summary> a fixed amount of objects at the start and reuses them when needed.
 public class ObjectPooler : MonoBehaviour
 {
+    #region Variables
     // Serializable class used to define a pool in the Unity Inspector.
     // Each pool has a tag, a prefab, and the amount of objects it should contain.
     [System.Serializable]
@@ -26,7 +27,8 @@ public class ObjectPooler : MonoBehaviour
     // Dictionary that keeps track of which pool tag belongs to each object.
     // This is needed when returning an object to the correct pool.
     private Dictionary<GameObject,string> _objectTags;
-
+    #endregion
+    
     private void Awake()
     {
         Instance = this; // Set this ObjectPooler as the global instance.
@@ -48,6 +50,7 @@ public class ObjectPooler : MonoBehaviour
                 _objectTags.Add(obj, pool.Tag); // Store the object's pool tag.
                 objectPool.Enqueue(obj); // Add the object to the pool queue.
             }
+            
             PoolDictionary.Add(pool.Tag, objectPool); // Add the completed pool to the main dictionary.
         }
     }

@@ -2,71 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// <summary>
+/// Vampire is a player character class that extends the base Player class.
+/// It adds vampire-specific abilities such as air combos, lifesteal, teleport movement,
+/// bat summoning, enemy stunning, and special attacks.
+/// </summary>
 public class Vampire : Player
 {
     #region Variables
-    private bool _canDoubleJump;
+    private bool _canDoubleJump; // Determines if the player can perform a second jump.
     
     [Header("Air Combo")]
-    [HideInInspector] public bool IsAirAttacking;
-    [SerializeField] private float _StaticTime;
+    [HideInInspector] public bool IsAirAttacking; // Tracks if the player is currently performing an air attack.
+    [SerializeField] private float _StaticTime; // Duration enemies remain frozen during the air combo.
     
     [Header("Midnight Ascension")]
-    [HideInInspector] public bool IsAscending;
-    [SerializeField] private float _UppercutForce;
+    [HideInInspector] public bool IsAscending; // Tracks if the vampire is performing an upward attack.
+    [SerializeField] private float _UppercutForce; // Force applied when launching enemies upward.
 
     [Header("Velvet Piercer")]
-    [SerializeField] private float _DiveSpeed;
+    [SerializeField] private float _DiveSpeed; // Speed of the downward dive attack.
     
     [Header("Shadow Flit")]
-    [SerializeField] private float _DriftSpeed;
-    private bool _isDrifting;
+    [SerializeField] private float _DriftSpeed; // Movement speed during the drifting ability.
+    private bool _isDrifting; // Prevents normal movement while drifting.
     
     [Header("Umbral Seeker")]
-    [SerializeField] private Transform _BatSpawnPoint;
+    [SerializeField] private Transform _BatSpawnPoint; // Location where bats are spawned.
     
     [Header("Crimsom Gaze")]
-    [SerializeField] private float _StunRange;
-    [SerializeField] private float _StunDuration;
+    [SerializeField] private float _StunRange; // Range of the stun ability.
+    [SerializeField] private float _StunDuration; // Duration enemies remain stunned.
     
     [Header("Life Steal")]
-    [HideInInspector] public RecoverySO CurrentRecoveryData;
-    [SerializeField] private List <RecoverySO> _RecoveryDatas;
-    private Dictionary<string, RecoverySO> _recoveryDict = new();
+    [HideInInspector] public RecoverySO CurrentRecoveryData; // Current recovery data used by attacks.
+    [SerializeField] private List <RecoverySO> _RecoveryDatas; // List containing recovery values for attacks.
+    private Dictionary<string, RecoverySO> _recoveryDict = new();  // Stores recovery data using attack names as keys.
     #endregion
     
     protected override void Awake()
     {
-        base.Awake();
-        DefineRecovery();
+        base.Awake(); // Initialize the base Player class first.
+        DefineRecovery(); // Convert recovery data list into a dictionary for easier access.
     }
 
     protected override void Move()
     {
-        if (!_isDrifting)
+        if (!_isDrifting) // Disable normal movement while using Shadow Flit.
         {
             base.Move();
         }
     }
-
+    
+    /// <summary>
+    /// Handles normal jumping and double jumping.
+    /// </summary>
     protected override void ExecuteJump() 
     {
+        // Prevent jumping while attacking or when jump input is not pressed.
         if (_isAttacking || !Input.GetButtonDown("Jump"))
         {
             return;
         }
 
-        if (IsGrounded)
+        if (IsGrounded) // Perform a normal jump when grounded.
         {
             Jump();
         }
-        else if (_canDoubleJump) 
+        else if (_canDoubleJump) // Perform a second jump if available.
         {
             Jump();
             _canDoubleJump = false;
         }
     }
 
+    /// <summary>
+    /// Stores recovery data using readable attack names.
+    /// </summary>
     private void DefineRecovery()
     {
         _recoveryDict.Add("GroundLightRecovery", _RecoveryDatas[0]);
@@ -76,6 +88,9 @@ public class Vampire : Player
         _recoveryDict.Add("UltimateRecovery", _RecoveryDatas[4]);
     }
 
+    /// <summary>
+    /// Uses the correct recovery data for ground light attacks.
+    /// </summary>
     protected override IEnumerator PerformGroundComboAttack() 
     {
         CurrentRecoveryData = _recoveryDict["GroundLightRecovery"];
@@ -83,6 +98,9 @@ public class Vampire : Player
     }
     
     #region Air Combo
+    /// <summary>
+    /// Performs an aerial combo attack.
+    /// </summary>
     protected override IEnumerator PerformAirComboAttack()
     {
         IsAirAttacking = true;
@@ -91,6 +109,9 @@ public class Vampire : Player
         IsAirAttacking = false;
     }
     
+    /// <summary>
+    /// Freezes an enemy temporarily by disabling physics.
+    /// </summary>
     public IEnumerator EnableStatic(Rigidbody enemy)
     {
         // Temporarily disable physics so the enemy remains frozen in place.
@@ -105,6 +126,9 @@ public class Vampire : Player
     #endregion
     
     #region Ground Heavy Attack
+    /// <summary>
+    /// Performs a heavy ground attack that launches the vampire upward.
+    /// </summary>
     protected override IEnumerator GroundHeavyAttack() 
     {
         IsAscending = true;
@@ -114,12 +138,21 @@ public class Vampire : Player
         IsAscending = false;
     }
 
+    /// <summary>
+    /// Pushes the vampire upward during Midnight Ascension.
+    /// </summary>
     public void PerformAscension() => _rb.AddForce(Vector3.up * _PlayerSO.JumpForce, ForceMode.Impulse);
 
+    /// <summary>
+    /// Launches an enemy upward using an uppercut attack.
+    /// </summary>
     public void PerformUppercut(Rigidbody enemy) => enemy.AddForce(Vector3.up * _UppercutForce, ForceMode.Impulse);
     #endregion
     
     #region Air Heavy Attack
+    /// <summary>
+    /// Performs the aerial heavy attack.
+    /// </summary>
     protected override IEnumerator AirHeavyAttack() 
     {
         CurrentRecoveryData = _recoveryDict["AirHeavyRecovery"];
@@ -127,8 +160,14 @@ public class Vampire : Player
         yield return base.AirHeavyAttack();
     }
 
+    /// <summary>
+    /// Starts the Velvet Piercer dive attack.
+    /// </summary>
     public void StartPiercer() => StartCoroutine(PerformPiercer());
 
+    /// <summary>
+    /// Makes the vampire dive diagonally downward until hitting the ground.
+    /// </summary>
     private IEnumerator PerformPiercer() 
     {
         _rb.useGravity = false;
@@ -144,6 +183,9 @@ public class Vampire : Player
     #endregion
 
     #region Special Ability 1
+    /// <summary>
+    /// Activates the drifting movement ability.
+    /// </summary>
     protected override IEnumerator SpecialAbility1() 
     {
         _isDrifting = true;
@@ -151,6 +193,9 @@ public class Vampire : Player
         _isDrifting = false;
     }
 
+    /// <summary>
+    /// Moves the vampire forward while drifting.
+    /// </summary>
     public void PerformDrift() 
     {
         _playerParticle.CurrentParticle.transform.SetPositionAndRotation(transform.position, transform.rotation);
@@ -165,6 +210,9 @@ public class Vampire : Player
     #endregion
 
     #region Special Ability 2
+    /// <summary>
+    /// Shows the summon effect before spawning the bat.
+    /// </summary>
     public void StartSummon() 
     {
         _playerParticle.CurrentParticle.transform.SetPositionAndRotation(
@@ -174,6 +222,9 @@ public class Vampire : Player
         _playerParticle.PlayParticle();
     } 
 
+    /// <summary>
+    /// Stops the summon effect and creates a bat projectile using the object pool.
+    /// </summary>
     public void SendBat()
     {
         _playerParticle.StopParticle();
@@ -182,6 +233,9 @@ public class Vampire : Player
     #endregion
     
     #region Special Ability 3
+    /// <summary>
+    /// Stuns all enemies inside the ability radius.
+    /// </summary>
     private void CastGaze() 
     {
         _playerParticle.CurrentParticle.transform.SetPositionAndRotation(transform.position, transform.rotation);
@@ -197,6 +251,9 @@ public class Vampire : Player
         }
     }
     
+    /// <summary>
+    /// Displays the stun range in the Unity editor.
+    /// </summary>
     private void OnDrawGizmosSelected() 
     {
         Gizmos.color = Color.red;
@@ -204,6 +261,9 @@ public class Vampire : Player
     }
     #endregion
     
+    /// <summary>
+    /// Performs the vampire ultimate attack.
+    /// </summary>
     protected override IEnumerator Ultimate() 
     {
         CurrentRecoveryData = _recoveryDict["UltimateRecovery"];
@@ -211,6 +271,9 @@ public class Vampire : Player
         yield return base.Ultimate();
     }
     
+    /// <summary>
+    /// Enables double jumping whenever the player touches the ground.
+    /// </summary>
     protected override void OnCollisionStay(Collision collision) 
     {
         base.OnCollisionStay(collision);
