@@ -1,34 +1,48 @@
+using System;
 using UnityEngine;
 
+/// <summary>
+/// Represents a bat projectile that flies forward, damages enemies on contact,
+/// and automatically returns itself to the object pool after a set lifetime
+/// or immediately after colliding with another object.
+/// </summary>
 [RequireComponent (typeof(Rigidbody))]
 public class Bat : MonoBehaviour, IPooledObject
 {
     #region Variables
-    [Header("FLIGHT")]
+    [Header("Flight")]
     [SerializeField] private float _Speed = 10f;
     private Rigidbody _rb;
 
-    [Header("DAMAGE")]
+    [Header("Damage")]
     [SerializeField] private PlayerAbilitySO _AbilityOS;
     
-    [Header("POOLING")]
+    [Header("Pooling")]
     [SerializeField] private float _LifeTime = 5f;
     private float _currentLifeTime = 0f;
     #endregion
     
-    public void OnObjectSpawn() => _currentLifeTime = 0;
+    // Reset the lifetime timer.
+    public void OnObjectSpawn() => _currentLifeTime = 0f;
 
-    private void Start()
-    {
-        _rb = GetComponent<Rigidbody>();
-        _rb.linearVelocity = transform.forward * _Speed;
-    }
+    // Cache the Rigidbody reference once.
+    private void Awake() => _rb = GetComponent<Rigidbody>();
+
+    // Launch the bat in its forward direction.
+    private void Start() => _rb.linearVelocity = transform.forward * _Speed;
 
     private void Update() => ReturnToPool();
 
+    /// <summary>
+    /// Updates the bat's lifetime and automatically returns it to the object pool
+    /// once its maximum lifetime has been reached.
+    /// </summary>
     private void ReturnToPool()
     {
+        // Keep track of the bat's lifetime.
         _currentLifeTime += Time.deltaTime;
+        
+        // Return the bat to the pool once its lifetime expires.
         if(_currentLifeTime >= _LifeTime)
         {
             ObjectPooler.Instance.ReturnObject(gameObject);
@@ -37,6 +51,7 @@ public class Bat : MonoBehaviour, IPooledObject
 
     private void OnTriggerEnter(Collider other)
     {
+        // Deal damage if the collided object implements IDamageable.
         if (other.CompareTag("Enemy"))
         {
             _currentLifeTime = 0;
@@ -47,7 +62,9 @@ public class Bat : MonoBehaviour, IPooledObject
         else
         {
             _currentLifeTime = 0;
-            ReturnToPool();
+            
+            // Return the projectile to the pool after any collision.
+            ObjectPooler.Instance.ReturnObject(gameObject);
         }
     }
 }
