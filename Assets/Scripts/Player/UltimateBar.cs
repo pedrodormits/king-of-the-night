@@ -9,6 +9,14 @@ public class UltimateBar : MonoBehaviour
 {
     [SerializeField] private Slider _Slider;
     
+    private void Start()
+    {
+        if (_Slider == null)
+        {
+            Debug.Log("Ultimate Slider is null");
+        }
+    }
+    
     /// <summary>
     /// Sets the maximum ultimate value of the slider.
     /// This is usually called once when the character is created or initialized.
@@ -22,5 +30,5 @@ public class UltimateBar : MonoBehaviour
     /// <summary>
     /// Updates the slider to display the current health.
     /// </summary>
-    public void SetHealth(int health) => _Slider.value = health;
+    public void SetUltimate(int ultimate) => _Slider.value = ultimate;
 }

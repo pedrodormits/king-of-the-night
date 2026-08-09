@@ -545,7 +545,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98cde3ab2738ba34a9ff07d92b446143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateBar
-  _Slider: {fileID: 0}
+  _Slider: {fileID: 452710485}
 --- !u!1 &469311543
 GameObject:
   m_ObjectHideFlags: 0
@@ -2018,6 +2018,18 @@ PrefabInstance:
       propertyPath: _HealthBar
       value: 
       objectReference: {fileID: 469311546}
+    - target: {fileID: 5756868882601299431, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: _UltimateBar
+      value: 
+      objectReference: {fileID: 452710486}
+    - target: {fileID: 5756868882601299431, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: UltimateIsReady
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5756868882601299431, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: _CurrentUltimatePoints
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5902104799560023601, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
