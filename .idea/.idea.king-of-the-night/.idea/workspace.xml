@@ -7,7 +7,6 @@
     <list default="true" id="c8460266-3682-44f1-8f1d-ac81c89ae978" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateAttack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateBar.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Health System/Health.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Systems/Health System/Health.cs" afterDir="false" />
     </list>
@@ -122,7 +121,7 @@
       <workItem from="1786105146299" duration="5020000" />
       <workItem from="1786119668599" duration="3199000" />
       <workItem from="1786123696878" duration="3210000" />
-      <workItem from="1786311893876" duration="4628000" />
+      <workItem from="1786311893876" duration="5661000" />
     </task>
     <servers />
   </component>

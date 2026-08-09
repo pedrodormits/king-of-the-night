@@ -63,8 +63,5 @@ public class Health : MonoBehaviour, IDamageable
     /// This method is virtual so child classes can override it
     /// and add their own death behaviour.
     /// </summary>
-    protected virtual void Die()
-    {
-        
-    }
+    protected virtual void Die(){}
 }
