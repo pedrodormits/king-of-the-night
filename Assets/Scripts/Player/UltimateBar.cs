@@ -15,8 +15,6 @@ public class UltimateBar : MonoBehaviour
         {
             Debug.Log("Ultimate Slider is null");
         }
-        
-        _Slider.value = 0;
     }
     
     /// <summary>

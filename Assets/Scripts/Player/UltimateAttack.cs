@@ -13,9 +13,14 @@ public class UltimateAttack : MonoBehaviour
     // Indicates whether the ultimate meter is completely filled and the ultimate can be used.
     /*[HideInInspector]*/ public bool UltimateIsReady;
     
-    [SerializeField] private int _UltimateMeter = 100; // Maximum amount of points required to fill the ultimate meter.
-    [SerializeField] private int _CurrentUltimatePoints; // Current amount of points stored in the ultimate meter.
-    [SerializeField] private UltimateBar _UltimateBar; // Reference to the UI element that displays the ultimate meter.
+    // Maximum amount of points required to fill the ultimate meter.
+    [SerializeField] private int _UltimateMeter = 100;
+    
+    // Current amount of points stored in the ultimate meter.
+    [SerializeField] private int _CurrentUltimatePoints;
+    
+    // Reference to the UI element that displays the ultimate meter.
+    [SerializeField] private UltimateBar _UltimateBar;
 
     [Header("Animation Speed")]
     // Multiplier used to slow down time during the ultimate effect.
@@ -31,20 +36,34 @@ public class UltimateAttack : MonoBehaviour
     // Duration of the transition from normal lighting to the dimmed lighting.
     [SerializeField] private float _DimmingDuration = 1;
     
-    private float _normalIntensity; // Stores the original light intensity so it can be restored later.
-    private Light _light; // Reference to the directional light used for the dimming effect.
+    // Stores the original light intensity so it can be restored later.
+    private float _normalIntensity;
+    
+    // Reference to the directional light used for the dimming effect.
+    private Light _light;
     #endregion
     
     private void Awake() => FindDirectionalLight();
 
+    private void Start()
+    {
+        if (_UltimateBar == null)
+        {
+            Debug.Log("_UltimateBar is null");
+        }
+    }
+    
     /// <summary>
     /// This method searches for the Directional Light in the scene and stores a reference to it.
     /// It also saves the light's original intensity so it can be restored after the ultimate effect ends.
     /// </summary>
     private void FindDirectionalLight()
     {
-        Light[] lights = FindObjectsOfType<Light>(); // Find all lights currently active in the scene.
-        foreach (Light l in lights) // Search for the first directional light.
+        // Find all lights currently active in the scene.
+        Light[] lights = FindObjectsOfType<Light>();
+        
+        // Search for the first directional light.
+        foreach (Light l in lights)
         {
             if (l.type == LightType.Directional)
             {
@@ -53,15 +72,8 @@ public class UltimateAttack : MonoBehaviour
             }
         }
         
-        _normalIntensity = _light.intensity; // Store the original intensity of the directional light.
-    }
-
-    private void Start()
-    {
-        if (_UltimateBar == null)
-        {
-            Debug.Log("_UltimateBar is null");
-        }
+        // Store the original intensity of the directional light.
+        _normalIntensity = _light.intensity;
     }
 
     #region Prepare Ultimate
@@ -71,8 +83,14 @@ public class UltimateAttack : MonoBehaviour
     /// </summary>
     public void PrepareUltimate(int ultimatePointsAmount)
     {
-        _CurrentUltimatePoints = Mathf.Min(_CurrentUltimatePoints + ultimatePointsAmount, _UltimateMeter);
-        if (_CurrentUltimatePoints >= _UltimateMeter) // Check if the ultimate meter is completely filled.
+        _CurrentUltimatePoints = Mathf.Min(
+            _CurrentUltimatePoints + ultimatePointsAmount,
+            _UltimateMeter
+        );
+
+        _UltimateBar.SetUltimate(_CurrentUltimatePoints);
+
+        if (_CurrentUltimatePoints >= _UltimateMeter)
         {
             UltimateIsReady = true;
         }
@@ -102,13 +120,22 @@ public class UltimateAttack : MonoBehaviour
     /// </summary>
     private IEnumerator DimmTheLight()
     {
-        Time.timeScale *= _TimeScaleMultiplier; // Slow down the entire game by multiplying the current timescale.
-        float startIntensity = _light.intensity; // Store the current light intensity as the starting point.
-        float elapsedTime = 0f; // Reset the elapsed time for the transition.
-        while (elapsedTime < _DimmingDuration) // Gradually change the light intensity over the configured duration.
+        // Slow down the entire game by multiplying the current timescale.
+        Time.timeScale *= _TimeScaleMultiplier;
+        
+        // Store the current light intensity as the starting point.
+        float startIntensity = _light.intensity;
+        
+        // Reset the elapsed time for the transition.
+        float elapsedTime = 0f;
+        
+        // Gradually change the light intensity over the configured duration.
+        while (elapsedTime < _DimmingDuration) 
         {
             elapsedTime += Time.deltaTime;
-            float t = elapsedTime / _DimmingDuration; // Calculate the progress of the transition between 0 and 1.
+            
+            // Calculate the progress of the transition between 0 and 1.
+            float t = elapsedTime / _DimmingDuration; 
 
             // Smoothly interpolate between the starting intensity
             // and the target dimming intensity.
@@ -117,7 +144,8 @@ public class UltimateAttack : MonoBehaviour
             yield return null;
         }
         
-        _light.intensity = _DimmingIntensity; // Make sure the final intensity is exactly the target value.
+        // Make sure the final intensity is exactly the target value.
+        _light.intensity = _DimmingIntensity; 
     }
     #endregion
 
@@ -132,9 +160,14 @@ public class UltimateAttack : MonoBehaviour
     /// </summary>
     private IEnumerator BrightenTheLight()
     {
-        _light.intensity = _normalIntensity; // Restore the original directional light intensity.
-        Time.timeScale *= _AnimSpeedRestoration; // Restore the normal animation/game speed.
-        yield break; // End the coroutine.
+        // Restore the original directional light intensity.
+        _light.intensity = _normalIntensity;
+        
+        // Restore the normal animation/game speed.
+        Time.timeScale *= _AnimSpeedRestoration;
+        
+        // End the coroutine.
+        yield break; 
     }
     #endregion
 }

@@ -4,7 +4,7 @@ public class Limb : MonoBehaviour
 {
     #region VARIABLES
     [Header("CHARACTER")]
-    [SerializeField] private UltimateBar _UltimateBar;
+    [SerializeField] protected UltimateBar _UltimateBar;
     protected PlayerAttackSO _playerAttackData;
     protected UltimateSO _ultimateData;
     protected Rigidbody _enemyRB;
@@ -56,14 +56,10 @@ public class Limb : MonoBehaviour
         }
         
         UltimateAttack ultimateAttack = GetComponentInParent<UltimateAttack>();
-        if (ultimateAttack != null)
+
+        if (ultimateAttack != null && _playerAttackData != null)
         {
-            if (_playerAttackData != null)
-            {
-                ultimateAttack.PrepareUltimate(_playerAttackData.UltPoints);
-            }
-            
-            _UltimateBar.SetUltimate(_playerAttackData.UltPoints);
+            ultimateAttack.PrepareUltimate(_playerAttackData.UltPoints);
         }
 
         CharacterHit();
