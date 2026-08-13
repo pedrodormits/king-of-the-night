@@ -4,6 +4,7 @@ public class Limb : MonoBehaviour
 {
     #region VARIABLES
     [Header("CHARACTER")]
+    [SerializeField] private UltimateBar _UltimateBar;
     protected PlayerAttackSO _playerAttackData;
     protected UltimateSO _ultimateData;
     protected Rigidbody _enemyRB;
@@ -61,6 +62,8 @@ public class Limb : MonoBehaviour
             {
                 ultimateAttack.PrepareUltimate(_playerAttackData.UltPoints);
             }
+            
+            _UltimateBar.SetUltimate(_playerAttackData.UltPoints);
         }
 
         CharacterHit();
