@@ -3988,6 +3988,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ed39faf7188564aaf32c80c5abf7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VampireLimb
+  _UltimateBar: {fileID: 0}
   _lightAttackImpact: {fileID: 8300000, guid: 9a9bb808684cb6545b3228d22e41e9b8, type: 3}
   _lightAttackParticle: {fileID: 5037299496605038427}
 --- !u!1 &3878588494816603130
@@ -5254,12 +5255,11 @@ MonoBehaviour:
   CurrentPlayerAbilityData: {fileID: 0}
   IsAirAttacking: 0
   _StaticTime: 3
-  _UppercutForce: 11
   IsAscending: 0
+  _UppercutForce: 11
   _DiveSpeed: 20
   _DriftSpeed: 20
   _BatSpawnPoint: {fileID: 1695077338002744493}
-  _Bat: {fileID: 3517582019707793373, guid: 8586a2cc830d08e408c9f308429d5588, type: 3}
   _StunRange: 5
   _StunDuration: 3
   CurrentRecoveryData: {fileID: 0}
@@ -5296,8 +5296,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateAttack
   UltimateIsReady: 0
-  _UltimateMeter: 100
+  _UltimateMeter: 300
   _CurrentUltimatePoints: 0
+  _UltimateBar: {fileID: 0}
   _TimeScaleMultiplier: 0.25
   _AnimSpeedRestoration: 4
   _DimmingIntensity: 0.5
@@ -5315,6 +5316,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
   _CharacterSO: {fileID: 11400000, guid: 37436262924bd9e448c96802de2b5a80, type: 2}
+  _PlayerSO: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
 --- !u!114 &7691017892504722309
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5563,6 +5565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ed39faf7188564aaf32c80c5abf7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VampireLimb
+  _UltimateBar: {fileID: 0}
   _lightAttackImpact: {fileID: 8300000, guid: 9a9bb808684cb6545b3228d22e41e9b8, type: 3}
   _lightAttackParticle: {fileID: 5037299496605038427}
 --- !u!1 &5050384396698411240
@@ -7825,6 +7828,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b8ed39faf7188564aaf32c80c5abf7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::VampireLimb
+  _UltimateBar: {fileID: 0}
   _lightAttackImpact: {fileID: 8300000, guid: 9a9bb808684cb6545b3228d22e41e9b8, type: 3}
   _lightAttackParticle: {fileID: 5037299496605038427}
 --- !u!1 &7037700943994818938

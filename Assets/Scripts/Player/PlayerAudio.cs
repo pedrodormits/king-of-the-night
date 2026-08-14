@@ -30,5 +30,7 @@ public class PlayerAudio : MonoBehaviour
     public void PlayHurtAudio() => _audioSource.PlayOneShot(_PlayerSO.HurtClip);
 
     public void PlayDeathAudio() => _audioSource.PlayOneShot(_CharacterSO.DeathClip);
+    
+    public void PlayUltimateAudio() => _audioSource.PlayOneShot(_PlayerSO.UltimateClip);
     #endregion
 }

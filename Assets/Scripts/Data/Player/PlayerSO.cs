@@ -22,8 +22,9 @@ public class PlayerSO : ScriptableObject
     [Header("Ultimate")]
     public UltimateSO Ultimate;
     
-    [Header("Hurt Audio")]
+    [Header("Audio")]
     public AudioClip HurtClip;
+    public AudioClip UltimateClip;
     
     [System.Serializable]
     public class ComboAttack

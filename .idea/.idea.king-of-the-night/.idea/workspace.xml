@@ -6,13 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c8460266-3682-44f1-8f1d-ac81c89ae978" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Enemies/Zombie/ZombieCharacter.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Enemies/Zombie/ZombieCharacter.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/VFX/Enemy/Die_Enemy.wav" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Audio/VFX/Enemy/Die_Enemy.wav.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player/Vampire/Vampire.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player/Vampire/Vampire.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Player/Vampire/VampireCombat.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Player/Vampire/VampireCombat.asset.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Player/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Player/PlayerSO.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAudio.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateBar.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -128,7 +129,7 @@
       <workItem from="1786123696878" duration="3210000" />
       <workItem from="1786311893876" duration="5854000" />
       <workItem from="1786649547442" duration="3480000" />
-      <workItem from="1786705146703" duration="2523000" />
+      <workItem from="1786705146703" duration="3723000" />
     </task>
     <servers />
   </component>
