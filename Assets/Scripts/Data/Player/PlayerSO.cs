@@ -24,6 +24,7 @@ public class PlayerSO : ScriptableObject
     
     [Header("Audio")]
     public AudioClip HurtClip;
+    public AudioClip UltimateReadyClip;
     public AudioClip UltimateClip;
     
     [System.Serializable]

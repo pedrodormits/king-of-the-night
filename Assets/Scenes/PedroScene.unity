@@ -3352,6 +3352,10 @@ PrefabInstance:
       value: 7.076235
       objectReference: {fileID: 0}
     - target: {fileID: 5756868882601299431, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: _PlayerAudio
+      value: 
+      objectReference: {fileID: 1484476936}
+    - target: {fileID: 5756868882601299431, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
       propertyPath: _UltimateBar
       value: 
       objectReference: {fileID: 452710486}
@@ -4040,6 +4044,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+--- !u!114 &1484476936 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 9078447768390317332, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+  m_PrefabInstance: {fileID: 1484476935}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61b5367187f5334cb0414f015fca207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
 --- !u!1 &1558603511
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,8 @@ public class UltimateAttack : MonoBehaviour
     
     // Reference to the UI element that displays the ultimate meter.
     [SerializeField] private UltimateBar _UltimateBar;
+    
+    [SerializeField] private PlayerAudio _PlayerAudio;
 
     [Header("Animation Speed")]
     // Multiplier used to slow down time during the ultimate effect.
@@ -53,7 +55,8 @@ public class UltimateAttack : MonoBehaviour
             Debug.Log("_UltimateBar is null");
         }
     }
-    
+
+    #region Get Directional Light
     /// <summary>
     /// This method searches for the Directional Light in the scene and stores
     /// a reference to it.
@@ -78,6 +81,7 @@ public class UltimateAttack : MonoBehaviour
         // Store the original intensity of the directional light.
         _normalIntensity = _light.intensity;
     }
+    #endregion
 
     #region Prepare Ultimate
     /// <summary>
@@ -102,6 +106,7 @@ public class UltimateAttack : MonoBehaviour
         if (_CurrentUltimatePoints >= _UltimateMeter)
         {
             UltimateIsReady = true;
+            _PlayerAudio.PlayUltimateReadyAudio();
         }
     }
     #endregion

@@ -27,10 +27,24 @@ public class PlayerAudio : MonoBehaviour
         _audioSource.PlayOneShot(_player.CurrentPlayerAbilityData.AudioClip);    
     }
 
-    public void PlayHurtAudio() => _audioSource.PlayOneShot(_PlayerSO.HurtClip);
+    public void PlayHurtAudio()
+    {
+        _audioSource.PlayOneShot(_PlayerSO.HurtClip);   
+    }
 
-    public void PlayDeathAudio() => _audioSource.PlayOneShot(_CharacterSO.DeathClip);
-    
-    public void PlayUltimateAudio() => _audioSource.PlayOneShot(_PlayerSO.UltimateClip);
+    public void PlayDeathAudio()
+    {
+        _audioSource.PlayOneShot(_CharacterSO.DeathClip);
+    }
+
+    public void PlayUltimateReadyAudio()
+    {
+        _audioSource.PlayOneShot(_PlayerSO.UltimateReadyClip);
+    }
+
+    public void PlayUltimateAudio()
+    {
+        _audioSource.PlayOneShot(_PlayerSO.UltimateClip);   
+    }
     #endregion
 }
