@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 /// <summary>
 /// Ultimate controls the UI slider that displays the player's ultimate points.
-/// The slider is updated whenever the current ultimate points increases or gets expended.
+/// The slider is updated whenever the current ultimate points increases or gets
+/// expended.
 /// </summary>
 public class UltimateBar : MonoBehaviour
 {
@@ -21,10 +22,13 @@ public class UltimateBar : MonoBehaviour
     /// Sets the maximum ultimate value of the slider.
     /// This is usually called once when the character is created or initialized.
     /// </summary>
-    public void SetMaxUltimate(int ultimate) // Reference to the UI Slider used as the ultimate bar.
+    public void SetMaxUltimate(int ultimate)
     {
-        _Slider.maxValue = ultimate; // Set the slider's maximum value.
-        _Slider.value = ultimate; // Fill the slider completely.
+        // Set the slider's maximum value.
+        _Slider.maxValue = ultimate;
+        
+        // Fill the slider completely.
+        _Slider.value = ultimate; 
     }
 
     /// <summary>

@@ -11,6 +11,5 @@ public class CharacterSO : ScriptableObject
     public float RotationSpeed;
     
     [Header("Audio")]
-    public AudioClip HurtClip;
     public AudioClip DeathClip;
 }

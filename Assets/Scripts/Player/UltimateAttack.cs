@@ -10,8 +10,9 @@ public class UltimateAttack : MonoBehaviour
 {
     #region Variables
     [Header("Ultimate Check")]
-    // Indicates whether the ultimate meter is completely filled and the ultimate can be used.
-    /*[HideInInspector]*/ public bool UltimateIsReady;
+    // Indicates whether the ultimate meter is completely filled and the ultimate
+    // can be used.
+    [HideInInspector] public bool UltimateIsReady;
     
     // Maximum amount of points required to fill the ultimate meter.
     [SerializeField] private int _UltimateMeter = 100;
@@ -54,8 +55,10 @@ public class UltimateAttack : MonoBehaviour
     }
     
     /// <summary>
-    /// This method searches for the Directional Light in the scene and stores a reference to it.
-    /// It also saves the light's original intensity so it can be restored after the ultimate effect ends.
+    /// This method searches for the Directional Light in the scene and stores
+    /// a reference to it.
+    /// It also saves the light's original intensity so it can be restored after
+    /// the ultimate effect ends.
     /// </summary>
     private void FindDirectionalLight()
     {
@@ -78,18 +81,24 @@ public class UltimateAttack : MonoBehaviour
 
     #region Prepare Ultimate
     /// <summary>
-    /// Adds points to the ultimate meter.
-    /// The value cannot exceed the maximum meter capacity.
+    /// Adds the specified amount of points to the ultimate meter.
+    /// The current points are capped at the maximum meter value.
+    /// The UltimateBar is updated to reflect the new amount of points.
+    /// Once the meter is full, the ultimate is marked as ready.
     /// </summary>
     public void PrepareUltimate(int ultimatePointsAmount)
     {
+        // Add the earned points while preventing the meter from exceeding its
+        // maximum value.
         _CurrentUltimatePoints = Mathf.Min(
             _CurrentUltimatePoints + ultimatePointsAmount,
             _UltimateMeter
         );
 
+        // Update the UI to display the current ultimate points.
         _UltimateBar.SetUltimate(_CurrentUltimatePoints);
 
+        // Mark the ultimate as ready once the meter is completely filled.
         if (_CurrentUltimatePoints >= _UltimateMeter)
         {
             UltimateIsReady = true;
@@ -100,11 +109,17 @@ public class UltimateAttack : MonoBehaviour
     #region CONSUME ULTIMATE
     /// <summary>
     /// Consumes the ultimate ability by resetting the ultimate meter.
+    /// The UltimateBar is updated and the ultimate is marked as unavailable.
     /// </summary>
     public void ConsumeUltimate()
     {
+        // Reset the current ultimate points after using the ultimate.
         _CurrentUltimatePoints = 0;
+        
+        // Update the UI to show that the ultimate meter is empty.
         _UltimateBar.SetUltimate(0);
+        
+        // Mark the ultimate as no longer ready.
         UltimateIsReady = false;
     }
     #endregion
@@ -137,8 +152,8 @@ public class UltimateAttack : MonoBehaviour
             // Calculate the progress of the transition between 0 and 1.
             float t = elapsedTime / _DimmingDuration; 
 
-            // Smoothly interpolate between the starting intensity
-            // and the target dimming intensity.
+            // Smoothly interpolate between the starting intensity and the target
+            // dimming intensity.
             _light.intensity = Mathf.Lerp(startIntensity, _DimmingIntensity, t);
 
             yield return null;

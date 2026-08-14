@@ -6,8 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c8460266-3682-44f1-8f1d-ac81c89ae978" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Limbs/Limb.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Limbs/Limb.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Enemies/Zombie/ZombieCharacter.asset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Enemies/Zombie/ZombieCharacter.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/CharacterSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Player/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Player/PlayerSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/PlayerAudio.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateAttack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateBar.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Player/UltimateBar.cs" afterDir="false" />
     </list>
@@ -22,6 +25,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Core/Interfaces/IPooledObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Data/CharacterSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Player/UltimateBar.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Systems/Object Pooling/ObjectPooler.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/Yuha/Assets/Scripts/Building/Building.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -123,7 +127,8 @@
       <workItem from="1786119668599" duration="3199000" />
       <workItem from="1786123696878" duration="3210000" />
       <workItem from="1786311893876" duration="5854000" />
-      <workItem from="1786649547442" duration="3016000" />
+      <workItem from="1786649547442" duration="3480000" />
+      <workItem from="1786705146703" duration="2523000" />
     </task>
     <servers />
   </component>
