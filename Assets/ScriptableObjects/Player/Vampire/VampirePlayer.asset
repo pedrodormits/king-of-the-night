@@ -12,7 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6651d61eb254ec7408b37ee54372ba9b, type: 3}
   m_Name: VampirePlayer
   m_EditorClassIdentifier: Assembly-CSharp::PlayerData
-  JumpForce: 7.5
   GroundAttacks:
   - {fileID: 11400000, guid: 7e4681300cd65c047b6587c8a99028aa, type: 2}
   - {fileID: 11400000, guid: c7368af2e500f3b4faedba4a7938b2f3, type: 2}
@@ -37,6 +36,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ec30b23d94197a14faf9d6473cc199ae, type: 2}
   - {fileID: 11400000, guid: 62e9e6606d7764143bd0fceca15261a1, type: 2}
   Ultimate: {fileID: 11400000, guid: a3dc643dc6b9d09408d80460d835b38a, type: 2}
+  PayerAudioSO: {fileID: 11400000, guid: f4e90d81fcf4f6e4eb9e5fa648691c69, type: 2}
   HurtClip: {fileID: 8300000, guid: a36265672b0fb1e4d922cdb47fc9443f, type: 3}
   UltimateReadyClip: {fileID: 8300000, guid: ca474d2375ca0fe41a7aaf7f2ddca34a, type: 3}
   UltimateClip: {fileID: 8300000, guid: bfbfe643f606fd04497f8e377e1d2ca7, type: 3}

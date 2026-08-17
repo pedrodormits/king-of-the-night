@@ -328,8 +328,11 @@ public class Player : MonoBehaviour
     protected virtual void ExecuteSpecialAbility1()
     {
         float lastSpecialTime = -Mathf.Infinity;
-        if (IsGrounded && _playerInput.SpecialAbility1 && Time.time >=
-            lastSpecialTime + _abilitiesDict["Ability1"].Cooldown)
+        if (IsGrounded &&
+            _playerInput.SpecialAbility1 &&
+            Time.time >=
+            lastSpecialTime +
+            _abilitiesDict["Ability1"].Cooldown)
         {
             lastSpecialTime = Time.time;
             StartCoroutine(SpecialAbility1());

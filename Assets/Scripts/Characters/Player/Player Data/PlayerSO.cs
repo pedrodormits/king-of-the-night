@@ -4,7 +4,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Characters/Player")]
 public class PlayerSO : ScriptableObject
 {
-    [Header("Attack Data")]
+    [Header("Attack")]
     public List<PlayerAttackSO> GroundAttacks;
     public List<PlayerAttackSO> AirAttacks;
     
@@ -20,6 +20,7 @@ public class PlayerSO : ScriptableObject
     public UltimateSO Ultimate;
     
     [Header("Audio")]
+    public PlayerAudioSO PayerAudioSO;
     public AudioClip HurtClip;
     public AudioClip UltimateReadyClip;
     public AudioClip UltimateClip;
