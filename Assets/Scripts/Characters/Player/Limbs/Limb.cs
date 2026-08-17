@@ -4,7 +4,6 @@ public class Limb : MonoBehaviour
 {
     #region VARIABLES
     [Header("CHARACTER")]
-    [SerializeField] protected UltimateBar _UltimateBar;
     protected PlayerAttackSO _playerAttackData;
     protected UltimateSO _ultimateData;
     protected Rigidbody _enemyRB;
