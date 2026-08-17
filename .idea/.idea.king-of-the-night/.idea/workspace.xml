@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="c8460266-3682-44f1-8f1d-ac81c89ae978" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player/Vampire/Vampire.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Characters/Player/Vampire/Vampire.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Pickups/Med Kit.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Pickups/Med Kit.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/Limbs/Limb.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/Limbs/Limb.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Systems/Object Pooling.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ScriptableObjects/Player/Vampire/VampireCharacter.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ScriptableObjects/Player/Vampire/VampireCharacter.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/CharacterSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/CharacterSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/Playable Characters/Vampire.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/Playable Characters/Vampire.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/Player Data/PlayerSO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/Player Data/PlayerSO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/Player.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/Player.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -130,7 +129,7 @@
       <workItem from="1786705146703" duration="3951000" />
       <workItem from="1786728985396" duration="1201000" />
       <workItem from="1786981114192" duration="1072000" />
-      <workItem from="1786995608496" duration="648000" />
+      <workItem from="1786995608496" duration="3108000" />
     </task>
     <servers />
   </component>

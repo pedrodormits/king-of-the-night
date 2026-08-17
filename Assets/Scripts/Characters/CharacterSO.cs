@@ -7,6 +7,7 @@ public class CharacterSO : ScriptableObject
     public int MaxHealth;
     
     [Header("Movement")]
+    public float JumpForce;
     public float MoveSpeed;
     public float RotationSpeed;
     

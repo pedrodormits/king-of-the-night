@@ -41,7 +41,6 @@ public class Player : MonoBehaviour
     protected Dictionary<string, PlayerAbilitySO> _abilitiesDict = new();
     #endregion
     
-    #region Unity Messages
     protected virtual void Awake() 
     {
         _playerAnim = GetComponent<PlayerAnimation>();
@@ -70,7 +69,6 @@ public class Player : MonoBehaviour
     }
 
     protected virtual void FixedUpdate() => Move();
-    #endregion
     
     protected virtual void Move() 
     {
@@ -108,7 +106,8 @@ public class Player : MonoBehaviour
     
     protected virtual void Jump() 
     {
-        _rb.AddForce(Vector3.up * _PlayerSO.JumpForce, ForceMode.Impulse);
+        _rb.AddForce(Vector3.up * _CharacterSO.JumpForce,
+            ForceMode.Impulse);
         IsGrounded = false;
     }
     #endregion

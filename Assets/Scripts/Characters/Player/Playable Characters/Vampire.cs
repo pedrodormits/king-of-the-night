@@ -4,51 +4,75 @@ using UnityEngine;
 
 /// <summary>
 /// Vampire is a player character class that extends the base Player class.
-/// It adds vampire-specific abilities such as air combos, lifesteal, teleport movement,
-/// bat summoning, enemy stunning, and special attacks.
+/// It adds vampire-specific abilities such as air combos, lifesteal, teleport
+/// movement, bat summoning, enemy stunning, and special attacks.
 /// </summary>
 public class Vampire : Player
 {
     #region Variables
-    private bool _canDoubleJump; // Determines if the player can perform a second jump.
+    // Determines if the player can perform a second jump.
+    private bool _canDoubleJump;
     
     [Header("Air Combo")]
-    [HideInInspector] public bool IsAirAttacking; // Tracks if the player is currently performing an air attack.
-    [SerializeField] private float _StaticTime; // Duration enemies remain frozen during the air combo.
+    // Tracks if the player is currently performing an air attack.
+    [HideInInspector] public bool IsAirAttacking;
+    
+    // Duration enemies remain frozen during the air combo.
+    [SerializeField] private float _StaticTime;
     
     [Header("Midnight Ascension")]
-    [HideInInspector] public bool IsAscending; // Tracks if the vampire is performing an upward attack.
-    [SerializeField] private float _UppercutForce; // Force applied when launching enemies upward.
+    // Tracks if the vampire is performing an upward attack.
+    [HideInInspector] public bool IsAscending;
+    
+    // Force applied when launching enemies upward.
+    [SerializeField] private float _UppercutForce;
 
     [Header("Velvet Piercer")]
-    [SerializeField] private float _DiveSpeed; // Speed of the downward dive attack.
+    // Speed of the downward dive attack.
+    [SerializeField] private float _DiveSpeed;
     
     [Header("Shadow Flit")]
-    [SerializeField] private float _DriftSpeed; // Movement speed during the drifting ability.
-    private bool _isDrifting; // Prevents normal movement while drifting.
+    // Movement speed during the drifting ability.
+    [SerializeField] private float _DriftSpeed;
+    
+    // Prevents normal movement while drifting.
+    private bool _isDrifting;
     
     [Header("Umbral Seeker")]
-    [SerializeField] private Transform _BatSpawnPoint; // Location where bats are spawned.
+    // Location where bats are spawned.
+    [SerializeField] private Transform _BatSpawnPoint;
     
     [Header("Crimsom Gaze")]
-    [SerializeField] private float _StunRange; // Range of the stun ability.
-    [SerializeField] private float _StunDuration; // Duration enemies remain stunned.
+    // Range of the stun ability.
+    [SerializeField] private float _StunRange;
+    
+    // Duration enemies remain stunned.
+    [SerializeField] private float _StunDuration;
     
     [Header("Life Steal")]
-    [HideInInspector] public RecoverySO CurrentRecoveryData; // Current recovery data used by attacks.
-    [SerializeField] private List <RecoverySO> _RecoveryDatas; // List containing recovery values for attacks.
-    private Dictionary<string, RecoverySO> _recoveryDict = new();  // Stores recovery data using attack names as keys.
+    // Current recovery data used by attacks.
+    [HideInInspector] public RecoverySO CurrentRecoveryData;
+    
+    // List containing recovery values for attacks.
+    [SerializeField] private List <RecoverySO> _RecoveryDatas;
+    
+    // Stores recovery data using attack names as keys.
+    private Dictionary<string, RecoverySO> _recoveryDict = new();
     #endregion
     
     protected override void Awake()
     {
-        base.Awake(); // Initialize the base Player class first.
-        DefineRecovery(); // Convert recovery data list into a dictionary for easier access.
+        // Initialize the base Player class first.
+        base.Awake();
+        
+        // Convert recovery data list into a dictionary for easier access.
+        DefineRecovery();
     }
 
     protected override void Move()
     {
-        if (!_isDrifting) // Disable normal movement while using Shadow Flit.
+        // Disable normal movement while using Shadow Flit.
+        if (!_isDrifting)
         {
             base.Move();
         }
@@ -65,11 +89,14 @@ public class Vampire : Player
             return;
         }
 
-        if (IsGrounded) // Perform a normal jump when grounded.
+        // Perform a normal jump when grounded.
+        if (IsGrounded)
         {
             Jump();
         }
-        else if (_canDoubleJump) // Perform a second jump if available.
+        
+        // Perform a second jump if available.
+        else if (_canDoubleJump)
         {
             Jump();
             _canDoubleJump = false;
@@ -133,7 +160,9 @@ public class Vampire : Player
     {
         IsAscending = true;
         CurrentRecoveryData = _recoveryDict["GroundHeavyRecovery"];
-        _limbsDict["RightHand"].GetComponent<Limb>().SetAttackData(_groundAttacksDict["GroundHeavy"]);
+        _limbsDict["RightHand"].GetComponent<Limb>().SetAttackData(
+            _groundAttacksDict["GroundHeavy"]);
+        
         yield return base.GroundHeavyAttack();
         IsAscending = false;
     }
@@ -141,12 +170,18 @@ public class Vampire : Player
     /// <summary>
     /// Pushes the vampire upward during Midnight Ascension.
     /// </summary>
-    public void PerformAscension() => _rb.AddForce(Vector3.up * _PlayerSO.JumpForce, ForceMode.Impulse);
+    public void PerformAscension()
+    {
+        _rb.AddForce(Vector3.up * _CharacterSO.JumpForce, ForceMode.Impulse);
+    }
 
     /// <summary>
     /// Launches an enemy upward using an uppercut attack.
     /// </summary>
-    public void PerformUppercut(Rigidbody enemy) => enemy.AddForce(Vector3.up * _UppercutForce, ForceMode.Impulse);
+    public void PerformUppercut(Rigidbody enemy)
+    {
+        enemy.AddForce(Vector3.up * _UppercutForce, ForceMode.Impulse);
+    }
     #endregion
     
     #region Air Heavy Attack
@@ -156,7 +191,9 @@ public class Vampire : Player
     protected override IEnumerator AirHeavyAttack() 
     {
         CurrentRecoveryData = _recoveryDict["AirHeavyRecovery"];
-        _limbsDict["Feet"].GetComponent<Limb>().SetAttackData(_airAttacksDict["AirHeavy"]);
+        _limbsDict["Feet"].GetComponent<Limb>().SetAttackData(
+            _airAttacksDict["AirHeavy"]);
+        
         yield return base.AirHeavyAttack();
     }
 
@@ -173,8 +210,16 @@ public class Vampire : Player
         _rb.useGravity = false;
         while (!IsGrounded) 
         {
-            Vector3 diveDirection = (transform.forward + Vector3.down).normalized;
-            _rb.MovePosition(_rb.position + diveDirection * _DiveSpeed * Time.fixedDeltaTime);
+            Vector3 diveDirection = (
+                transform.forward +
+                Vector3.down).normalized;
+            
+            _rb.MovePosition(
+                _rb.position +
+                diveDirection * 
+                _DiveSpeed *
+                Time.fixedDeltaTime);
+            
             yield return new WaitForFixedUpdate();
         }
         
@@ -198,14 +243,19 @@ public class Vampire : Player
     /// </summary>
     public void PerformDrift() 
     {
-        _playerParticle.CurrentParticle.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        _playerParticle.CurrentParticle.transform.SetPositionAndRotation(
+            transform.position,
+            transform.rotation);
+        
         _playerParticle.PlayParticle();
         Vector3 driftDirection = transform.forward;
         
         _rb.linearVelocity = new Vector3(
-            driftDirection.x * _DriftSpeed,
+            driftDirection.x *
+            _DriftSpeed,
             _rb.linearVelocity.y,
-            driftDirection.z * _DriftSpeed);
+            driftDirection.z *
+            _DriftSpeed);
     }
     #endregion
 
@@ -228,7 +278,10 @@ public class Vampire : Player
     public void SendBat()
     {
         _playerParticle.StopParticle();
-        ObjectPooler.Instance.SpawnFromPool("Bat", _BatSpawnPoint.position, _BatSpawnPoint.rotation);
+        ObjectPooler.Instance.SpawnFromPool(
+            "Bat",
+            _BatSpawnPoint.position,
+            _BatSpawnPoint.rotation);
     }
     #endregion
     
@@ -238,9 +291,15 @@ public class Vampire : Player
     /// </summary>
     private void CastGaze() 
     {
-        _playerParticle.CurrentParticle.transform.SetPositionAndRotation(transform.position, transform.rotation);
+        _playerParticle.CurrentParticle.transform.SetPositionAndRotation(
+            transform.position,
+            transform.rotation);
+        
         _playerParticle.PlayParticle();
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, _StunRange);
+        Collider[] hitColliders = Physics.OverlapSphere(
+            transform.position,
+            _StunRange);
+        
         foreach (var hit in hitColliders) 
         {
             Enemy enemy = hit.GetComponent<Enemy>();
@@ -267,14 +326,16 @@ public class Vampire : Player
     protected override IEnumerator Ultimate() 
     {
         CurrentRecoveryData = _recoveryDict["UltimateRecovery"];
-        _limbsDict["RightHand"].GetComponent<Limb>().SetUltimateData(_PlayerSO.Ultimate);
+        _limbsDict["RightHand"].GetComponent<Limb>().SetUltimateData(
+            _PlayerSO.Ultimate);
+        
         yield return base.Ultimate();
     }
     
     /// <summary>
     /// Enables double jumping whenever the player touches the ground.
     /// </summary>
-    protected override void OnCollisionStay(Collision collision) 
+    protected override void OnCollisionStay(Collision collision)
     {
         base.OnCollisionStay(collision);
         if (collision.gameObject.CompareTag("Ground")) 
