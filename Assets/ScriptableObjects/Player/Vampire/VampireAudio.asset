@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eda620586eb77f542a4a4dfe103197e1, type: 3}
   m_Name: VampireAudio
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudioSO
-  HurtClip: {fileID: 8300000, guid: a36265672b0fb1e4d922cdb47fc9443f, type: 3}
-  UltimateChargedClip: {fileID: 8300000, guid: ca474d2375ca0fe41a7aaf7f2ddca34a, type: 3}
-  UltimateClip: {fileID: 8300000, guid: bfbfe643f606fd04497f8e377e1d2ca7, type: 3}
+  HurtAudioClip: {fileID: 8300000, guid: a36265672b0fb1e4d922cdb47fc9443f, type: 3}
+  UltimateChargedAudioClip: {fileID: 8300000, guid: ca474d2375ca0fe41a7aaf7f2ddca34a, type: 3}
+  UltimateAudioClip: {fileID: 8300000, guid: bfbfe643f606fd04497f8e377e1d2ca7, type: 3}

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerParticle : MonoBehaviour
 {
     #region VARIABLES
-    [HideInInspector] public Dictionary<string, ParticleSystem> ParticlesDict = new();
+    public Dictionary<string, ParticleSystem> ParticlesDict = new();
     [HideInInspector] public ParticleSystem CurrentParticle;
     [SerializeField] private List<ParticleSystem> _Particles;
     #endregion

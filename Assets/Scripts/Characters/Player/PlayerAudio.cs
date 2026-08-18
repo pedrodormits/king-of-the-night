@@ -3,8 +3,8 @@ using UnityEngine;
 public class PlayerAudio : MonoBehaviour
 {
     #region COMPONENTS
+    [SerializeField] private PlayerAudioSO _PlayerAudioSO;
     [SerializeField] private CharacterSO _CharacterSO;
-    [SerializeField] private PlayerSO _PlayerSO;
     private AudioSource _audioSource;
     private Player _player;
     #endregion
@@ -29,7 +29,7 @@ public class PlayerAudio : MonoBehaviour
 
     public void PlayHurtAudio()
     {
-        _audioSource.PlayOneShot(_PlayerSO.HurtClip);   
+        _audioSource.PlayOneShot(_PlayerAudioSO.HurtAudioClip);   
     }
 
     public void PlayDeathAudio()
@@ -37,14 +37,14 @@ public class PlayerAudio : MonoBehaviour
         _audioSource.PlayOneShot(_CharacterSO.DeathClip);
     }
 
-    public void PlayUltimateReadyAudio()
+    public void PlayUltimateChargedAudio()
     {
-        _audioSource.PlayOneShot(_PlayerSO.UltimateReadyClip);
+        _audioSource.PlayOneShot(_PlayerAudioSO.UltimateChargedAudioClip);
     }
 
     public void PlayUltimateAudio()
     {
-        _audioSource.PlayOneShot(_PlayerSO.UltimateClip);   
+        _audioSource.PlayOneShot(_PlayerAudioSO.UltimateAudioClip);   
     }
     #endregion
 }

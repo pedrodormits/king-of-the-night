@@ -5315,6 +5315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61b5367187f5334cb0414f015fca207, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
+  _PlayerAudioSO: {fileID: 11400000, guid: f4e90d81fcf4f6e4eb9e5fa648691c69, type: 2}
   _CharacterSO: {fileID: 11400000, guid: 37436262924bd9e448c96802de2b5a80, type: 2}
   _PlayerSO: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
 --- !u!114 &7691017892504722309

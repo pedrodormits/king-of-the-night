@@ -3,15 +3,16 @@ using UnityEngine;
 
 /// <summary>
 /// UltimateAttack manages the player's ultimate ability.
-/// It keeps track of the ultimate meter, determines when the ultimate is ready,
-/// and controls the lighting and timescale effects used during the ultimate attack.
+/// It keeps track of the ultimate meter, determines when the ultimate is
+/// ready, and controls the lighting and timescale effects used during the
+/// ultimate attack.
 /// </summary>
 public class UltimateAttack : MonoBehaviour
 {
     #region Variables
     [Header("Ultimate Check")]
-    // Indicates whether the ultimate meter is completely filled and the ultimate
-    // can be used.
+    // Indicates whether the ultimate meter is completely filled and the
+    // ultimate can be used.
     [HideInInspector] public bool UltimateIsReady;
     
     // Maximum amount of points required to fill the ultimate meter.
@@ -106,7 +107,7 @@ public class UltimateAttack : MonoBehaviour
         if (_CurrentUltimatePoints >= _UltimateMeter)
         {
             UltimateIsReady = true;
-            _PlayerAudio.PlayUltimateReadyAudio();
+            _PlayerAudio.PlayUltimateChargedAudio();
         }
     }
     #endregion
