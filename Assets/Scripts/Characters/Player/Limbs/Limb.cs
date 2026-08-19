@@ -2,20 +2,41 @@ using UnityEngine;
 
 public class Limb : MonoBehaviour
 {
-    #region VARIABLES
-    [Header("CHARACTER")]
+    #region Variables
+    [Header("Character")]
     protected PlayerAttackSO _playerAttackData;
     protected UltimateSO _ultimateData;
     protected Rigidbody _enemyRB;
+    
+    [Header("Audio")]
+    [SerializeField] protected AudioClip _lightAttackImpact;
+    
+    [Header("Particles")]
+    [SerializeField] protected ParticleSystem _lightAttackParticle;
     #endregion
-    
-    [Header("AUDIO")] [SerializeField] protected AudioClip _lightAttackImpact;
-    
-    [Header("PARTICLES")] [SerializeField] protected ParticleSystem _lightAttackParticle;
-    
-    public void SetAttackData(PlayerAttackSO attackData) => _playerAttackData = attackData;
-    
-    public void SetUltimateData(UltimateSO ultimateData) => _ultimateData = ultimateData;
+
+    private void Start()
+    {
+        if (_lightAttackImpact == null)
+        {
+            Debug.Log("No audio clip assigned");
+        }
+        
+        if (_lightAttackParticle == null)
+        {
+            Debug.Log("No particle assigned");
+        }
+    }
+
+    public void SetAttackData(PlayerAttackSO attackData)
+    {
+        _playerAttackData = attackData;
+    }
+
+    public void SetUltimateData(UltimateSO ultimateData)
+    {
+        _ultimateData = ultimateData;   
+    }
     
     protected virtual void OnTriggerEnter(Collider other)
     {
