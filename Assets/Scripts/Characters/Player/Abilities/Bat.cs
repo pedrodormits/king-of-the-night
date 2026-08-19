@@ -2,28 +2,36 @@ using UnityEngine;
 
 /// <summary>
 /// The Bat class controls a flying bat projectile.
-/// It uses the object pooling system so the bat can be reused instead of destroyed
-/// and recreated every time it is spawned.
+/// It uses the object pooling system so the bat can be reused instead of
+/// destroyed and recreated every time it is spawned.
 /// </summary>
 [RequireComponent (typeof(Rigidbody))]
 public class Bat : MonoBehaviour, IPooledObject
 {
     #region Variables
     [Header("Flight")]
-    [SerializeField] private float _Speed = 10f; // Movement speed of the bat.
-    private Rigidbody _rb; // Reference to the bat's Rigidbody component.
+    // Movement speed of the bat.
+    [SerializeField] private float _Speed = 10f;
+    
+    // Reference to the bat's Rigidbody component.
+    private Rigidbody _rb;
 
     [Header("Damage")]
-    [SerializeField] private PlayerAbilitySO _AbilityOS; // Scriptable Object containing ability damage information.
+    // Scriptable Object containing ability damage information.
+    [SerializeField] private PlayerAbilitySO _AbilityOS;
     
     [Header("Pooling")]
-    [SerializeField] private float _LifeTime = 5f; // Maximum time the bat can exist before returning to the pool.
-    private float _currentLifeTime = 0f; // Tracks how long the bat has been active.
+    // Maximum time the bat can exist before returning to the pool.
+    [SerializeField] private float _LifeTime = 5f;
+    
+    // Tracks how long the bat has been active.
+    private float _currentLifeTime = 0f;
     #endregion
     
     /// <summary>
     /// Called by the ObjectPooler whenever this object is spawned.
-    /// Resets the lifetime timer so the bat gets a full duration every time it is reused.
+    /// Resets the lifetime timer so the bat gets a full duration every time it
+    /// is reused.
     /// </summary>
     public void OnObjectSpawn() => _currentLifeTime = 0f;
 
@@ -33,7 +41,8 @@ public class Bat : MonoBehaviour, IPooledObject
     // Give the bat forward movement when it is created.
     private void Start() => _rb.linearVelocity = transform.forward * _Speed;
 
-    private void Update() => ReturnToPool(); // Check if the bat has reached its maximum lifetime.
+    // Check if the bat has reached its maximum lifetime.
+    private void Update() => ReturnToPool(); 
 
     /// <summary>
     /// Checks how long the bat has been active.
@@ -48,20 +57,28 @@ public class Bat : MonoBehaviour, IPooledObject
         }
     }
 
-    private void OnTriggerEnter(Collider other) // Called when the bat collides with another collider.
+    // Called when the bat collides with another collider.
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Enemy")) // Check if the bat hit an enemy.
+        // Check if the bat hit an enemy.
+        if (other.CompareTag("Enemy"))
         {
-            _currentLifeTime = 0; // Reset lifetime after hitting an enemy.
+            // Reset lifetime after hitting an enemy.
+            _currentLifeTime = 0;
             
             // Get the damageable component from the enemy.
             IDamageable damageable = other.gameObject.GetComponent<IDamageable>();
             
-            // Apply damage using the value stored in the ability Scriptable Object.
+            // Apply damage using the value stored in the ability Scriptable
+            // Object.
             damageable.TakeDamage(_AbilityOS.Damage);
-            ReturnToPool(); // Return the bat to the pool after dealing damage.
+            
+            // Return the bat to the pool after dealing damage.
+            ReturnToPool();
         }
-        else // If the bat hits anything else, immediately return it to the pool.
+        
+        // If the bat hits anything else, immediately return it to the pool.
+        else
         {
             _currentLifeTime = 0;
             ObjectPooler.Instance.ReturnObject(gameObject);
