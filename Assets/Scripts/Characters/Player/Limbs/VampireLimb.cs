@@ -1,6 +1,6 @@
 public class VampireLimb : Limb
 {
-    #region COMPONENTS
+    #region Variables
     private PlayerHealth _health;
     private Vampire _vampire;
     #endregion

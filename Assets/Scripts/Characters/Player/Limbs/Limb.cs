@@ -71,7 +71,10 @@ public class Limb : MonoBehaviour
 
         if (_lightAttackParticle != null)
         {
-            _lightAttackParticle.transform.SetPositionAndRotation(transform.position, transform.rotation);
+            _lightAttackParticle.transform.SetPositionAndRotation(
+                transform.position,
+                transform.rotation);
+            
             _lightAttackParticle.Play();
         }
         
