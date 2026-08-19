@@ -5295,7 +5295,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateAttack
   UltimateIsReady: 0
-  _UltimateMeter: 100
+  UltimateOS: {fileID: 11400000, guid: a3dc643dc6b9d09408d80460d835b38a, type: 2}
   _CurrentUltimatePoints: 100
   _UltimateBar: {fileID: 0}
   _PlayerAudio: {fileID: 9078447768390317332}
@@ -5317,7 +5317,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAudio
   _PlayerAudioSO: {fileID: 11400000, guid: f4e90d81fcf4f6e4eb9e5fa648691c69, type: 2}
   _CharacterSO: {fileID: 11400000, guid: 37436262924bd9e448c96802de2b5a80, type: 2}
-  _PlayerSO: {fileID: 11400000, guid: a687a409c278a4d488237699964f070f, type: 2}
 --- !u!114 &7691017892504722309
 MonoBehaviour:
   m_ObjectHideFlags: 0

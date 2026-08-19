@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class UltimateBar : MonoBehaviour
 {
     [SerializeField] private Slider _Slider;
+    [SerializeField] private UltimateSO _UltimateOS;
     
     private void Start()
     {
@@ -16,19 +17,24 @@ public class UltimateBar : MonoBehaviour
         {
             Debug.Log("Ultimate Slider is null");
         }
+        
+        if (_UltimateOS == null)
+        {
+            Debug.Log("Ultimate Data is null");
+        }
+        
+        SetMaxUltimate(_UltimateOS.RequiredUltimatePoints);
     }
-    
+
     /// <summary>
     /// Sets the maximum ultimate value of the slider.
-    /// This is usually called once when the character is created or initialized.
+    /// This is usually called once when the character is created or
+    /// initialized.
     /// </summary>
-    public void SetMaxUltimate(int ultimate)
+    private void SetMaxUltimate(int ultimate)
     {
         // Set the slider's maximum value.
         _Slider.maxValue = ultimate;
-        
-        // Fill the slider completely.
-        _Slider.value = ultimate; 
     }
 
     /// <summary>

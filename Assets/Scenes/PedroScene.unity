@@ -860,7 +860,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 100
+  m_MaxValue: 20
   m_WholeNumbers: 0
   m_Value: 0
   m_OnValueChanged:
@@ -879,6 +879,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateBar
   _Slider: {fileID: 452710485}
+  _UltimateOS: {fileID: 11400000, guid: a3dc643dc6b9d09408d80460d835b38a, type: 2}
 --- !u!1 &469311543
 GameObject:
   m_ObjectHideFlags: 0

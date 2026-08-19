@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Ultimate
   m_EditorClassIdentifier: Assembly-CSharp::UltimateData
   Damage: 64
+  RequiredUltimatePoints: 100

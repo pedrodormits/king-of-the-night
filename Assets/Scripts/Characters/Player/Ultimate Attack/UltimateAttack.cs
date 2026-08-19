@@ -16,7 +16,7 @@ public class UltimateAttack : MonoBehaviour
     [HideInInspector] public bool UltimateIsReady;
     
     // Maximum amount of points required to fill the ultimate meter.
-    [SerializeField] private int _UltimateMeter = 100;
+    [SerializeField] private UltimateSO UltimateOS;
     
     // Current amount of points stored in the ultimate meter.
     [SerializeField] private int _CurrentUltimatePoints;
@@ -97,14 +97,14 @@ public class UltimateAttack : MonoBehaviour
         // maximum value.
         _CurrentUltimatePoints = Mathf.Min(
             _CurrentUltimatePoints + ultimatePointsAmount,
-            _UltimateMeter
+            UltimateOS.RequiredUltimatePoints
         );
 
         // Update the UI to display the current ultimate points.
         _UltimateBar.SetUltimate(_CurrentUltimatePoints);
 
         // Mark the ultimate as ready once the meter is completely filled.
-        if (_CurrentUltimatePoints >= _UltimateMeter)
+        if (_CurrentUltimatePoints >= UltimateOS.RequiredUltimatePoints)
         {
             UltimateIsReady = true;
             _PlayerAudio.PlayUltimateChargedAudio();
