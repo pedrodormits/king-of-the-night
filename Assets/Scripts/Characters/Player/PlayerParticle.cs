@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +12,15 @@ public class PlayerParticle : MonoBehaviour
     #endregion
 
     private void Awake() => DefineParticles();
-    
+
+    private void Start()
+    {
+        if (_Particles == null)
+        {
+            Debug.Log("Particles list is null");
+        }
+    }
+
     private void DefineParticles()
     {
         ParticlesDict.Add("Particle1", _Particles[0]);

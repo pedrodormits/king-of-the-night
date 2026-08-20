@@ -2,15 +2,11 @@ using UnityEngine;
 
 public class PlayerInput : MonoBehaviour
 {
-    #region INPUT
-    [Header("INPUT")]
-    [SerializeField] private KeyCode _specialAbility1Key = KeyCode.LeftShift;
-    [SerializeField] private KeyCode _specialAbility2Key = KeyCode.E;
-    [SerializeField] private KeyCode _specialAbility3Key = KeyCode.F;
-    [SerializeField] private KeyCode _ultimateAttackKey = KeyCode.Q;
-    [SerializeField] private KeyCode _pauseKey = KeyCode.P;
+    #region Variables
+    [Header("Inputs")]
+    [SerializeField] private PlayerInputSO _PlayerInputSO;
 
-    [Header("NAMES")]
+    [Header("Names")]
     [HideInInspector] public bool Jump;
     [HideInInspector] public bool LightAttack;
     [HideInInspector] public bool HeavyAttack;
@@ -28,10 +24,10 @@ public class PlayerInput : MonoBehaviour
         Jump = Input.GetButtonDown("Jump");
         LightAttack = Input.GetButtonDown("Fire1");
         HeavyAttack = Input.GetButtonDown("Fire2");
-        SpecialAbility1 = Input.GetKeyDown(_specialAbility1Key);
-        SpecialAbility2 = Input.GetKeyDown(_specialAbility2Key);
-        SpecialAbility3 = Input.GetKeyDown(_specialAbility3Key);
-        UltimateAttack = Input.GetKeyDown(_ultimateAttackKey);
-        Pause = Input.GetKeyDown(_pauseKey);
+        SpecialAbility1 = Input.GetKeyDown(_PlayerInputSO.SpecialAbility1Key);
+        SpecialAbility2 = Input.GetKeyDown(_PlayerInputSO.SpecialAbility2Key);
+        SpecialAbility3 = Input.GetKeyDown(_PlayerInputSO.SpecialAbility3Key);
+        UltimateAttack = Input.GetKeyDown(_PlayerInputSO.UltimateAttackKey);
+        Pause = Input.GetKeyDown(_PlayerInputSO.PauseKey);
     }
 }
