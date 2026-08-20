@@ -1,5 +1,10 @@
 using UnityEngine;
 
+/// <summary>
+/// Handles hit detection for a character's attack limbs.
+/// Limb applies attack or ultimate damage when it hits a damageable
+/// target and can trigger the corresponding impact audio and particle effects.
+/// </summary>
 public class Limb : MonoBehaviour
 {
     #region Variables
@@ -12,6 +17,7 @@ public class Limb : MonoBehaviour
     [SerializeField] protected AudioClip _lightAttackImpact;
     
     [Header("Particles")]
+    // Particle effect played when the limb hits a target.
     [SerializeField] protected ParticleSystem _lightAttackParticle;
     #endregion
 
@@ -28,11 +34,18 @@ public class Limb : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Assigns the attack data that will be used when this limb hits a target.
+    /// </summary>
     public void SetAttackData(PlayerAttackSO attackData)
     {
         _playerAttackData = attackData;
     }
 
+    /// <summary>
+    /// Assigns the ultimate data that will be used when this limb
+    /// hits a target during an ultimate attack.
+    /// </summary>
     public void SetUltimateData(UltimateSO ultimateData)
     {
         _ultimateData = ultimateData;   
@@ -43,11 +56,13 @@ public class Limb : MonoBehaviour
         IDamageable damageable = other.GetComponent<IDamageable>();
         if (damageable != null)
         {
+            // Apply the damage from the current regular attack.
             if (_playerAttackData != null)
             {
                 damageable.TakeDamage(_playerAttackData.Damage);
             }
 
+            // Apply the damage from the current ultimate attack.
             if (_ultimateData != null)
             {
                 damageable.TakeDamage(_ultimateData.Damage);
@@ -56,15 +71,7 @@ public class Limb : MonoBehaviour
         
         _enemyRB = other.GetComponent<Rigidbody>();
         AudioSource audioSource = GetComponentInParent<AudioSource>();
-        if (audioSource != null)
-        {
-            if (_lightAttackImpact != null)
-            {
-                audioSource.PlayOneShot(_lightAttackImpact);
-            }
-        }
-
-        if (audioSource != null)
+        if (audioSource != null && _lightAttackImpact != null)
         {
             audioSource.PlayOneShot(_lightAttackImpact);
         }
@@ -85,8 +92,13 @@ public class Limb : MonoBehaviour
             ultimateAttack.PrepareUltimate(_playerAttackData.UltPoints);
         }
 
+        // Allow derived classes to perform additional hit behaviour.
         CharacterHit();
     }
     
+    /// <summary>
+    /// Provides a method for derived limb classes to add
+    /// character-specific behaviour when a hit occurs.
+    /// </summary>
     protected virtual void CharacterHit(){}
 }
