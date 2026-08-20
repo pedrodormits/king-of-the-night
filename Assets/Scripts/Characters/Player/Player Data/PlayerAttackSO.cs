@@ -1,13 +1,22 @@
 using UnityEngine;
 
+/// <summary>
+/// Stores the data for a player's regular attack.
+/// Contains the attack's damage, ultimate point generation,
+/// animation trigger, and associated audio clip.
+/// </summary>
 [CreateAssetMenu(menuName = "Combat/Attack")]
 public class PlayerAttackSO : ScriptableObject
 {
-    [Header("STATS")]
+    [Header("Stats")]
     public int Damage;
+
+    // Amount of ultimate points generated when the attack successfully hits.
     public int UltPoints;
-    
-    [Header("ANIMATION")] public string AnimTrigger;
-    
-    [Header("AUDIO")] public AudioClip AudioClip;
+
+    [Header("Animation")]
+    public string AnimTrigger;
+
+    [Header("Audio")]
+    public AudioClip AudioClip;
 }
