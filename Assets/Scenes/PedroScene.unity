@@ -555,6 +555,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Zombie
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 4d3b5c48aef567a43b69a953d96b56b4, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 1092408308860062549, guid: 4d3b5c48aef567a43b69a953d96b56b4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 36.880333
@@ -876,7 +880,16 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d3b5c48aef567a43b69a953d96b56b4, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 208168079}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d3b5c48aef567a43b69a953d96b56b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 208168080}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d3b5c48aef567a43b69a953d96b56b4, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 208168075}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 4d3b5c48aef567a43b69a953d96b56b4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 208168077}
   m_SourcePrefab: {fileID: 100100000, guid: 4d3b5c48aef567a43b69a953d96b56b4, type: 3}
 --- !u!1 &208168074 stripped
 GameObject:
@@ -910,6 +923,73 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 4d3b5c48aef567a43b69a953d96b56b4, type: 3}
   m_PrefabInstance: {fileID: 208168073}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &208168077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208168074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d61259c7643eb1046b8b635508dad43a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Zombie
+  _TimeToMove: 3
+  _PointA: {fileID: 208168076}
+  _PointB: {fileID: 852657936}
+  _CanBeStunned: 1
+  _CharacterOS: {fileID: 11400000, guid: e654640a016b88e4b8c9e71005a24312, type: 2}
+--- !u!54 &208168079
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208168074}
+  serializedVersion: 5
+  m_Mass: 1
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 1
+--- !u!136 &208168080
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 208168074}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 1, z: 0}
 --- !u!1 &215077300
 GameObject:
   m_ObjectHideFlags: 0
@@ -3494,6 +3574,10 @@ PrefabInstance:
       propertyPath: _UltimateBar
       value: 
       objectReference: {fileID: 452710486}
+    - target: {fileID: 5756868882601299431, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
+      propertyPath: _CurrentUltimatePoints
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 5902104799560023601, guid: 01de5e66b9ee5a54e8dc3763d3925298, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -4447,10 +4531,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4cbdeb7a0bbd74b9cb0e0437d5bdbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  pointA: {fileID: 2074878782}
-  pointB: {fileID: 852657936}
-  speed: 2
-  _canBeStunned: 1
+  _TimeToMove: 0
+  _PointA: {fileID: 0}
+  _PointB: {fileID: 0}
+  _CanBeStunned: 1
+  _CharacterOS: {fileID: 0}
 --- !u!54 &2074878785
 Rigidbody:
   m_ObjectHideFlags: 0
