@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerHealth : Health
 {
-    #region COMPONENTS
+    #region Variables
     private Player _player;
     private PlayerAnimation _playerAnimation;
     #endregion

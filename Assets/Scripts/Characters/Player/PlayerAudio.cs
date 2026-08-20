@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public class PlayerAudio : MonoBehaviour
 {
-    #region COMPONENTS
+    #region Variables
     [SerializeField] private PlayerAudioSO _PlayerAudioSO;
     [SerializeField] private CharacterSO _CharacterSO;
     private AudioSource _audioSource;
@@ -13,10 +14,22 @@ public class PlayerAudio : MonoBehaviour
     {
         _audioSource = GetComponent<AudioSource>();
         _player = GetComponent<Player>();
-    } 
+    }
 
-    #region PLAY AUDIO
+    private void Start()
+    {
+        if (_PlayerAudioSO == null)
+        {
+            Debug.Log("PlayerAudioSO is null");
+        }
+        
+        if (_CharacterSO == null)
+        {
+            Debug.Log("CharacterSO is null");
+        }
+    }
 
+    #region Play Audio
     public void PlayAttackAudio()
     {
         _audioSource.PlayOneShot(_player.CurrentPlayerAttackData.AudioClip);

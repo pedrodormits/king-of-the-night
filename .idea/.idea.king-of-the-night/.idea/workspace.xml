@@ -6,8 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="c8460266-3682-44f1-8f1d-ac81c89ae978" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/Ultimate Attack/UltimateAttack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/Ultimate Attack/UltimateAttack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/PlayerAudio.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/PlayerAudio.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/PlayerHealth.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Player/PlayerHealth.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -125,7 +125,7 @@
       <workItem from="1786981114192" duration="1072000" />
       <workItem from="1786995608496" duration="9468000" />
       <workItem from="1787160893400" duration="635000" />
-      <workItem from="1787179747230" duration="4905000" />
+      <workItem from="1787179747230" duration="5049000" />
     </task>
     <servers />
   </component>
