@@ -16,7 +16,7 @@ public class UltimateAttack : MonoBehaviour
     [HideInInspector] public bool UltimateIsReady;
     
     // Maximum amount of points required to fill the ultimate meter.
-    [SerializeField] private UltimateSO UltimateOS;
+    [SerializeField] private UltimateSO _UltimateOS;
     
     // Current amount of points stored in the ultimate meter.
     [SerializeField] private int _CurrentUltimatePoints;
@@ -51,9 +51,19 @@ public class UltimateAttack : MonoBehaviour
 
     private void Start()
     {
+        if (_UltimateOS == null)
+        {
+            Debug.Log("UltimateOS is null");
+        }
+        
         if (_UltimateBar == null)
         {
-            Debug.Log("_UltimateBar is null");
+            Debug.Log("UltimateBar is null");
+        }
+        
+        if (_PlayerAudio == null)
+        {
+            Debug.Log("PlayerAudio is null");
         }
     }
 
@@ -61,8 +71,8 @@ public class UltimateAttack : MonoBehaviour
     /// <summary>
     /// This method searches for the Directional Light in the scene and stores
     /// a reference to it.
-    /// It also saves the light's original intensity so it can be restored after
-    /// the ultimate effect ends.
+    /// It also saves the light's original intensity so it can be restored
+    /// after the ultimate effect ends.
     /// </summary>
     private void FindDirectionalLight()
     {
@@ -97,14 +107,14 @@ public class UltimateAttack : MonoBehaviour
         // maximum value.
         _CurrentUltimatePoints = Mathf.Min(
             _CurrentUltimatePoints + ultimatePointsAmount,
-            UltimateOS.RequiredUltimatePoints
+            _UltimateOS.RequiredUltimatePoints
         );
 
         // Update the UI to display the current ultimate points.
         _UltimateBar.SetUltimate(_CurrentUltimatePoints);
 
         // Mark the ultimate as ready once the meter is completely filled.
-        if (_CurrentUltimatePoints >= UltimateOS.RequiredUltimatePoints)
+        if (_CurrentUltimatePoints >= _UltimateOS.RequiredUltimatePoints)
         {
             UltimateIsReady = true;
             _PlayerAudio.PlayUltimateChargedAudio();
@@ -158,8 +168,8 @@ public class UltimateAttack : MonoBehaviour
             // Calculate the progress of the transition between 0 and 1.
             float t = elapsedTime / _DimmingDuration; 
 
-            // Smoothly interpolate between the starting intensity and the target
-            // dimming intensity.
+            // Smoothly interpolate between the starting intensity and the
+            // target dimming intensity.
             _light.intensity = Mathf.Lerp(startIntensity, _DimmingIntensity, t);
 
             yield return null;
@@ -177,7 +187,8 @@ public class UltimateAttack : MonoBehaviour
     public void StopDimming() => StartCoroutine(BrightenTheLight());
     
     /// <summary>
-    /// Restores the original lighting and increases the game speed back to normal.
+    /// Restores the original lighting and increases the game speed back to
+    /// normal.
     /// </summary>
     private IEnumerator BrightenTheLight()
     {
