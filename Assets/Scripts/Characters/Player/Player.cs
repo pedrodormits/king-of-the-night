@@ -183,7 +183,7 @@ public class Player : MonoBehaviour
     {
         _isAttacking = true;
         _currentGroundComboIndex = 0;
-        while (_currentGroundComboIndex < _PlayerSO.GroundLightAttacks.Length) 
+        while (_currentGroundComboIndex < _PlayerSO.GroundLightAttacks.Length)
         {
             PlayerSO.ComboAttack attack =
                 _PlayerSO.GroundLightAttacks[_currentGroundComboIndex];
