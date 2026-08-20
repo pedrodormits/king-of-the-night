@@ -643,9 +643,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 131cefefc458dab4d92f62cdfdb23543, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 10
-  _lifeTime: 5
-  _AbilityOS: {fileID: 11400000, guid: ec30b23d94197a14faf9d6473cc199ae, type: 2}
+  _MovementSpeed: 10
+  _AbilitySO: {fileID: 11400000, guid: ec30b23d94197a14faf9d6473cc199ae, type: 2}
+  _LifeTime: 5
 --- !u!82 &8646817186598168940
 AudioSource:
   m_ObjectHideFlags: 0
