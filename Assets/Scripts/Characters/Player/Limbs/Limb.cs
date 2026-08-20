@@ -86,7 +86,6 @@ public class Limb : MonoBehaviour
         }
         
         UltimateAttack ultimateAttack = GetComponentInParent<UltimateAttack>();
-
         if (ultimateAttack != null && _playerAttackData != null)
         {
             ultimateAttack.PrepareUltimate(_playerAttackData.UltPoints);
