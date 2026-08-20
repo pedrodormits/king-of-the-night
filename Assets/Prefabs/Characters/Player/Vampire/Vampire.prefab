@@ -5282,6 +5282,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   _HealthBar: {fileID: 0}
   _CharacterOS: {fileID: 11400000, guid: 37436262924bd9e448c96802de2b5a80, type: 2}
+  _CurrentHealth: 0
 --- !u!114 &5756868882601299431
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5295,7 +5296,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::UltimateAttack
   UltimateIsReady: 0
-  UltimateOS: {fileID: 11400000, guid: a3dc643dc6b9d09408d80460d835b38a, type: 2}
+  _UltimateOS: {fileID: 11400000, guid: a3dc643dc6b9d09408d80460d835b38a, type: 2}
   _CurrentUltimatePoints: 100
   _UltimateBar: {fileID: 0}
   _PlayerAudio: {fileID: 9078447768390317332}
@@ -5346,11 +5347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ffc50e9fef89544197eaeaf40871fef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInput
-  _specialAbility1Key: 304
-  _specialAbility2Key: 101
-  _specialAbility3Key: 102
-  _ultimateAttackKey: 113
-  _pauseKey: 112
+  _PlayerInputSO: {fileID: 11400000, guid: 3bd1f67a4efa60142a7fe94e78e6814a, type: 2}
   Jump: 0
   LightAttack: 0
   HeavyAttack: 0

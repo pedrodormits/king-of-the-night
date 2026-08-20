@@ -13,7 +13,7 @@ public class PlayerHealth : Health
         _playerAnimation = GetComponent<PlayerAnimation>();
     }
     
-    #region HEALING
+    #region Healing
     public void Heal(int amount)
     {
         _CurrentHealth = Mathf.Min(
@@ -25,7 +25,7 @@ public class PlayerHealth : Health
     }
     #endregion
     
-    #region DEATH
+    #region Death
     protected override void Die()
     {
         _player.enabled = false;

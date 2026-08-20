@@ -122,7 +122,7 @@ public class UltimateAttack : MonoBehaviour
     }
     #endregion
 
-    #region CONSUME ULTIMATE
+    #region Consume Ultimate
     /// <summary>
     /// Consumes the ultimate ability by resetting the ultimate meter.
     /// The UltimateBar is updated and the ultimate is marked as unavailable.

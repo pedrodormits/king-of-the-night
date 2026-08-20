@@ -5,8 +5,6 @@ public class PlayerInput : MonoBehaviour
     #region Variables
     [Header("Inputs")]
     [SerializeField] private PlayerInputSO _PlayerInputSO;
-
-    [Header("Names")]
     [HideInInspector] public bool Jump;
     [HideInInspector] public bool LightAttack;
     [HideInInspector] public bool HeavyAttack;

@@ -3941,6 +3941,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EnemyHealth
   _HealthBar: {fileID: 832521324}
   _CharacterOS: {fileID: 11400000, guid: e654640a016b88e4b8c9e71005a24312, type: 2}
+  _CurrentHealth: 0
 --- !u!1 &2092461511
 GameObject:
   m_ObjectHideFlags: 0

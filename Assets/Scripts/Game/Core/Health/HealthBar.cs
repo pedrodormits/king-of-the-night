@@ -7,7 +7,16 @@ using UnityEngine.UI;
 /// </summary>
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private Slider _Slider; // Reference to the UI Slider used as the health bar.
+    // Reference to the UI Slider used as the health bar.
+    [SerializeField] private Slider _Slider;
+    
+    private void Start()
+    {
+        if (_Slider == null)
+        {
+            Debug.Log("Health Slider is null");
+        }
+    }
 
     /// <summary>
     /// Sets the maximum health value of the slider.
@@ -15,8 +24,11 @@ public class HealthBar : MonoBehaviour
     /// </summary>
     public void SetMaxHealth(int health)
     {
-        _Slider.maxValue = health; // Set the slider's maximum value.
-        _Slider.value = health; // Fill the slider completely.
+        // Set the slider's maximum value.
+        _Slider.maxValue = health;
+        
+        // Fill the slider completely.
+        _Slider.value = health;
     }
 
     /// <summary>

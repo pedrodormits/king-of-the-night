@@ -4,39 +4,27 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    #region Components
+    #region Variables
     protected PlayerAnimation _playerAnim;
     protected PlayerInput _playerInput;
     protected PlayerParticle _playerParticle;
     protected Rigidbody _rb;
     protected UltimateAttack _ultimateAttack;
-    #endregion
-    
-    #region State
     [HideInInspector] public bool IsGrounded;
     protected bool _isAttacking;
-    #endregion
-    
-    #region Combo
     protected int _currentGroundComboIndex = -1;
     protected int _currentAirComboIndex = -1;
-    #endregion
     
-    #region Limbs
-    [Header("LIMBS")]
+    [Header("Limbs")]
     [SerializeField] protected List<GameObject> _Limbs;
     protected Dictionary<string, GameObject> _limbsDict = new();
-    #endregion
     
-    #region Data
-    [Header("PLAYER DATA")]
+    [Header("Player Data")]
     [SerializeField] protected CharacterSO _CharacterSO;
     [SerializeField] protected PlayerSO _PlayerSO;
-    
     [HideInInspector] public PlayerAttackSO CurrentPlayerAttackData;
     protected Dictionary<string, PlayerAttackSO> _groundAttacksDict = new();
     protected Dictionary<string, PlayerAttackSO> _airAttacksDict = new();
-    
     [HideInInspector] public PlayerAbilitySO CurrentPlayerAbilityData;
     protected Dictionary<string, PlayerAbilitySO> _abilitiesDict = new();
     #endregion
@@ -53,6 +41,24 @@ public class Player : MonoBehaviour
         DefineAirLightAttacks();
         DefineHeavyAttacks();
         DefineAbilities();
+    }
+
+    private void Start()
+    {
+        if (_Limbs == null)
+        {
+            Debug.Log("Limbs not found");
+        }
+        
+        if (_CharacterSO == null)
+        {
+            Debug.Log("CharacterSO not found");
+        }
+        
+        if (_PlayerSO == null)
+        {
+            Debug.Log("PlayerSO not found");
+        }
     }
 
     protected virtual void Update() 
@@ -74,19 +80,27 @@ public class Player : MonoBehaviour
     {
         if (!_isAttacking) 
         {
-            Vector3 input = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical")).normalized;
+            Vector3 input = new Vector3(
+                Input.GetAxis("Horizontal"),
+                0,
+                Input.GetAxis("Vertical")).normalized;
+            
             _rb.linearVelocity = new Vector3(
-                input.x * _CharacterSO.MoveSpeed,
+                input.x *
+                _CharacterSO.MoveSpeed,
                 _rb.linearVelocity.y,
-                input.z * _CharacterSO.MoveSpeed);
+                input.z *
+                _CharacterSO.MoveSpeed);
             
             if (input.magnitude > 0) 
             {
                 Quaternion targetRotation = Quaternion.LookRotation(input);
+                
                 transform.rotation = Quaternion.Slerp(
                     transform.rotation,
                     targetRotation,
-                    Time.deltaTime * _CharacterSO.RotationSpeed);
+                    Time.deltaTime *
+                    _CharacterSO.RotationSpeed);
             }
         }
         else
@@ -106,8 +120,7 @@ public class Player : MonoBehaviour
     
     protected virtual void Jump() 
     {
-        _rb.AddForce(Vector3.up * _CharacterSO.JumpForce,
-            ForceMode.Impulse);
+        _rb.AddForce(Vector3.up * _CharacterSO.JumpForce, ForceMode.Impulse);
         IsGrounded = false;
     }
     #endregion
@@ -138,7 +151,9 @@ public class Player : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            _groundAttacksDict.Add($"GroundLight{i + 1}", _PlayerSO.GroundAttacks[i]);
+            _groundAttacksDict.Add(
+                $"GroundLight{i + 1}",
+                _PlayerSO.GroundAttacks[i]);
         }
     }
     
@@ -170,7 +185,9 @@ public class Player : MonoBehaviour
         _currentGroundComboIndex = 0;
         while (_currentGroundComboIndex < _PlayerSO.GroundLightAttacks.Length) 
         {
-            PlayerSO.ComboAttack attack = _PlayerSO.GroundLightAttacks[_currentGroundComboIndex];
+            PlayerSO.ComboAttack attack =
+                _PlayerSO.GroundLightAttacks[_currentGroundComboIndex];
+            
             _playerAnim.SetGroundComboIndex(_currentGroundComboIndex);
             foreach (var limb in _Limbs) 
             {
@@ -230,7 +247,9 @@ public class Player : MonoBehaviour
         _currentAirComboIndex = 0;
         while (_currentAirComboIndex < _PlayerSO.AirLightAttacks.Length) 
         {
-            PlayerSO.ComboAttack attack = _PlayerSO.AirLightAttacks[_currentAirComboIndex];
+            PlayerSO.ComboAttack attack =
+                _PlayerSO.AirLightAttacks[_currentAirComboIndex];
+            
             _rb.isKinematic = true;
             _playerAnim.SetAirComboIndex(_currentAirComboIndex);
             CurrentPlayerAttackData = _airAttacksDict["AirLight1"];
@@ -291,7 +310,8 @@ public class Player : MonoBehaviour
         _isAttacking = true;
         CurrentPlayerAttackData = _groundAttacksDict["GroundHeavy"];
         _playerAnim.PlayHeavyAttackAnimation();
-        float animLength = _playerAnim.GetAnimationLength("Ground Heavy Attack");
+        float animLength = _playerAnim.GetAnimationLength(
+            "Ground Heavy Attack");
         yield return new WaitForSeconds(animLength);
         _isAttacking = false;
     }
@@ -343,7 +363,10 @@ public class Player : MonoBehaviour
     {
         _isAttacking = true;
         CurrentPlayerAbilityData = _abilitiesDict["Ability1"];
-        _playerParticle.CurrentParticle = _playerParticle.ParticlesDict["Particle1"];
+        
+        _playerParticle.CurrentParticle =
+            _playerParticle.ParticlesDict["Particle1"];
+        
         _playerAnim.PlayAbilityAnimation();
         float animLength = _playerAnim.GetAnimationLength("Special Ability 1");
         yield return new WaitForSeconds(animLength);
@@ -353,8 +376,12 @@ public class Player : MonoBehaviour
     protected virtual void ExecuteSpecialAbility2()
     {
         float lastSpecialTime = -Mathf.Infinity;
-        if (IsGrounded && _playerInput.SpecialAbility2 && Time.time >=
-            lastSpecialTime + _abilitiesDict["Ability2"].Cooldown)
+        if (
+            IsGrounded &&
+            _playerInput.SpecialAbility2 &&
+            Time.time >=
+            lastSpecialTime +
+            _abilitiesDict["Ability2"].Cooldown)
         {
             lastSpecialTime = Time.time;
             StartCoroutine(SpecialAbility2());
@@ -365,7 +392,10 @@ public class Player : MonoBehaviour
     {
         _isAttacking = true;
         CurrentPlayerAbilityData = _abilitiesDict["Ability2"];
-        _playerParticle.CurrentParticle = _playerParticle.ParticlesDict["Particle2"];
+        
+        _playerParticle.CurrentParticle =
+            _playerParticle.ParticlesDict["Particle2"];
+        
         _playerAnim.PlayAbilityAnimation();
         float animLength = _playerAnim.GetAnimationLength("Special Ability 2");
         yield return new WaitForSeconds(animLength);
@@ -375,8 +405,12 @@ public class Player : MonoBehaviour
     protected virtual void ExecuteSpecialAbility3()
     {
         float lastSpecialTime = -Mathf.Infinity;
-        if (IsGrounded && _playerInput.SpecialAbility3 && Time.time >=
-            lastSpecialTime + _abilitiesDict["Ability3"].Cooldown)
+        if (
+            IsGrounded &&
+            _playerInput.SpecialAbility3 &&
+            Time.time >=
+            lastSpecialTime +
+            _abilitiesDict["Ability3"].Cooldown)
         {
             lastSpecialTime = Time.time;
             StartCoroutine(SpecialAbility3());
@@ -387,7 +421,10 @@ public class Player : MonoBehaviour
     {
         _isAttacking = true;
         CurrentPlayerAbilityData = _abilitiesDict["Ability3"];
-        _playerParticle.CurrentParticle = _playerParticle.ParticlesDict["Particle3"];
+        
+        _playerParticle.CurrentParticle =
+            _playerParticle.ParticlesDict["Particle3"];
+        
         _playerAnim.PlayAbilityAnimation();
         float animLength = _playerAnim.GetAnimationLength("Special Ability 3");
         yield return new WaitForSeconds(animLength);
@@ -398,7 +435,12 @@ public class Player : MonoBehaviour
     #region Ultimate
     protected virtual void ExecuteUltimateAttack()
     {
-        if (_ultimateAttack != null && IsGrounded && _playerInput.UltimateAttack && _ultimateAttack.UltimateIsReady)
+        if (
+            _ultimateAttack !=
+            null &&
+            IsGrounded &&
+            _playerInput.UltimateAttack &&
+            _ultimateAttack.UltimateIsReady)
         {
             StartCoroutine(Ultimate());
         }
