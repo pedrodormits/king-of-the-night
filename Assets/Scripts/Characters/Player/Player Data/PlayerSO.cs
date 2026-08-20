@@ -6,7 +6,7 @@ using UnityEngine;
 /// Contains the character's attacks, combo
 /// settings, abilities, and ultimate attack data.
 /// </summary>
-[CreateAssetMenu(menuName = "Characters/Player")]
+[CreateAssetMenu(menuName = "Player/Character")]
 public class PlayerSO : ScriptableObject
 {
     [Header("Attack")]

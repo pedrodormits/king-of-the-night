@@ -5,7 +5,7 @@ using UnityEngine;
 /// Contains the ability's cooldown, damage, ultimate
 /// point generation, animation trigger, and associated audio clip.
 /// </summary>
-[CreateAssetMenu(menuName = "Combat/Ability")]
+[CreateAssetMenu(menuName = "Player/Ability")]
 public class PlayerAbilitySO : ScriptableObject
 {
     [Header("Stats")]

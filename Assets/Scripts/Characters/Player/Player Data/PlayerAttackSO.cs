@@ -5,7 +5,7 @@ using UnityEngine;
 /// Contains the attack's damage, ultimate point generation,
 /// animation trigger, and associated audio clip.
 /// </summary>
-[CreateAssetMenu(menuName = "Combat/Attack")]
+[CreateAssetMenu(menuName = "Player/Attack")]
 public class PlayerAttackSO : ScriptableObject
 {
     [Header("Stats")]

@@ -4,7 +4,7 @@ using UnityEngine;
 /// Stores the audio clips used by the player.
 /// Contains audio for taking damage and for the ultimate ability.
 /// </summary>
-[CreateAssetMenu(menuName = "Audio/Player")]
+[CreateAssetMenu(menuName = "Player/Audio")]
 public class PlayerAudioSO : ScriptableObject
 {
     [Header("Hurt")]
