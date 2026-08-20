@@ -4,7 +4,7 @@ using UnityEngine;
 
 /// <summary>
 /// Vampire is a player character class that extends the base Player class.
-/// It adds vampire-specific abilities such as air combos, lifesteal, teleport
+/// It adds vampire-specific abilities such as air combos, life-steal, teleport
 /// movement, bat summoning, enemy stunning, and special attacks.
 /// </summary>
 public class Vampire : Player
@@ -67,6 +67,19 @@ public class Vampire : Player
         
         // Convert recovery data list into a dictionary for easier access.
         DefineRecovery();
+    }
+
+    private void Start()
+    {
+        if (_BatSpawnPoint == null)
+        {
+            Debug.Log("BatSpawnPoint not set");
+        }
+        
+        if (_RecoveryDatas == null)
+        {
+            Debug.Log("RecoveryDatas not set");
+        }
     }
 
     protected override void Move()
@@ -160,6 +173,7 @@ public class Vampire : Player
     {
         IsAscending = true;
         CurrentRecoveryData = _recoveryDict["GroundHeavyRecovery"];
+        
         _limbsDict["RightHand"].GetComponent<Limb>().SetAttackData(
             _groundAttacksDict["GroundHeavy"]);
         
@@ -191,6 +205,7 @@ public class Vampire : Player
     protected override IEnumerator AirHeavyAttack() 
     {
         CurrentRecoveryData = _recoveryDict["AirHeavyRecovery"];
+        
         _limbsDict["Feet"].GetComponent<Limb>().SetAttackData(
             _airAttacksDict["AirHeavy"]);
         
@@ -216,7 +231,7 @@ public class Vampire : Player
             
             _rb.MovePosition(
                 _rb.position +
-                diveDirection * 
+                diveDirection *
                 _DiveSpeed *
                 Time.fixedDeltaTime);
             
@@ -273,11 +288,13 @@ public class Vampire : Player
     } 
 
     /// <summary>
-    /// Stops the summon effect and creates a bat projectile using the object pool.
+    /// Stops the summon effect and creates a bat projectile using the object
+    /// pool.
     /// </summary>
     public void SendBat()
     {
         _playerParticle.StopParticle();
+        
         ObjectPooler.Instance.SpawnFromPool(
             "Bat",
             _BatSpawnPoint.position,
@@ -296,6 +313,7 @@ public class Vampire : Player
             transform.rotation);
         
         _playerParticle.PlayParticle();
+        
         Collider[] hitColliders = Physics.OverlapSphere(
             transform.position,
             _StunRange);
@@ -326,6 +344,7 @@ public class Vampire : Player
     protected override IEnumerator Ultimate() 
     {
         CurrentRecoveryData = _recoveryDict["UltimateRecovery"];
+        
         _limbsDict["RightHand"].GetComponent<Limb>().SetUltimateData(
             _PlayerSO.Ultimate);
         

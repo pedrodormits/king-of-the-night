@@ -2,29 +2,37 @@ using UnityEngine;
 
 /// <summary>
 /// Health manages the health points of a character and handles taking damage.
-/// It also updates the HealthBar and triggers the death behaviour when health reaches zero.
+/// It also updates the HealthBar and triggers the death behaviour when health
+/// reaches zero.
 /// </summary>
 public class Health : MonoBehaviour, IDamageable
 {
     #region Variables
-    [Header("HEALTH BAR")]
+    [Header("Health Bar")]
     // Reference to the UI health bar used to display the current health.
     [SerializeField] protected HealthBar _HealthBar;
 
-    [Header("HEALTH STATS")]
+    [Header("Health Stats")]
     // Scriptable Object containing the character's health information.
     [SerializeField] protected CharacterSO _CharacterOS;
     
-    protected int _currentHealth; // Stores the character's current health.
-    public int MaxHealth => _CharacterOS.MaxHealth; // Returns the maximum health defined in the CharacterSO.
-    public int CurrentHealth => _currentHealth; // Returns the character's current health.
+    // Stores the character's current health.
+    [SerializeField] protected int _CurrentHealth;
+    
+    // Returns the maximum health defined in the CharacterSO.
+    public int MaxHealth => _CharacterOS.MaxHealth;
+    
+    // Returns the character's current health.
+    public int CurrentHealth => _CurrentHealth;
     #endregion
     
-    protected virtual void Start() => InitializeHealth(); // Initialize the character's health when the object starts.
+    // Initialize the character's health when the object starts.
+    protected virtual void Start() => InitializeHealth();
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T)) // Press T to test the damage system by dealing 20 damage.
+        // Press T to test the damage system by dealing 20 damage.
+        if (Input.GetKeyDown(KeyCode.T))
         {
             TakeDamage(20);
         }
@@ -36,8 +44,11 @@ public class Health : MonoBehaviour, IDamageable
     /// </summary>
     protected virtual void InitializeHealth()
     {
-        _currentHealth = _CharacterOS.MaxHealth; // Set the current health to the maximum health.
-        _HealthBar.SetMaxHealth(_CharacterOS.MaxHealth); // Set the health bar to match the maximum health.
+        // Set the current health to the maximum health.
+        _CurrentHealth = _CharacterOS.MaxHealth;
+        
+        // Set the health bar to match the maximum health.
+        _HealthBar.SetMaxHealth(_CharacterOS.MaxHealth);
     }
     
     #region Damage
@@ -48,10 +59,13 @@ public class Health : MonoBehaviour, IDamageable
     {
         // Subtract the incoming damage from the current health.
         // Mathf.Max prevents the health from going below zero.
-        _currentHealth = Mathf.Max(_currentHealth - damageAmount, 0);
+        _CurrentHealth = Mathf.Max(_CurrentHealth - damageAmount, 0);
         
-        _HealthBar.SetHealth(_currentHealth); // Update the health bar to display the new health value.
-        if (_currentHealth <= 0) // Check if the character has no health remaining.
+        // Update the health bar to display the new health value.
+        _HealthBar.SetHealth(_CurrentHealth);
+        
+        // Check if the character has no health remaining.
+        if (_CurrentHealth <= 0)
         {
             Die();
         }
@@ -60,8 +74,8 @@ public class Health : MonoBehaviour, IDamageable
 
     /// <summary>
     /// Called when the character's health reaches zero.
-    /// This method is virtual so child classes can override it
-    /// and add their own death behaviour.
+    /// This method is virtual so child classes can override it and add their
+    /// own death behaviour.
     /// </summary>
     protected virtual void Die(){}
 }
