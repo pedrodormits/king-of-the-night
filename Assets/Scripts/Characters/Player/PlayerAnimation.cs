@@ -1,18 +1,11 @@
-using UnityEngine;
-
-public class PlayerAnimation : MonoBehaviour
+public class PlayerAnimation : Animation
 {
-    #region Variables
-    private Animator _anim;
     private Player _player;
-    private Rigidbody _rb;
-    #endregion
-    
+
     private void Awake()
     {
-        _anim = GetComponent<Animator>();
+        base.Awake();
         _player = GetComponent<Player>();
-        _rb = GetComponent<Rigidbody>();
     }
 
     private void FixedUpdate()
@@ -21,23 +14,13 @@ public class PlayerAnimation : MonoBehaviour
         PlayIdleMoveAnimations();
         PlayJumpFallAnimations();
     }
+    
     #region Animation State Upadetes
-
     private void UpdateIsGrounded()
     {
         _anim.SetBool("isGrounded", _player.IsGrounded);
     } 
     
-    private void PlayIdleMoveAnimations()
-    {
-        Vector3 horizontalVelocity = new Vector3(
-            _rb.linearVelocity.x,
-            0f,
-            _rb.linearVelocity.z);
-        
-        _anim.SetFloat("velocityMagnitude", horizontalVelocity.magnitude);
-    }
-
     private void PlayJumpFallAnimations()
     {
         _anim.SetFloat("verticalVelocity", _rb.linearVelocity.y);
@@ -70,25 +53,6 @@ public class PlayerAnimation : MonoBehaviour
     public void PlayUltimateAttackAnimation()
     {
         _anim.SetTrigger("UltimateAttack");
-    }
-
-    public void PlayHurtAnimation() => _anim.SetTrigger("takeDamage");
-    
-    public void PlayDeathAnimation() => _anim.SetTrigger("die");
-    #endregion
-    
-    #region Get Animation Lenght
-    public float GetAnimationLength(string clipName)
-    {
-        foreach (var clip in _anim.runtimeAnimatorController.animationClips)
-        {
-            if (clip.name == clipName)
-            {
-                return clip.length;
-            }
-        }
-        
-        return 0f;
     }
     #endregion
 }
