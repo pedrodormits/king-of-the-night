@@ -18,7 +18,13 @@ public class Enemy : MonoBehaviour
     private Vector3 _target;
     
     [Header("Data")]
+    // Contains general character statistics and movement settings,
+    // such as health, jump force,
+    // movement speed, rotation speed, and death audio.
     [SerializeField] private CharacterSO _CharacterOS;
+    
+    // Contains enemy-specific settings, such as the
+    // initial movement delay and whether the enemy can be stunned.
     [SerializeField] private EnemySO _EnemySo;
     #endregion
 
