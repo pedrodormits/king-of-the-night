@@ -203,7 +203,9 @@ public class Player : MonoBehaviour
             float animLength = _playerAnim.GetAnimationLength(attack.AnimName);
             float bufferWindow = _PlayerSO.ComboBufferWindow;
             float preBuffer = Mathf.Max(0, animLength - bufferWindow);
+            
             yield return new WaitForSeconds(preBuffer);
+            
             bool queued = false;
             float timer = 0f;
             while (timer < bufferWindow) 
@@ -215,6 +217,7 @@ public class Player : MonoBehaviour
                 }
 
                 timer += Time.deltaTime;
+                
                 yield return null;
             }
 
@@ -266,7 +269,9 @@ public class Player : MonoBehaviour
             float animLength = _playerAnim.GetAnimationLength(attack.AnimName);
             float bufferWindow = 0.5f;
             float preBuffer = Mathf.Max(0, animLength - bufferWindow);
+            
             yield return new WaitForSeconds(preBuffer);
+ 
             bool queued = false;
             float timer = 0f;
             while (timer < bufferWindow) 
@@ -278,6 +283,7 @@ public class Player : MonoBehaviour
                 }
                 
                 timer += Time.deltaTime;
+                
                 yield return null;
             }
 
@@ -310,9 +316,12 @@ public class Player : MonoBehaviour
         _isAttacking = true;
         CurrentPlayerAttackData = _groundAttacksDict["GroundHeavy"];
         _playerAnim.PlayHeavyAttackAnimation();
+        
         float animLength = _playerAnim.GetAnimationLength(
             "Ground Heavy Attack");
+        
         yield return new WaitForSeconds(animLength);
+        
         _isAttacking = false;
     }
     
@@ -330,7 +339,9 @@ public class Player : MonoBehaviour
         CurrentPlayerAttackData = _airAttacksDict["AirHeavy"];
         _playerAnim.PlayHeavyAttackAnimation();
         float animLength = _playerAnim.GetAnimationLength("Air Heavy Attack");
+        
         yield return new WaitForSeconds(animLength);
+        
         _isAttacking = false;
     }
     #endregion
@@ -348,6 +359,7 @@ public class Player : MonoBehaviour
     protected virtual void ExecuteSpecialAbility1()
     {
         float lastSpecialTime = -Mathf.Infinity;
+        
         if (IsGrounded &&
             _playerInput.SpecialAbility1 &&
             Time.time >=
@@ -369,13 +381,16 @@ public class Player : MonoBehaviour
         
         _playerAnim.PlayAbilityAnimation();
         float animLength = _playerAnim.GetAnimationLength("Special Ability 1");
+        
         yield return new WaitForSeconds(animLength);
+        
         _isAttacking = false;
     }
     
     protected virtual void ExecuteSpecialAbility2()
     {
         float lastSpecialTime = -Mathf.Infinity;
+        
         if (
             IsGrounded &&
             _playerInput.SpecialAbility2 &&
@@ -398,13 +413,16 @@ public class Player : MonoBehaviour
         
         _playerAnim.PlayAbilityAnimation();
         float animLength = _playerAnim.GetAnimationLength("Special Ability 2");
+        
         yield return new WaitForSeconds(animLength);
+        
         _isAttacking = false;
     }
     
     protected virtual void ExecuteSpecialAbility3()
     {
         float lastSpecialTime = -Mathf.Infinity;
+        
         if (
             IsGrounded &&
             _playerInput.SpecialAbility3 &&
@@ -427,7 +445,9 @@ public class Player : MonoBehaviour
         
         _playerAnim.PlayAbilityAnimation();
         float animLength = _playerAnim.GetAnimationLength("Special Ability 3");
+        
         yield return new WaitForSeconds(animLength);
+        
         _isAttacking = false; 
     }
     #endregion
