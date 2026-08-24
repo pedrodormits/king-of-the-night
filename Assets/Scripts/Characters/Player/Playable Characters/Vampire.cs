@@ -72,6 +72,7 @@ public class Vampire : Player
         }
     }
 
+    #region Movement
     /// <summary>
     /// Handles the Vampire's movement.
     /// Normal movement is disabled while Shadow Flit is active.
@@ -83,7 +84,9 @@ public class Vampire : Player
             base.Move();
         }
     }
-
+    #endregion
+    
+    #region Jump
     /// <summary>
     /// Handles the Vampire's jump input.
     /// Allows the Vampire to perform an additional jump while airborne.
@@ -105,7 +108,9 @@ public class Vampire : Player
             _canDoubleJump = false;
         }
     }
+    #endregion
 
+    #region Recovery
     /// <summary>
     /// Creates a dictionary containing the recovery data for each attack type.
     /// The dictionary allows the
@@ -119,7 +124,9 @@ public class Vampire : Player
         _recoveryDict.Add("AirHeavyRecovery", _RecoveryDatas[3]);
         _recoveryDict.Add("UltimateRecovery", _RecoveryDatas[4]);
     }
+    #endregion
 
+    #region Ground Combo
     /// <summary>
     /// Sets the recovery data for the Vampire's
     /// ground light attack before executing the base ground combo.
@@ -129,8 +136,9 @@ public class Vampire : Player
         CurrentRecoveryData = _recoveryDict["GroundLightRecovery"];
         yield return base.PerformGroundComboAttack();
     }
+    #endregion
+    
     #region Air Combo
-
     /// <summary>
     /// Performs the Vampire's air combo.
     /// Sets the appropriate recovery data and enables
@@ -328,12 +336,13 @@ public class Vampire : Player
             transform.rotation);
 
         _playerParticle.PlayParticle();
-
-        // Find all colliders within the stun range.
+        
+        // Find all colliders within the stun range around the Vampire.
         Collider[] hitColliders = Physics.OverlapSphere(
             transform.position,
             _StunRange);
 
+        // Check each collider found within the stun range.
         foreach (var hit in hitColliders)
         {
             Enemy enemy = hit.GetComponent<Enemy>();
@@ -356,9 +365,9 @@ public class Vampire : Player
             transform.position,
             _StunRange);
     }
-
     #endregion
 
+    #region Ultimate
     /// <summary>
     /// Performs the Vampire's ultimate attack.
     /// Sets the ultimate recovery data and assigns
@@ -374,7 +383,9 @@ public class Vampire : Player
 
         yield return base.Ultimate();
     }
+    #endregion
 
+    #region Collision
     /// <summary>
     /// Restores the Vampire's ability to double jump after touching the ground.
     /// </summary>
@@ -386,4 +397,5 @@ public class Vampire : Player
             _canDoubleJump = true;
         }
     }
+    #endregion
 }

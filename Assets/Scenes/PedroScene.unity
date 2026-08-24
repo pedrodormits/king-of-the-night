@@ -185,7 +185,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d3b5c48aef567a43b69a953d96b56b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 4d3b5c48aef567a43b69a953d96b56b4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -935,11 +935,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61259c7643eb1046b8b635508dad43a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Zombie
-  _TimeToMove: 3
-  _PointA: {fileID: 208168076}
-  _PointB: {fileID: 852657936}
-  _CanBeStunned: 1
+  _MinDist: 1.5
+  _Player: {fileID: 852657936}
   _CharacterOS: {fileID: 11400000, guid: e654640a016b88e4b8c9e71005a24312, type: 2}
+  _EnemySo: {fileID: 11400000, guid: 992237f6b5589864e9926f30b149b31e, type: 2}
 --- !u!54 &208168079
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4531,11 +4530,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b4cbdeb7a0bbd74b9cb0e0437d5bdbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  _TimeToMove: 0
-  _PointA: {fileID: 0}
-  _PointB: {fileID: 0}
-  _CanBeStunned: 1
+  _MinDist: 0
+  _Player: {fileID: 0}
   _CharacterOS: {fileID: 0}
+  _EnemySo: {fileID: 0}
 --- !u!54 &2074878785
 Rigidbody:
   m_ObjectHideFlags: 0
