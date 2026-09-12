@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenuScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/MainMenu.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -23,6 +22,7 @@
     <setting file="file://$PROJECT_DIR$/../Examen/Assets/Scripts/Enemy/Enemy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/CharacterStateMachine.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Characters/Player/Player Data/PlayerAudioSO.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/OptionsMenu.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$USER_HOME$/Desktop/Yuha/Assets/Scripts/Building/Building.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProblemsViewState">
@@ -136,6 +136,7 @@
       <workItem from="1787527720799" duration="10338000" />
       <workItem from="1787613949336" duration="888000" />
       <workItem from="1787691200159" duration="2511000" />
+      <workItem from="1789247796000" duration="260000" />
     </task>
     <servers />
   </component>
