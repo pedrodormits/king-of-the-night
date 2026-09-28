@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    #region Variables
     public static GameManager Instance;
 
     [Header("Canvas")]
@@ -15,6 +16,7 @@ public class GameManager : MonoBehaviour
     public bool GameIsPaused {get; private set;}
     [SerializeField] private PlayerInput _PlayerInput;
     [SerializeField] private Player _Player;
+    #endregion
     
     private void Awake() => Instance = this;
 
@@ -54,13 +56,6 @@ public class GameManager : MonoBehaviour
     {
         GameIsOver = true;
         _GameOverScreen.gameObject.SetActive(true);
-    }
-
-    public void ResumeGame()
-    {
-        _PauseScreen.gameObject.SetActive(false);
-        _Player.enabled = true;
-        Time.timeScale = 1;
     }
     
     public void RestartGame() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
