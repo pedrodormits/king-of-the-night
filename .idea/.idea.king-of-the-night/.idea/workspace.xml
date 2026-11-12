@@ -6,11 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c8460266-3682-44f1-8f1d-ac81c89ae978" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.king-of-the-night/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/MainMenuScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/MainMenuScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/PedroScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Menus/OptionsMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Menus/OptionsMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Menus/PauseMenu.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Menus/PauseMenu.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Examples &amp; Extras/Resources/Fonts &amp; Materials/Bangers SDF.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Characters/Enemies/Enemy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Characters/Enemies/Enemy.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -142,6 +138,7 @@
       <workItem from="1789247796000" duration="2959000" />
       <workItem from="1790622606108" duration="3713000" />
       <workItem from="1794339833671" duration="2754000" />
+      <workItem from="1794518530404" duration="1127000" />
     </task>
     <servers />
   </component>
